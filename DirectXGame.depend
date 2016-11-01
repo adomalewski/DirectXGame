@@ -1,0 +1,233 @@
+# depslib dependency file v1.0
+1477583079 source:c:\users\andrz3j\documents\codeblocks\directxgame\inputclass.cpp
+	"inputclass.h"
+
+1477582999 c:\users\andrz3j\documents\codeblocks\directxgame\inputclass.h
+
+1477603737 source:c:\users\andrz3j\documents\codeblocks\directxgame\main.cpp
+	"systemclass.h"
+
+1477603697 c:\users\andrz3j\documents\codeblocks\directxgame\systemclass.h
+	<windows.h>
+	"inputclass.h"
+	"graphicsclass.h"
+
+1477767377 c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.h
+	"d3dclass.h"
+	"cameraclass.h"
+	"modelclass.h"
+	"colorshaderclass.h"
+	"textureshaderclass.h"
+	"lightshaderclass.h"
+	"lightclass.h"
+
+1477585809 source:c:\users\andrz3j\documents\codeblocks\directxgame\systemclass.cpp
+	"systemclass.h"
+
+1477769934 source:c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.cpp
+	"graphicsclass.h"
+
+1477663553 c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.h
+	<dxgi.h>
+	<d3dcommon.h>
+	<d3d11.h>
+	<d3dx10math.h>
+
+1274308618 c:\program files\microsoft directx sdk (june 2010)\include\dxgi.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"oaidl.h"
+	"ocidl.h"
+	"dxgitype.h"
+
+1274308618 c:\program files\microsoft directx sdk (june 2010)\include\dxgitype.h
+	"dxgiformat.h"
+
+1274308618 c:\program files\microsoft directx sdk (june 2010)\include\dxgiformat.h
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dcommon.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"oaidl.h"
+	"ocidl.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3d11.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"oaidl.h"
+	"ocidl.h"
+	"dxgi.h"
+	"d3dcommon.h"
+	"d3d10_1.h"
+	"d3d11sdklayers.h"
+	"d3d10misc.h"
+	"d3d10shader.h"
+	"d3d10effect.h"
+	"d3d10_1shader.h"
+
+1274308616 c:\program files\microsoft directx sdk (june 2010)\include\d3d10_1.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"oaidl.h"
+	"ocidl.h"
+	"d3d10.h"
+	"d3d10_1shader.h"
+
+1274308616 c:\program files\microsoft directx sdk (june 2010)\include\d3d10.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"oaidl.h"
+	"ocidl.h"
+	"dxgi.h"
+	"d3dcommon.h"
+	"d3d10sdklayers.h"
+	"d3d10misc.h"
+	"d3d10shader.h"
+	"d3d10effect.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3d10sdklayers.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"oaidl.h"
+	"ocidl.h"
+	"dxgi.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3d10misc.h
+	"d3d10.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3d10shader.h
+	"d3d10.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3d10effect.h
+	"d3d10.h"
+
+1274308616 c:\program files\microsoft directx sdk (june 2010)\include\d3d10_1shader.h
+	"d3d10shader.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3d11sdklayers.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"oaidl.h"
+	"ocidl.h"
+	"d3d11.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx10math.h
+	"D3DX10.h"
+	<math.h>
+	"D3DX10math.inl"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx10.h
+	<limits.h>
+	<float.h>
+	"d3d10.h"
+	"d3dx10.h"
+	"d3dx10math.h"
+	"d3dx10core.h"
+	"d3dx10tex.h"
+	"d3dx10mesh.h"
+	"d3dx10async.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx10core.h
+	"d3dx10.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx10tex.h
+	"d3dx10.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx10mesh.h
+	"d3dx10.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx10async.h
+	"d3dx10.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx10math.inl
+
+1477769805 source:c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.cpp
+	"d3dclass.h"
+
+1477688932 c:\users\andrz3j\documents\codeblocks\directxgame\cameraclass.h
+	<d3dx10math.h>
+
+1477768087 c:\users\andrz3j\documents\codeblocks\directxgame\modelclass.h
+	<d3d11.h>
+	<d3dx10math.h>
+	"textureclass.h"
+
+1477689694 c:\users\andrz3j\documents\codeblocks\directxgame\colorshaderclass.h
+	<d3d11.h>
+	<d3dx10math.h>
+	<d3dx11async.h>
+	<fstream>
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx11async.h
+	"d3dx11.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx11.h
+	<limits.h>
+	<float.h>
+	<new>
+	"d3d11.h"
+	"d3dx11.h"
+	"d3dx11core.h"
+	"d3dx11tex.h"
+	"d3dx11async.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx11core.h
+	"d3dx11.h"
+
+1274308617 c:\program files\microsoft directx sdk (june 2010)\include\d3dx11tex.h
+	"d3dx11.h"
+
+1477689092 source:c:\users\andrz3j\documents\codeblocks\directxgame\cameraclass.cpp
+	"cameraclass.h"
+
+1477689760 source:c:\users\andrz3j\documents\codeblocks\directxgame\colorshaderclass.cpp
+	"colorshaderclass.h"
+
+1477768014 source:c:\users\andrz3j\documents\codeblocks\directxgame\modelclass.cpp
+	"modelclass.h"
+
+1477751364 c:\users\andrz3j\documents\codeblocks\directxgame\textureclass.h
+	<d3d11.h>
+	<d3dx11tex.h>
+
+1477753762 c:\users\andrz3j\documents\codeblocks\directxgame\textureshaderclass.h
+	<d3d11.h>
+	<d3dx10math.h>
+	<d3dx11async.h>
+	<fstream>
+
+1477751575 source:c:\users\andrz3j\documents\codeblocks\directxgame\textureclass.cpp
+	"textureclass.h"
+
+1477754516 source:c:\users\andrz3j\documents\codeblocks\directxgame\textureshaderclass.cpp
+	"textureshaderclass.h"
+
+1477764730 c:\users\andrz3j\documents\codeblocks\directxgame\lightshaderclass.h
+	<d3d11.h>
+	<d3dx10math.h>
+	<d3dx11async.h>
+	<fstream>
+
+1477766271 c:\users\andrz3j\documents\codeblocks\directxgame\lightclass.h
+	<d3dx10math.h>
+
+1477766330 source:c:\users\andrz3j\documents\codeblocks\directxgame\lightclass.cpp
+	"lightclass.h"
+
+1477765248 source:c:\users\andrz3j\documents\codeblocks\directxgame\lightshaderclass.cpp
+	"lightshaderclass.h"
+

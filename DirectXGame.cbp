@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="DirectXGame" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/DirectXGame" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="C:/Program Files/Microsoft DirectX SDK (June 2010)/Include" />
+				</Compiler>
+				<Linker>
+					<Add library="C:\Program Files\Microsoft DirectX SDK (June 2010)\Lib\x86\*" />
+					<Add library="libwinmm.a" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/DirectXGame" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="msvc10" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-std=gnu++11" />
+					<Add directory="C:/Program Files/Microsoft DirectX SDK (June 2010)/Include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="C:\Program Files\Microsoft DirectX SDK (June 2010)\Lib\x86\*" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Linker>
+			<Add library="gdi32" />
+			<Add library="user32" />
+			<Add library="kernel32" />
+			<Add library="comctl32" />
+		</Linker>
+		<Unit filename="cameraclass.cpp" />
+		<Unit filename="cameraclass.h" />
+		<Unit filename="color.ps" />
+		<Unit filename="color.vs" />
+		<Unit filename="colorshaderclass.cpp" />
+		<Unit filename="colorshaderclass.h" />
+		<Unit filename="d3dclass.cpp" />
+		<Unit filename="d3dclass.h" />
+		<Unit filename="graphicsclass.cpp" />
+		<Unit filename="graphicsclass.h" />
+		<Unit filename="inputclass.cpp" />
+		<Unit filename="inputclass.h" />
+		<Unit filename="light.ps" />
+		<Unit filename="light.vs" />
+		<Unit filename="lightclass.cpp" />
+		<Unit filename="lightclass.h" />
+		<Unit filename="lightshaderclass.cpp" />
+		<Unit filename="lightshaderclass.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="modelclass.cpp" />
+		<Unit filename="modelclass.h" />
+		<Unit filename="systemclass.cpp" />
+		<Unit filename="systemclass.h" />
+		<Unit filename="texture.ps" />
+		<Unit filename="texture.vs" />
+		<Unit filename="textureclass.cpp" />
+		<Unit filename="textureclass.h" />
+		<Unit filename="textureshaderclass.cpp" />
+		<Unit filename="textureshaderclass.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
