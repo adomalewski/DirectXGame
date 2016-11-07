@@ -1,5 +1,5 @@
-#ifndef LIGHTSHADERCLASS_H_INCLUDED
-#define LIGHTSHADERCLASS_H_INCLUDED
+#ifndef LIGHTSHADERCLASS_H
+#define LIGHTSHADERCLASS_H
 
 #include <d3d11.h>
 #include <d3dx10math.h>
@@ -50,4 +50,4 @@ private:
 	ID3D11Buffer* m_lightBuffer;
 };
 
-#endif // LIGHTSHADERCLASS_H_INCLUDED
+#endif // LIGHTSHADERCLASS_H

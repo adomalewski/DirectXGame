@@ -1,5 +1,5 @@
-#ifndef COLORSHADERCLASS_H_INCLUDED
-#define COLORSHADERCLASS_H_INCLUDED
+#ifndef COLORSHADERCLASS_H
+#define COLORSHADERCLASS_H
 
 #include <d3d11.h>
 #include <d3dx10math.h>
@@ -41,4 +41,4 @@ private:
 	ID3D11Buffer* m_matrixBuffer;
 };
 
-#endif // COLORSHADERCLASS_H_INCLUDED
+#endif // COLORSHADERCLASS_H

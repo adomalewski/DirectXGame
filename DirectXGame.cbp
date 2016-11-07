@@ -9,15 +9,18 @@
 			<Target title="Debug">
 				<Option output="bin/Debug/DirectXGame" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
+				<Option type="0" />
+				<Option compiler="msvc10" />
 				<Compiler>
+					<Add option="/Zi" />
 					<Add option="-g" />
+					<Add option="-O0" />
+					<Add option="-std=gnu++11" />
 					<Add directory="C:/Program Files/Microsoft DirectX SDK (June 2010)/Include" />
 				</Compiler>
 				<Linker>
+					<Add option="/DEBUG" />
 					<Add library="C:\Program Files\Microsoft DirectX SDK (June 2010)\Lib\x86\*" />
-					<Add library="libwinmm.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -45,6 +48,8 @@
 			<Add library="kernel32" />
 			<Add library="comctl32" />
 		</Linker>
+		<Unit filename="bitmapclass.cpp" />
+		<Unit filename="bitmapclass.h" />
 		<Unit filename="cameraclass.cpp" />
 		<Unit filename="cameraclass.h" />
 		<Unit filename="color.ps" />
@@ -79,6 +84,15 @@
 			<envvars />
 			<debugger />
 			<lib_finder disable_auto="1" />
+			<DoxyBlocks>
+				<comment_style block="0" line="0" />
+				<doxyfile_project />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

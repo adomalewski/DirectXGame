@@ -1,5 +1,5 @@
-#ifndef LIGHTCLASS_H_INCLUDED
-#define LIGHTCLASS_H_INCLUDED
+#ifndef LIGHTCLASS_H
+#define LIGHTCLASS_H
 
 #include <d3dx10math.h>
 
@@ -21,4 +21,4 @@ private:
 	D3DXVECTOR3 m_direction;
 };
 
-#endif // LIGHTCLASS_H_INCLUDED
+#endif // LIGHTCLASS_H

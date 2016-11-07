@@ -9,6 +9,7 @@ GraphicsClass::GraphicsClass()
 	m_TextureShader = 0;
 	m_LightShader = 0;
 	m_Light = 0;
+	m_Bitmap = 0;
 }
 
 GraphicsClass::GraphicsClass(const GraphicsClass& other)
@@ -66,8 +67,27 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	}
 
 	//result = InitializeColorShader(hwnd);
-	//result = InitializeTextureShader(hwnd);
+	result = InitializeTextureShader(hwnd);
 	result = InitializeLightShader(hwnd);
+	if(!result)
+	{
+        return false;
+	}
+
+	// Create the bitmap object.
+	m_Bitmap = new BitmapClass;
+	if(!m_Bitmap)
+	{
+		return false;
+	}
+
+	// Initialize the bitmap object.
+	result = m_Bitmap->Initialize(m_D3D->GetDevice(), screenWidth, screenHeight, "seafloor.dds", 360, screenHeight);
+	if(!result)
+	{
+		MessageBox(hwnd, "Could not initialize the bitmap object.", "Error", MB_OK);
+		return false;
+	}
 
 	return result;
 }
@@ -151,6 +171,14 @@ bool GraphicsClass::InitializeLightShader(HWND hwnd)
 
 void GraphicsClass::Shutdown()
 {
+    // Release the bitmap object.
+	if(m_Bitmap)
+	{
+		m_Bitmap->Shutdown();
+		delete m_Bitmap;
+		m_Bitmap = 0;
+	}
+
     // Release the light object.
 	if(m_Light)
 	{
@@ -254,16 +282,12 @@ bool GraphicsClass::Render()
     // Render the model using the texture shader.
 	result = m_TextureShader->Render(m_D3D->GetDeviceContext(), m_Model->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix,
 					 m_Model->GetTexture());
+	// Render the model using the color shader.
+	//result = m_ColorShader->Render(m_D3D->GetDeviceContext(), m_Model->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix);
 	if(!result)
 	{
 		return false;
 	}
-	/*// Render the model using the color shader.
-	result = m_ColorShader->Render(m_D3D->GetDeviceContext(), m_Model->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix);
-	if(!result)
-	{
-		return false;
-	}*/
 
 	// Present the rendered scene to the screen.
 	m_D3D->EndScene();
@@ -273,7 +297,7 @@ bool GraphicsClass::Render()
 
 bool GraphicsClass::Render(float rotation)
 {
-	D3DXMATRIX worldMatrix, viewMatrix, projectionMatrix;
+	D3DXMATRIX worldMatrix, viewMatrix, projectionMatrix, orthoMatrix;
 	bool result;
 
 	// Clear the buffers to begin the scene.
@@ -287,12 +311,20 @@ bool GraphicsClass::Render(float rotation)
 	m_D3D->GetWorldMatrix(worldMatrix);
 	m_D3D->GetProjectionMatrix(projectionMatrix);
 
-    // Rotate the world matrix by the rotation value so that the triangle will spin.
+    static D3DXMATRIX textureWorldMatrix;
+    D3DXMatrixIdentity(&textureWorldMatrix);
+
+	// Rotate the world matrix by the rotation value so that the triangle will spin.
 	D3DXMatrixRotationY(&worldMatrix, rotation);
 
 	// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
 	m_Model->Render(m_D3D->GetDeviceContext());
 
+    // Render the model using the color shader.
+	//result = m_ColorShader->Render(m_D3D->GetDeviceContext(), m_Model->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix);
+    // Render the model using the texture shader.
+	//result = m_TextureShader->Render(m_D3D->GetDeviceContext(), m_Model->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix,
+	//				 m_Model->GetTexture());
 	// Render the model using the light shader.
 	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix,
 				       m_Model->GetTexture(), m_Light->GetDirection(), m_Light->GetDiffuseColor());
@@ -300,6 +332,28 @@ bool GraphicsClass::Render(float rotation)
 	{
 		return false;
 	}
+
+	m_D3D->GetOrthoMatrix(orthoMatrix);
+
+	// Turn off the Z buffer to begin all 2D rendering.
+	m_D3D->TurnZBufferOff();
+
+	// Put the bitmap vertex and index buffers on the graphics pipeline to prepare them for drawing.
+	result = m_Bitmap->Render(m_D3D->GetDeviceContext(), 0, 0);
+	if(!result)
+	{
+		return false;
+	}
+
+	// Render the bitmap with the texture shader.
+	result = m_TextureShader->Render(m_D3D->GetDeviceContext(), m_Bitmap->GetIndexCount(), textureWorldMatrix, viewMatrix, orthoMatrix, m_Bitmap->GetTexture());
+	if(!result)
+	{
+		return false;
+	}
+
+	// Turn the Z buffer back on now that all 2D rendering has completed.
+	m_D3D->TurnZBufferOn();
 
 	// Present the rendered scene to the screen.
 	m_D3D->EndScene();

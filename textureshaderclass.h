@@ -1,5 +1,5 @@
-#ifndef TEXTURESHADERCLASS_H_INCLUDED
-#define TEXTURESHADERCLASS_H_INCLUDED
+#ifndef TEXTURESHADERCLASS_H
+#define TEXTURESHADERCLASS_H
 
 #include <d3d11.h>
 #include <d3dx10math.h>
@@ -43,4 +43,4 @@ private:
 	ID3D11SamplerState* m_sampleState;
 };
 
-#endif // TEXTURESHADERCLASS_H_INCLUDED
+#endif // TEXTURESHADERCLASS_H

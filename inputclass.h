@@ -1,5 +1,5 @@
-#ifndef INPUTCLASS_H_INCLUDED
-#define INPUTCLASS_H_INCLUDED
+#ifndef INPUTCLASS_H
+#define INPUTCLASS_H
 
 class InputClass
 {
@@ -19,4 +19,4 @@ private:
 	bool m_keys[256];
 };
 
-#endif // INPUTCLASS_H_INCLUDED
+#endif // INPUTCLASS_H

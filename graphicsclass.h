@@ -1,5 +1,5 @@
-#ifndef GRAPHICSCLASS_H_INCLUDED
-#define GRAPHICSCLASS_H_INCLUDED
+#ifndef GRAPHICSCLASS_H
+#define GRAPHICSCLASS_H
 
 #include "d3dclass.h"
 #include "cameraclass.h"
@@ -8,6 +8,7 @@
 #include "textureshaderclass.h"
 #include "lightshaderclass.h"
 #include "lightclass.h"
+#include "bitmapclass.h"
 
 const bool FULL_SCREEN = false;
 const bool VSYNC_ENABLED = true;
@@ -41,6 +42,7 @@ private:
 	TextureShaderClass* m_TextureShader;
 	LightShaderClass* m_LightShader;
 	LightClass* m_Light;
+	BitmapClass* m_Bitmap;
 };
 
-#endif // GRAPHICSCLASS_H_INCLUDED
+#endif // GRAPHICSCLASS_H

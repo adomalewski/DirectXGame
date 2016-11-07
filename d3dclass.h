@@ -1,5 +1,5 @@
-#ifndef D3DCLASS_H_INCLUDED
-#define D3DCLASS_H_INCLUDED
+#ifndef D3DCLASS_H
+#define D3DCLASS_H
 
 #pragma comment(lib, "dxgi.lib")
 #pragma comment(lib, "d3d11.lib")
@@ -33,6 +33,9 @@ public:
 
 	void GetVideoCardInfo(char*, int&);
 
+	void TurnZBufferOn();
+	void TurnZBufferOff();
+
 private:
 	bool m_vsync_enabled;
 	int m_videoCardMemory;
@@ -48,6 +51,7 @@ private:
 	D3DXMATRIX m_projectionMatrix;
 	D3DXMATRIX m_worldMatrix;
 	D3DXMATRIX m_orthoMatrix;
+	ID3D11DepthStencilState* m_depthDisabledStencilState;
 };
 
-#endif // D3DCLASS_H_INCLUDED
+#endif // D3DCLASS_H

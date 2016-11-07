@@ -1,5 +1,5 @@
-#ifndef SYSTEMCLASS_H_INCLUDED
-#define SYSTEMCLASS_H_INCLUDED
+#ifndef SYSTEMCLASS_H
+#define SYSTEMCLASS_H
 
 #define WIN32_LEAN_AND_MEAN
 
@@ -39,4 +39,4 @@ static LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
 static SystemClass* ApplicationHandle = 0;
 
-#endif // SYSTEMCLASS_H_INCLUDED
+#endif // SYSTEMCLASS_H
