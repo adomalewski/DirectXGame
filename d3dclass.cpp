@@ -46,6 +46,8 @@ bool D3DClass::Initialize(int screenWidth, int screenHeight, bool vsync, HWND hw
 	D3D11_DEPTH_STENCIL_DESC depthDisabledStencilDesc;
 	D3D11_BLEND_DESC blendStateDescription;
 
+	D3D11_DEPTH_STENCIL_DESC depthDisabledStencilDesc;
+
 	// Store the vsync setting.
 	m_vsync_enabled = vsync;
 
@@ -365,6 +367,7 @@ bool D3DClass::Initialize(int screenWidth, int screenHeight, bool vsync, HWND hw
 
 	// Create the state using the device.
 	result = m_device->CreateDepthStencilState(&depthDisabledStencilDesc, &m_depthDisabledStencilState);
+
 	if (FAILED(result))
 	{
 		return false;

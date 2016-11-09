@@ -80,7 +80,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 	//result = m_Model->Initialize4VertexColor(m_D3D->GetDevice());
 	result = m_Model->Initialize4Texture(m_D3D->GetDevice(), "seafloor.dds");
 	result = m_Model->Initialize4TextureNormal(m_D3D->GetDevice(), "seafloor.dds");
-	if(!result)
+	if (!result)
 	{
 		MessageBox(hwnd, "Could not initialize the model object.", "Error", MB_OK);
 		return false;

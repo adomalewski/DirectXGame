@@ -1,5 +1,5 @@
-#ifndef MODELCLASS_H_INCLUDED
-#define MODELCLASS_H_INCLUDED
+#ifndef MODELCLASS_H
+#define MODELCLASS_H
 
 #include <d3d11.h>
 #include <d3dx10math.h>
@@ -62,4 +62,4 @@ private:
 	TextureClass* m_Texture;
 };
 
-#endif // MODELCLASS_H_INCLUDED
+#endif // MODELCLASS_H
