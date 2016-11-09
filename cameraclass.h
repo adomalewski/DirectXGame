@@ -1,5 +1,5 @@
-#ifndef CAMERACLASS_H_INCLUDED
-#define CAMERACLASS_H_INCLUDED
+#ifndef CAMERACLASS_H
+#define CAMERACLASS_H
 
 #include <d3dx10math.h>
 
@@ -25,4 +25,4 @@ private:
 	D3DXMATRIX m_viewMatrix;
 };
 
-#endif // CAMERACLASS_H_INCLUDED
+#endif // CAMERACLASS_H

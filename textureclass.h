@@ -1,5 +1,5 @@
-#ifndef TEXTURECLASS_H_INCLUDED
-#define TEXTURECLASS_H_INCLUDED
+#ifndef TEXTURECLASS_H
+#define TEXTURECLASS_H
 
 #include <d3d11.h>
 #include <d3dx11tex.h>
@@ -20,4 +20,4 @@ private:
     ID3D11ShaderResourceView* m_texture;
 };
 
-#endif // TEXTURECLASS_H_INCLUDED
+#endif // TEXTURECLASS_H
