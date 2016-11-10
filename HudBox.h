@@ -10,7 +10,7 @@ public:
 	~HudBox();
 
 private:
-	//TextClass* m_Text;
+	TextClass* m_Text;
 };
 
 #endif // HUDBOX_H
