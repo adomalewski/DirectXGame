@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1477579479 source:c:\users\andrz3j\documents\codeblocks\directxgame\inputclass.cpp
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\inputclass.cpp
 	"inputclass.h"
 
-1478291031 c:\users\andrz3j\documents\codeblocks\directxgame\inputclass.h
+1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\inputclass.h
+	<dinput.h>
 
 1477600137 source:c:\users\andrz3j\documents\codeblocks\directxgame\main.cpp
 	"systemclass.h"
@@ -12,23 +13,23 @@
 	"inputclass.h"
 	"graphicsclass.h"
 
-1478339117 c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.h
+1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.h
 	"d3dclass.h"
 	"cameraclass.h"
-	"modelclass.h"
 	"colorshaderclass.h"
 	"textureshaderclass.h"
 	"lightshaderclass.h"
-	"lightclass.h"
-	"bitmapclass.h"
+	"Scene3DClass.h"
+	"Scene2DClass.h"
+	"FrameInformation.h"
 
-1478338147 source:c:\users\andrz3j\documents\codeblocks\directxgame\systemclass.cpp
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\systemclass.cpp
 	"systemclass.h"
 
-1478346701 source:c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.cpp
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.cpp
 	"graphicsclass.h"
 
-1478295299 c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.h
+1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.h
 	<dxgi.h>
 	<d3dcommon.h>
 	<d3d11.h>
@@ -156,10 +157,10 @@
 
 1274305017 c:\program files\microsoft directx sdk (june 2010)\include\d3dx10math.inl
 
-1478296301 source:c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.cpp
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.cpp
 	"d3dclass.h"
 
-1477685332 c:\users\andrz3j\documents\codeblocks\directxgame\cameraclass.h
+1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\cameraclass.h
 	<d3dx10math.h>
 
 1478330251 c:\users\andrz3j\documents\codeblocks\directxgame\modelclass.h
@@ -198,7 +199,7 @@
 1477686160 source:c:\users\andrz3j\documents\codeblocks\directxgame\colorshaderclass.cpp
 	"colorshaderclass.h"
 
-1477764414 source:c:\users\andrz3j\documents\codeblocks\directxgame\modelclass.cpp
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\modelclass.cpp
 	"modelclass.h"
 
 1478291206 c:\users\andrz3j\documents\codeblocks\directxgame\textureclass.h
@@ -214,7 +215,7 @@
 1477747975 source:c:\users\andrz3j\documents\codeblocks\directxgame\textureclass.cpp
 	"textureclass.h"
 
-1477750916 source:c:\users\andrz3j\documents\codeblocks\directxgame\textureshaderclass.cpp
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\textureshaderclass.cpp
 	"textureshaderclass.h"
 
 1478291104 c:\users\andrz3j\documents\codeblocks\directxgame\lightshaderclass.h
@@ -232,11 +233,76 @@
 1477761648 source:c:\users\andrz3j\documents\codeblocks\directxgame\lightshaderclass.cpp
 	"lightshaderclass.h"
 
-1478290545 c:\users\andrz3j\documents\codeblocks\directxgame\bitmapclass.h
+1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\bitmapclass.h
 	<d3d11.h>
 	<d3dx10math.h>
 	"textureclass.h"
 
-1478292891 source:c:\users\andrz3j\documents\codeblocks\directxgame\bitmapclass.cpp
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\bitmapclass.cpp
 	"bitmapclass.h"
+
+1274305018 c:\program files\microsoft directx sdk (june 2010)\include\dinput.h
+	<objbase.h>
+
+1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.h
+	"d3dclass.h"
+	"modelclass.h"
+	"colorshaderclass.h"
+	"textureshaderclass.h"
+	"lightshaderclass.h"
+	"lightclass.h"
+	"FrameInformation.h"
+
+1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\frameinformation.h
+
+1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\scene2dclass.h
+	"d3dclass.h"
+	"bitmapclass.h"
+	"textclass.h"
+	"textureshaderclass.h"
+
+1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\textclass.h
+	"fontclass.h"
+	"fontshaderclass.h"
+
+1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\fontclass.h
+	<d3d11.h>
+	<d3dx10math.h>
+	<fstream>
+	"textureclass.h"
+
+1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\fontshaderclass.h
+	<d3d11.h>
+	<d3dx10math.h>
+	<d3dx11async.h>
+	<fstream>
+
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\fontclass.cpp
+	"fontclass.h"
+
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\fontshaderclass.cpp
+	"fontshaderclass.h"
+
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\hudbox.cpp
+	"HudBox.h"
+
+1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\hudbox.h
+	"textclass.h"
+
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene2dclass.cpp
+	"Scene2DClass.h"
+
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.cpp
+	"Scene3DClass.h"
+
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\textclass.cpp
+	"textclass.h"
+
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\useractions.cpp
+	"UserActions.h"
+
+1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\useractions.h
+	<string>
+	<map>
+	"inputclass.h"
 
