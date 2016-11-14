@@ -12,14 +12,14 @@ public:
 	Scene2DClass();
 	~Scene2DClass();
 
-	bool Initialize(D3DClass*, HWND, int , int, TextureShaderClass*, D3DXMATRIX&);
+	bool Initialize(D3DClass*, HWND, int , int, TextureShaderClass*);
 	void Shutdown();
 
-	void Update();
+	void Update(D3DXMATRIX);
 
 private:
-	bool UpdateTextures();
-	bool UpdateText();
+	bool UpdateTextures(D3DXMATRIX);
+	bool UpdateText(D3DXMATRIX);
 
 private:
 	D3DClass* m_D3D;
@@ -29,7 +29,6 @@ private:
 	TextureShaderClass* m_TextureShader;
 
 	D3DXMATRIX m_OrthoMatrix;
-	D3DXMATRIX m_ViewMatrix;
 };
 
 #endif // SCENE2DCLASS_H

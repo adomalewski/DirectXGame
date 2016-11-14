@@ -2,7 +2,9 @@
 
 Scene3DClass::Scene3DClass()
 {
-	m_Model = 0;
+	m_TriangleColorModel = 0;
+	m_TriangleTextureModel = 0;
+	m_TriangleTextureNormalModel = 0;
 	m_Light = 0;
 }
 
@@ -10,29 +12,39 @@ Scene3DClass::~Scene3DClass()
 {
 }
 
-bool Scene3DClass::Initialize(D3DClass* d3d, HWND hwnd,  D3DXMATRIX& viewMatrix,
-		ColorShaderClass* colorShader, TextureShaderClass* textureShader, LightShaderClass* lightShader)
+bool Scene3DClass::Initialize(D3DClass* d3d, HWND hwnd, ColorShaderClass* colorShader,
+    TextureShaderClass* textureShader, LightShaderClass* lightShader)
 {
-	bool result;
+	bool result = true;
 
 	m_D3D = d3d;
 	m_hwnd = hwnd;
-	m_ViewMatrix = viewMatrix;
 	m_ColorShader = colorShader;
 	m_TextureShader = textureShader;
 	m_LightShader = lightShader;
 
-	// Create the model object.
-	m_Model = new ModelClass;
-	if (!m_Model)
+	m_TriangleColorModel = new TriangleColorModel;
+	if (!m_TriangleColorModel)
+	{
+		return false;
+	}
+
+    m_TriangleTextureModel = new TriangleTextureModel;
+	if (!m_TriangleTextureModel)
+	{
+		return false;
+	}
+
+    m_TriangleTextureNormalModel = new TriangleTextureNormalModel;
+	if (!m_TriangleTextureNormalModel)
 	{
 		return false;
 	}
 
 	// Initialize the model object.
-	//result = m_Model->Initialize4VertexColor(m_D3D->GetDevice());
-	//result = m_Model->Initialize4Texture(m_D3D->GetDevice(), "seafloor.dds");
-	result = m_Model->Initialize4TextureNormal(m_D3D->GetDevice(), "seafloor.dds");
+	result = result && m_TriangleColorModel->Initialize(m_D3D->GetDevice());
+	result = result && m_TriangleTextureModel->Initialize(m_D3D->GetDevice());
+	result = result && m_TriangleTextureNormalModel->Initialize(m_D3D->GetDevice());
 	if (!result)
 	{
 		MessageBox(m_hwnd, "Could not initialize the model object.", "Error", MB_OK);
@@ -56,11 +68,25 @@ bool Scene3DClass::Initialize(D3DClass* d3d, HWND hwnd,  D3DXMATRIX& viewMatrix,
 void Scene3DClass::Shutdown()
 {
 	// Release the model object.
-	if (m_Model)
+	if (m_TriangleColorModel)
 	{
-		m_Model->Shutdown();
-		delete m_Model;
-		m_Model = 0;
+		m_TriangleColorModel->Shutdown();
+		delete m_TriangleColorModel;
+		m_TriangleColorModel = 0;
+	}
+
+    if (m_TriangleTextureModel)
+	{
+		m_TriangleTextureModel->Shutdown();
+		delete m_TriangleTextureModel;
+		m_TriangleTextureModel = 0;
+	}
+
+    if (m_TriangleTextureNormalModel)
+	{
+		m_TriangleTextureNormalModel->Shutdown();
+		delete m_TriangleTextureNormalModel;
+		m_TriangleTextureNormalModel = 0;
 	}
 
 	// Release the light object.
@@ -71,28 +97,34 @@ void Scene3DClass::Shutdown()
 	}
 }
 
-void Scene3DClass::Update(FrameInformation frameInformation)
+void Scene3DClass::Update(FrameInformation frameInformation, D3DXMATRIX viewMatrix)
 {
-	bool result;
-	D3DXMATRIX worldMatrix, projectionMatrix;
+	bool result = true;
+	D3DXMATRIX worldMatrix, matTranslation, matRotation, projectionMatrix;
 
 	m_D3D->GetWorldMatrix(worldMatrix);
 	m_D3D->GetProjectionMatrix(projectionMatrix);
 
-	// Rotate the world matrix by the rotation value so that the triangle will spin.
-	D3DXMatrixRotationY(&worldMatrix, frameInformation.rotation);
+	D3DXMatrixRotationY(&matRotation, frameInformation.rotation);
+    worldMatrix = matRotation;
 
-	// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
-	m_Model->Render(m_D3D->GetDeviceContext());
+    result = result && m_TriangleColorModel->Render(m_D3D->GetDeviceContext(), m_ColorShader, worldMatrix,
+        viewMatrix, projectionMatrix);
 
-	//// Render the model using the color shader.
-	//  result = m_ColorShader->Render(m_D3D->GetDeviceContext(), m_Model->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix);
-	//// Render the model using the texture shader.
-	//result = m_TextureShader->Render(m_D3D->GetDeviceContext(), m_Model->GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix,
-	//	m_Model->GetTexture());
-	// Render the model using the light shader.
-	result = m_LightShader->Render(m_D3D->GetDeviceContext(), m_Model->GetIndexCount(), worldMatrix, m_ViewMatrix, projectionMatrix,
-		m_Model->GetTexture(), m_Light->GetDirection(), m_Light->GetDiffuseColor());
+    D3DXMatrixIdentity(&worldMatrix);
+	D3DXMatrixTranslation(&matTranslation, -4.0f, 0.0f, 0.0f);
+	worldMatrix = matRotation * matTranslation;
+
+    result = result && m_TriangleTextureModel->Render(m_D3D->GetDeviceContext(), m_TextureShader, worldMatrix,
+        viewMatrix, projectionMatrix);
+
+    D3DXMatrixIdentity(&worldMatrix);
+	D3DXMatrixTranslation(&matTranslation, 4.0f, 0.0f, 0.0f);
+	worldMatrix = matRotation * matTranslation;
+
+    result = result && m_TriangleTextureNormalModel->Render(m_D3D->GetDeviceContext(), m_LightShader, worldMatrix,
+        viewMatrix, projectionMatrix, m_Light->GetDirection(), m_Light->GetDiffuseColor());
+
 	if (!result)
 	{
 		MessageBox(m_hwnd, "Could not render shader", "Error", MB_OK);

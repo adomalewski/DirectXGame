@@ -17,6 +17,7 @@ CameraClass::CameraClass(const CameraClass& other)
 
 CameraClass::~CameraClass()
 {
+
 }
 
 void CameraClass::SetPosition(float x, float y, float z)
@@ -83,12 +84,9 @@ void CameraClass::Render()
 
 	// Finally create the view matrix from the three updated vectors.
 	D3DXMatrixLookAtLH(&m_viewMatrix, &position, &lookAt, &up);
-
-	return;
 }
 
 void CameraClass::GetViewMatrix(D3DXMATRIX& viewMatrix)
 {
 	viewMatrix = m_viewMatrix;
-	return;
 }
