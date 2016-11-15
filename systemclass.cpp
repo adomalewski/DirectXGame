@@ -49,7 +49,7 @@ bool SystemClass::Initialize()
 	}
 
 	// Initialize the graphics object.
-	result = m_Graphics->Initialize(screenWidth, screenHeight, m_hwnd);
+	result = m_Graphics->Initialize(screenWidth, screenHeight, m_hwnd, m_Input);
 	if (!result)
 	{
 		return false;
@@ -130,7 +130,6 @@ void SystemClass::Run()
 bool SystemClass::Frame()
 {
 	bool result;
-	int mouseX, mouseY;
 
 	// Do the input frame processing.
 	result = m_Input->Frame();
@@ -138,9 +137,6 @@ bool SystemClass::Frame()
 	{
 		return false;
 	}
-
-	// Get the location of the mouse from the input object,
-	m_Input->GetMouseLocation(mouseX, mouseY);
 
 	// Do the frame processing for the graphics object.
 	result = m_Graphics->Frame();

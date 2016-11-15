@@ -3,7 +3,7 @@
 GraphicsClass::GraphicsClass()
 {
     m_D3D = 0;
-    m_Camera = 0;
+    m_UserCamera = 0;
 	m_ColorShader = 0;
 	m_TextureShader = 0;
 	m_LightShader = 0;
@@ -18,12 +18,13 @@ GraphicsClass::~GraphicsClass()
 {
 }
 
-bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
+bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, InputClass* input)
 {
 	bool result;
 	D3DXMATRIX viewMatrix;
 
 	m_hwnd = hwnd;
+	m_Input = input;
 
 	// Create the Direct3D object.
 	m_D3D = new D3DClass;
@@ -40,17 +41,27 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd)
 		return false;
 	}
 
-	// Create the camera object.
-	m_Camera = new CameraClass;
-	if(!m_Camera)
+	// Create the user actions object.
+	m_UserActions = new UserActions(m_Input);
+	if (!m_UserActions)
+	{
+		return false;
+	}
+
+	// Initialize keyActionMapping pair by binding action and input key
+	m_UserActions->Initialize();
+
+	// Create the user camera object.
+	m_UserCamera = new UserCamera(m_UserActions);
+	if (!m_UserCamera)
 	{
 		return false;
 	}
 
 	// Set the initial position of the camera.
-	m_Camera->SetPosition(0.0f, 0.0f, -10.0f);
-	m_Camera->Render();
-	m_Camera->GetViewMatrix(viewMatrix);
+	m_UserCamera->SetPosition(0.0f, 0.0f, -10.0f);
+	m_UserCamera->Render();
+	m_UserCamera->GetViewMatrix(viewMatrix);
 
 	// Initialize shaders
 	result = InitializeColorShader();
@@ -186,11 +197,39 @@ void GraphicsClass::Shutdown()
 		m_ColorShader = 0;
 	}
 
-	// Release the camera object.
-	if(m_Camera)
+	// Release the user action object.
+	if (m_UserActions)
 	{
-		delete m_Camera;
-		m_Camera = 0;
+		delete m_UserActions;
+		m_UserActions = 0;
+	}
+
+	// Release the user actions object.
+	if (m_UserActions)
+	{
+		delete m_UserActions;
+		m_UserActions = 0;
+	}
+
+	// Release the user camera object.
+	if(m_UserCamera)
+	{
+		delete m_UserCamera;
+		m_UserCamera = 0;
+	}
+
+	// Release the scene 2D object.
+	if (m_Scene2D)
+	{
+		delete m_Scene2D;
+		m_Scene2D = 0;
+	}
+
+	// Release the scene 3D object.
+	if (m_Scene3D)
+	{
+		delete m_Scene3D;
+		m_Scene3D = 0;
 	}
 
     // Release the Direct3D object.
@@ -211,6 +250,9 @@ bool GraphicsClass::Frame()
 	// Update the rotation variable each frame.
 	ComputeRotationInFrame();
 
+	// Update user camera
+	m_UserCamera->Update();
+
 	// Render the graphics scene.
 	result = Render();
 	if(!result)
@@ -229,7 +271,7 @@ bool GraphicsClass::Render()
 	m_D3D->BeginScene(0.0f, 0.0f, 0.0f, 1.0f);
 
 	// Generate the view matrix based on the camera's position.
-	m_Camera->Render();
+	m_UserCamera->Render();
 
 	m_Scene3D->Update(m_FrameInformation);
 

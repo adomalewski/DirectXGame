@@ -16,12 +16,13 @@ public:
 	D3DXVECTOR3 GetPosition();
 	D3DXVECTOR3 GetRotation();
 
+	virtual void Update() = 0;
 	void Render();
 	void GetViewMatrix(D3DXMATRIX&);
 
-private:
-	float m_positionX, m_positionY, m_positionZ;
+protected:
 	float m_rotationX, m_rotationY, m_rotationZ;
+	D3DXVECTOR3 m_up, m_position, m_lookAt, m_right;
 	D3DXMATRIX m_viewMatrix;
 };
 

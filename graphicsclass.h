@@ -2,13 +2,14 @@
 #define GRAPHICSCLASS_H
 
 #include "d3dclass.h"
-#include "cameraclass.h"
 #include "colorshaderclass.h"
 #include "textureshaderclass.h"
 #include "lightshaderclass.h"
 #include "Scene3DClass.h"
 #include "Scene2DClass.h"
 #include "FrameInformation.h"
+#include "InputClass.h"
+#include "UserCamera.h";
 
 const bool FULL_SCREEN = false;
 const bool VSYNC_ENABLED = true;
@@ -22,7 +23,7 @@ public:
 	GraphicsClass(const GraphicsClass&);
 	~GraphicsClass();
 
-	bool Initialize(int, int, HWND);
+	bool Initialize(int, int, HWND, InputClass*);
 	void Shutdown();
 
 	bool Frame();
@@ -38,12 +39,14 @@ private:
 private:
     D3DClass* m_D3D;
 	HWND m_hwnd;
-    CameraClass* m_Camera;
 	ColorShaderClass* m_ColorShader;
 	TextureShaderClass* m_TextureShader;
 	LightShaderClass* m_LightShader;
 	Scene2DClass* m_Scene2D;
 	Scene3DClass* m_Scene3D;
+	InputClass* m_Input;
+	UserCamera* m_UserCamera;
+	UserActions* m_UserActions;
 
 	FrameInformation m_FrameInformation;
 };

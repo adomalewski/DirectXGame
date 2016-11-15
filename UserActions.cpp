@@ -3,14 +3,13 @@
 UserActions::UserActions(InputClass* input)
 {
 	m_Input = input;
-	InitializeKeyActionMap();
 }
 
 UserActions::~UserActions()
 {
 }
 
-void UserActions::InitializeKeyActionMap()
+void UserActions::Initialize()
 {
 	keyActionMapping.insert(pair<string, int>("MoveForward", DIK_W));
 	keyActionMapping.insert(pair<string, int>("MoveBackward", DIK_S));
