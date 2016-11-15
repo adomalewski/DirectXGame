@@ -21,7 +21,6 @@ GraphicsClass::~GraphicsClass()
 bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, InputClass* input)
 {
 	bool result;
-	D3DXMATRIX viewMatrix;
 
 	m_hwnd = hwnd;
 	m_Input = input;
@@ -61,7 +60,6 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, Inp
 	// Set the initial position of the camera.
 	m_UserCamera->SetPosition(0.0f, 0.0f, -10.0f);
 	m_UserCamera->Render();
-	m_UserCamera->GetViewMatrix(viewMatrix);
 
 	// Initialize shaders
 	result = InitializeColorShader();
@@ -80,12 +78,13 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, Inp
 	}
 
 	// Initialize the Scene 2D object.
-	result = m_Scene2D->Initialize(m_D3D, m_hwnd, screenWidth, screenHeight, m_TextureShader, viewMatrix);
+	result = m_Scene2D->Initialize(m_D3D, m_hwnd, screenWidth, screenHeight, m_TextureShader);
 	if (!result)
 	{
 		MessageBox(m_hwnd, "Could not initialize Scene2D", "Error", MB_OK);
 		return false;
 	}
+
 
 	// Create Scene 3D object
 	m_Scene3D = new Scene3DClass;
@@ -95,7 +94,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, Inp
 	}
 
 	// Initialize the Scene 3D object.
-	result = m_Scene3D->Initialize(m_D3D, m_hwnd, viewMatrix, m_ColorShader, m_TextureShader, m_LightShader);
+	result = m_Scene3D->Initialize(m_D3D, m_hwnd, m_ColorShader, m_TextureShader, m_LightShader);
 	if (!result)
 	{
 		MessageBox(m_hwnd, "Could not initialize Scene3D", "Error", MB_OK);
@@ -266,16 +265,20 @@ bool GraphicsClass::Frame()
 bool GraphicsClass::Render()
 {
 	bool result;
+	D3DXMATRIX viewMatrix;
 
 	// Clear the buffers to begin the scene.
 	m_D3D->BeginScene(0.0f, 0.0f, 0.0f, 1.0f);
 
 	// Generate the view matrix based on the camera's position.
+	m_UserCamera->GetViewMatrix(viewMatrix);
+	m_UserCamera->SetPosition(0.0f, 0.0f, -7.0f);
+
 	m_UserCamera->Render();
 
-	m_Scene3D->Update(m_FrameInformation);
+	m_Scene3D->Update(m_FrameInformation, viewMatrix);
 
-	m_Scene2D->Update();
+	m_Scene2D->Update(viewMatrix);
 
 	// Present the rendered scene to the screen.
 	m_D3D->EndScene();

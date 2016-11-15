@@ -10,14 +10,13 @@ Scene2DClass::~Scene2DClass()
 {
 }
 
-bool Scene2DClass::Initialize(D3DClass* d3d, HWND hwnd, int screenWidth, int screenHeight, TextureShaderClass* textureShader, D3DXMATRIX& viewMatrix)
+bool Scene2DClass::Initialize(D3DClass* d3d, HWND hwnd, int screenWidth, int screenHeight, TextureShaderClass* textureShader)
 {
 	bool result;
 
 	m_D3D = d3d;
 	m_hwnd = hwnd;
 	m_TextureShader = textureShader;
-	m_ViewMatrix = viewMatrix;
 
 	// Create the text object.
 	m_Text = new TextClass;
@@ -27,7 +26,7 @@ bool Scene2DClass::Initialize(D3DClass* d3d, HWND hwnd, int screenWidth, int scr
 	}
 
 	// Initialize the text object.
-	result = m_Text->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), m_hwnd, screenWidth, screenHeight, m_ViewMatrix);
+	result = m_Text->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), m_hwnd, screenWidth, screenHeight);
 	if (!result)
 	{
 		MessageBox(m_hwnd, "Could not initialize the text object.", "Error", MB_OK);
@@ -73,20 +72,20 @@ void Scene2DClass::Shutdown()
 	}
 }
 
-void Scene2DClass::Update()
+void Scene2DClass::Update(D3DXMATRIX viewMatrix)
 {
 	bool result;
 
 	// Turn off the Z buffer to begin all 2D rendering.
 	m_D3D->TurnZBufferOff();
 
-	result = UpdateTextures();
+	result = UpdateTextures(viewMatrix);
 	if (!result)
 	{
 		MessageBox(m_hwnd, "Could not update textures", "Error", MB_OK);
 	}
 
-	result = UpdateText();
+	result = UpdateText(viewMatrix);
 	if (!result)
 	{
 		MessageBox(m_hwnd, "Could not update text", "Error", MB_OK);
@@ -96,7 +95,7 @@ void Scene2DClass::Update()
 	m_D3D->TurnZBufferOn();
 }
 
-bool Scene2DClass::UpdateTextures()
+bool Scene2DClass::UpdateTextures(D3DXMATRIX viewMatrix)
 {
 	bool result;
 	D3DXMATRIX textureWorldMatrix;
@@ -113,7 +112,7 @@ bool Scene2DClass::UpdateTextures()
 	D3DXMatrixIdentity(&textureWorldMatrix);
 
 	// Render the bitmap with the texture shader.
-	result = m_TextureShader->Render(m_D3D->GetDeviceContext(), m_Bitmap->GetIndexCount(), textureWorldMatrix, m_ViewMatrix, m_OrthoMatrix, m_Bitmap->GetTexture());
+	result = m_TextureShader->Render(m_D3D->GetDeviceContext(), m_Bitmap->GetIndexCount(), textureWorldMatrix, viewMatrix, m_OrthoMatrix, m_Bitmap->GetTexture());
 	if (!result)
 	{
 		return false;
@@ -122,7 +121,7 @@ bool Scene2DClass::UpdateTextures()
 	return true;
 }
 
-bool Scene2DClass::UpdateText()
+bool Scene2DClass::UpdateText(D3DXMATRIX viewMatrix)
 {
 	bool result;
 	D3DXMATRIX textureWorldMatrix;
@@ -133,7 +132,7 @@ bool Scene2DClass::UpdateText()
 	m_D3D->TurnOnAlphaBlending();
 
 	// Render the text strings.
-	result = m_Text->Render(m_D3D->GetDeviceContext(), textureWorldMatrix, m_OrthoMatrix);
+	result = m_Text->Render(m_D3D->GetDeviceContext(), textureWorldMatrix, m_OrthoMatrix, viewMatrix);
 	if (!result)
 	{
 		return false;

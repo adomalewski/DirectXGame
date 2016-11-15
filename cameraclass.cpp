@@ -20,6 +20,7 @@ CameraClass::CameraClass(const CameraClass& other)
 
 CameraClass::~CameraClass()
 {
+
 }
 
 void CameraClass::SetPosition(float x, float y, float z)

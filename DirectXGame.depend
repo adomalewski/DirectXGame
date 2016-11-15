@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1477579479 source:c:\users\andrz3j\documents\codeblocks\directxgame\inputclass.cpp
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\inputclass.cpp
 	"inputclass.h"
 
-1478291031 c:\users\andrz3j\documents\codeblocks\directxgame\inputclass.h
+1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\inputclass.h
+	<dinput.h>
 
 1477600137 source:c:\users\andrz3j\documents\codeblocks\directxgame\main.cpp
 	"systemclass.h"
@@ -12,23 +13,23 @@
 	"inputclass.h"
 	"graphicsclass.h"
 
-1478339117 c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.h
+1479156269 c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.h
 	"d3dclass.h"
 	"cameraclass.h"
-	"modelclass.h"
 	"colorshaderclass.h"
 	"textureshaderclass.h"
 	"lightshaderclass.h"
-	"lightclass.h"
-	"bitmapclass.h"
+	"Scene3DClass.h"
+	"Scene2DClass.h"
+	"FrameInformation.h"
 
-1478338147 source:c:\users\andrz3j\documents\codeblocks\directxgame\systemclass.cpp
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\systemclass.cpp
 	"systemclass.h"
 
-1478346701 source:c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.cpp
+1479157834 source:c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.cpp
 	"graphicsclass.h"
 
-1478295299 c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.h
+1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.h
 	<dxgi.h>
 	<d3dcommon.h>
 	<d3d11.h>
@@ -156,16 +157,17 @@
 
 1274305017 c:\program files\microsoft directx sdk (june 2010)\include\d3dx10math.inl
 
-1478296301 source:c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.cpp
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.cpp
 	"d3dclass.h"
 
-1477685332 c:\users\andrz3j\documents\codeblocks\directxgame\cameraclass.h
+1479155839 c:\users\andrz3j\documents\codeblocks\directxgame\cameraclass.h
 	<d3dx10math.h>
 
-1478330251 c:\users\andrz3j\documents\codeblocks\directxgame\modelclass.h
+1478945134 c:\users\andrz3j\documents\codeblocks\directxgame\modelclass.h
 	<d3d11.h>
 	<d3dx10math.h>
 	"textureclass.h"
+	"VertexType.h"
 
 1478290845 c:\users\andrz3j\documents\codeblocks\directxgame\colorshaderclass.h
 	<d3d11.h>
@@ -192,13 +194,13 @@
 1274305017 c:\program files\microsoft directx sdk (june 2010)\include\d3dx11tex.h
 	"d3dx11.h"
 
-1477685492 source:c:\users\andrz3j\documents\codeblocks\directxgame\cameraclass.cpp
+1479156610 source:c:\users\andrz3j\documents\codeblocks\directxgame\cameraclass.cpp
 	"cameraclass.h"
 
 1477686160 source:c:\users\andrz3j\documents\codeblocks\directxgame\colorshaderclass.cpp
 	"colorshaderclass.h"
 
-1477764414 source:c:\users\andrz3j\documents\codeblocks\directxgame\modelclass.cpp
+1478945182 source:c:\users\andrz3j\documents\codeblocks\directxgame\modelclass.cpp
 	"modelclass.h"
 
 1478291206 c:\users\andrz3j\documents\codeblocks\directxgame\textureclass.h
@@ -214,7 +216,7 @@
 1477747975 source:c:\users\andrz3j\documents\codeblocks\directxgame\textureclass.cpp
 	"textureclass.h"
 
-1477750916 source:c:\users\andrz3j\documents\codeblocks\directxgame\textureshaderclass.cpp
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\textureshaderclass.cpp
 	"textureshaderclass.h"
 
 1478291104 c:\users\andrz3j\documents\codeblocks\directxgame\lightshaderclass.h
@@ -232,11 +234,945 @@
 1477761648 source:c:\users\andrz3j\documents\codeblocks\directxgame\lightshaderclass.cpp
 	"lightshaderclass.h"
 
-1478290545 c:\users\andrz3j\documents\codeblocks\directxgame\bitmapclass.h
+1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\bitmapclass.h
 	<d3d11.h>
 	<d3dx10math.h>
 	"textureclass.h"
 
-1478292891 source:c:\users\andrz3j\documents\codeblocks\directxgame\bitmapclass.cpp
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\bitmapclass.cpp
 	"bitmapclass.h"
+
+1274305018 c:\program files\microsoft directx sdk (june 2010)\include\dinput.h
+	<objbase.h>
+
+1479156169 c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.h
+	"d3dclass.h"
+	"modelclass.h"
+	"colorshaderclass.h"
+	"textureshaderclass.h"
+	"lightshaderclass.h"
+	"lightclass.h"
+	"FrameInformation.h"
+	"TriangleColorModel.h"
+	"TriangleTextureModel.h"
+	"TriangleTextureNormalModel.h"
+
+1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\frameinformation.h
+
+1479157876 c:\users\andrz3j\documents\codeblocks\directxgame\scene2dclass.h
+	"d3dclass.h"
+	"bitmapclass.h"
+	"textclass.h"
+	"textureshaderclass.h"
+
+1479157563 c:\users\andrz3j\documents\codeblocks\directxgame\textclass.h
+	"fontclass.h"
+	"fontshaderclass.h"
+
+1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\fontclass.h
+	<d3d11.h>
+	<d3dx10math.h>
+	<fstream>
+	"textureclass.h"
+
+1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\fontshaderclass.h
+	<d3d11.h>
+	<d3dx10math.h>
+	<d3dx11async.h>
+	<fstream>
+
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\fontclass.cpp
+	"fontclass.h"
+
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\fontshaderclass.cpp
+	"fontshaderclass.h"
+
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\hudbox.cpp
+	"HudBox.h"
+
+1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\hudbox.h
+	"textclass.h"
+
+1479157791 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene2dclass.cpp
+	"Scene2DClass.h"
+
+1479156209 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.cpp
+	"Scene3DClass.h"
+
+1479157530 source:c:\users\andrz3j\documents\codeblocks\directxgame\textclass.cpp
+	"textclass.h"
+
+1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\useractions.cpp
+	"UserActions.h"
+
+1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\useractions.h
+	<string>
+	<map>
+	"inputclass.h"
+
+1478967659 source:c:\users\andrz3j\documents\codeblocks\directxgame\colormodel.cpp
+	"ColorModel.h"
+
+1478967555 c:\users\andrz3j\documents\codeblocks\directxgame\colormodel.h
+	"VertexType.h"
+	"modelclass.h"
+
+1478991281 source:c:\users\andrz3j\documents\codeblocks\directxgame\texturemodel.cpp
+	"TextureModel.h"
+
+1478992037 source:c:\users\andrz3j\documents\codeblocks\directxgame\texturenormalmodel.cpp
+	"TextureNormalModel.h"
+
+1478944249 c:\users\andrz3j\documents\codeblocks\directxgame\vertextype.h
+	<d3d11.h>
+	<d3dx10math.h>
+
+1478968376 c:\users\andrz3j\documents\codeblocks\directxgame\texturemodel.h
+	"VertexType.h"
+	"modelclass.h"
+	"textureclass.h"
+
+1478990788 c:\users\andrz3j\documents\codeblocks\directxgame\texturenormalmodel.h
+	"modelclass.h"
+	"TextureModel.h"
+	"VertexType.h"
+
+1478969074 c:\users\andrz3j\documents\codeblocks\directxgame\trianglecolormodel.h
+	"ColorModel.h"
+	"ColorShaderClass.h"
+	<boost/tuple/tuple.hpp>
+
+1478969025 source:c:\users\andrz3j\documents\codeblocks\directxgame\trianglecolormodel.cpp
+	"TriangleColorModel.h"
+
+1399814854 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\tuple\tuple.hpp
+	"boost/config.hpp"
+	"boost/static_assert.hpp"
+	"boost/ref.hpp"
+	"boost/tuple/detail/tuple_basic.hpp"
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config.hpp
+	<boost/config/user.hpp>
+	<boost/config/select_compiler_config.hpp>
+	<boost/config/select_stdlib_config.hpp>
+	<boost/config/select_platform_config.hpp>
+	<boost/config/suffix.hpp>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\user.hpp
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\select_compiler_config.hpp
+	"boost/config/compiler/nvcc.hpp"
+	"boost/config/compiler/gcc_xml.hpp"
+	"boost/config/compiler/cray.hpp"
+	"boost/config/compiler/comeau.hpp"
+	"boost/config/compiler/pathscale.hpp"
+	"boost/config/compiler/intel.hpp"
+	"boost/config/compiler/clang.hpp"
+	"boost/config/compiler/digitalmars.hpp"
+	"boost/config/compiler/gcc.hpp"
+	"boost/config/compiler/kai.hpp"
+	"boost/config/compiler/sgi_mipspro.hpp"
+	"boost/config/compiler/compaq_cxx.hpp"
+	"boost/config/compiler/greenhills.hpp"
+	"boost/config/compiler/codegear.hpp"
+	"boost/config/compiler/borland.hpp"
+	"boost/config/compiler/metrowerks.hpp"
+	"boost/config/compiler/sunpro_cc.hpp"
+	"boost/config/compiler/hp_acc.hpp"
+	"boost/config/compiler/mpw.hpp"
+	"boost/config/compiler/vacpp.hpp"
+	"boost/config/compiler/pgi.hpp"
+	"boost/config/compiler/visualc.hpp"
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\nvcc.hpp
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\gcc_xml.hpp
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\cray.hpp
+	"boost/config/compiler/common_edg.hpp"
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\common_edg.hpp
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\comeau.hpp
+	"boost/config/compiler/common_edg.hpp"
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\pathscale.hpp
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\intel.hpp
+	"boost/config/compiler/common_edg.hpp"
+	<cwchar>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\clang.hpp
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\digitalmars.hpp
+	<cstddef>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\gcc.hpp
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\kai.hpp
+	"boost/config/compiler/common_edg.hpp"
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\sgi_mipspro.hpp
+	"boost/config/compiler/common_edg.hpp"
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\compaq_cxx.hpp
+	"boost/config/compiler/common_edg.hpp"
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\greenhills.hpp
+	"boost/config/compiler/common_edg.hpp"
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\codegear.hpp
+	<cstring>
+	<errno.h>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\borland.hpp
+	<climits>
+	<cwchar>
+	<limits.h>
+	<wchar.h>
+	<cstring>
+	<errno.h>
+	<float.h>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\metrowerks.hpp
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\sunpro_cc.hpp
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\hp_acc.hpp
+	"boost/config/compiler/common_edg.hpp"
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\mpw.hpp
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\vacpp.hpp
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\pgi.hpp
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\compiler\visualc.hpp
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\select_stdlib_config.hpp
+	<cstddef>
+	<stddef.h>
+	<boost/config/no_tr1/utility.hpp>
+	"boost/config/stdlib/stlport.hpp"
+	"boost/config/stdlib/libcomo.hpp"
+	"boost/config/stdlib/roguewave.hpp"
+	"boost/config/stdlib/libcpp.hpp"
+	"boost/config/stdlib/libstdcpp3.hpp"
+	"boost/config/stdlib/sgi.hpp"
+	"boost/config/stdlib/msl.hpp"
+	"boost/config/stdlib/vacpp.hpp"
+	"boost/config/stdlib/modena.hpp"
+	"boost/config/stdlib/dinkumware.hpp"
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\no_tr1\utility.hpp
+	<utility>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\stdlib\stlport.hpp
+	<cstddef>
+	<unistd.h>
+	<stdlib.h>
+	<string.h>
+	<algorithm>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\stdlib\libcomo.hpp
+	<boost/config/no_tr1/utility.hpp>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\stdlib\roguewave.hpp
+	<boost/config/no_tr1/utility.hpp>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\stdlib\libcpp.hpp
+	<ciso646>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\stdlib\libstdcpp3.hpp
+	<unistd.h>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\stdlib\sgi.hpp
+	<boost/config/no_tr1/utility.hpp>
+	<unistd.h>
+	<string>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\stdlib\msl.hpp
+	<boost/config/no_tr1/utility.hpp>
+	<cstddef>
+	<boost/config/posix_features.hpp>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\posix_features.hpp
+	<unistd.h>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\stdlib\vacpp.hpp
+	<unistd.h>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\stdlib\modena.hpp
+	<boost/config/no_tr1/utility.hpp>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\stdlib\dinkumware.hpp
+	<boost/config/no_tr1/utility.hpp>
+	<exception>
+	<typeinfo>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\select_platform_config.hpp
+	<boost/config/posix_features.hpp>
+	"boost/config/platform/linux.hpp"
+	"boost/config/platform/bsd.hpp"
+	"boost/config/platform/solaris.hpp"
+	"boost/config/platform/irix.hpp"
+	"boost/config/platform/hpux.hpp"
+	"boost/config/platform/cygwin.hpp"
+	"boost/config/platform/win32.hpp"
+	"boost/config/platform/beos.hpp"
+	"boost/config/platform/macos.hpp"
+	"boost/config/platform/aix.hpp"
+	"boost/config/platform/amigaos.hpp"
+	"boost/config/platform/qnxnto.hpp"
+	"boost/config/platform/vxworks.hpp"
+	"boost/config/platform/symbian.hpp"
+	"boost/config/platform/cray.hpp"
+	"boost/config/platform/vms.hpp"
+	<boost/config/posix_features.hpp>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\platform\linux.hpp
+	<cstdlib>
+	<stdlib.h>
+	<boost/config/posix_features.hpp>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\platform\bsd.hpp
+	<boost/config/posix_features.hpp>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\platform\solaris.hpp
+	<boost/config/posix_features.hpp>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\platform\irix.hpp
+	<boost/config/posix_features.hpp>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\platform\hpux.hpp
+	<boost/config/posix_features.hpp>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\platform\cygwin.hpp
+	<unistd.h>
+	<sys/types.h>
+	<boost/config/posix_features.hpp>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\platform\win32.hpp
+	<_mingw.h>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\platform\beos.hpp
+	<boost/config/posix_features.hpp>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\platform\macos.hpp
+	<boost/config/posix_features.hpp>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\platform\aix.hpp
+	<boost/config/posix_features.hpp>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\platform\amigaos.hpp
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\platform\qnxnto.hpp
+	<boost/config/posix_features.hpp>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\platform\vxworks.hpp
+	<version.h>
+	<time.h>
+	<sysLib.h>
+	<cstdint>
+	<ioLib.h>
+	<tickLib.h>
+	<sys/time.h>
+	<signal.h>
+	<boost/config/posix_features.hpp>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\platform\symbian.hpp
+	<cstdlib>
+	<stdlib.h>
+	<boost/config/posix_features.hpp>
+	<sys/endian.h>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\platform\cray.hpp
+	<boost/config/posix_features.hpp>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\platform\vms.hpp
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\config\suffix.hpp
+	<limits.h>
+	<cstddef>
+	<typeinfo>
+
+1396754860 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\static_assert.hpp
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+
+1401685588 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\detail\workaround.hpp
+	<boost/config.hpp>
+
+1405379340 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\ref.hpp
+	<boost/core/ref.hpp>
+
+1405379340 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\core\ref.hpp
+	<boost/config.hpp>
+	<boost/utility/addressof.hpp>
+	<boost/detail/workaround.hpp>
+
+1405379340 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\utility\addressof.hpp
+	<boost/core/addressof.hpp>
+
+1405379340 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\core\addressof.hpp
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+	<cstddef>
+
+1399814854 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\tuple\detail\tuple_basic.hpp
+	<utility>
+	"boost/type_traits/cv_traits.hpp"
+	"boost/type_traits/function_traits.hpp"
+	"boost/utility/swap.hpp"
+	"boost/detail/workaround.hpp"
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\cv_traits.hpp
+	<boost/type_traits/add_const.hpp>
+	<boost/type_traits/add_volatile.hpp>
+	<boost/type_traits/add_cv.hpp>
+	<boost/type_traits/is_const.hpp>
+	<boost/type_traits/is_volatile.hpp>
+	<boost/type_traits/remove_const.hpp>
+	<boost/type_traits/remove_volatile.hpp>
+	<boost/type_traits/remove_cv.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\add_const.hpp
+	<boost/config.hpp>
+	<boost/type_traits/detail/type_trait_def.hpp>
+	<boost/type_traits/detail/type_trait_undef.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\detail\type_trait_def.hpp
+	<boost/type_traits/detail/template_arity_spec.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\detail\template_arity_spec.hpp
+	<boost/mpl/int.hpp>
+	<boost/mpl/aux_/template_arity_fwd.hpp>
+	<boost/mpl/aux_/preprocessor/params.hpp>
+	<boost/mpl/aux_/config/lambda.hpp>
+	<boost/mpl/aux_/config/overload_resolution.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\int.hpp
+	<boost/mpl/int_fwd.hpp>
+	<boost/mpl/aux_/integral_wrapper.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\int_fwd.hpp
+	<boost/mpl/aux_/adl_barrier.hpp>
+	<boost/mpl/aux_/nttp_decl.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\adl_barrier.hpp
+	<boost/mpl/aux_/config/adl.hpp>
+	<boost/mpl/aux_/config/gcc.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\config\adl.hpp
+	<boost/mpl/aux_/config/msvc.hpp>
+	<boost/mpl/aux_/config/intel.hpp>
+	<boost/mpl/aux_/config/gcc.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\config\msvc.hpp
+	<boost/config.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\config\intel.hpp
+	<boost/config.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\config\gcc.hpp
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\config\workaround.hpp
+	<boost/detail/workaround.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\nttp_decl.hpp
+	<boost/mpl/aux_/config/nttp.hpp>
+	<boost/preprocessor/cat.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\config\nttp.hpp
+	<boost/mpl/aux_/config/msvc.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\cat.hpp
+	<boost/preprocessor/config/config.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\config\config.hpp
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\integral_wrapper.hpp
+	<boost/mpl/integral_c_tag.hpp>
+	<boost/mpl/aux_/static_cast.hpp>
+	<boost/mpl/aux_/nttp_decl.hpp>
+	<boost/mpl/aux_/config/static_constant.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+	<boost/preprocessor/cat.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\integral_c_tag.hpp
+	<boost/mpl/aux_/adl_barrier.hpp>
+	<boost/mpl/aux_/config/static_constant.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\config\static_constant.hpp
+	<boost/config.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\static_cast.hpp
+	<boost/mpl/aux_/config/workaround.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\template_arity_fwd.hpp
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\preprocessor\params.hpp
+	<boost/mpl/aux_/config/preprocessor.hpp>
+	<boost/preprocessor/cat.hpp>
+	<boost/preprocessor/comma_if.hpp>
+	<boost/preprocessor/repeat.hpp>
+	<boost/preprocessor/inc.hpp>
+	<boost/preprocessor/cat.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\config\preprocessor.hpp
+	<boost/mpl/aux_/config/workaround.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\comma_if.hpp
+	<boost/preprocessor/punctuation/comma_if.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\punctuation\comma_if.hpp
+	<boost/preprocessor/config/config.hpp>
+	<boost/preprocessor/control/if.hpp>
+	<boost/preprocessor/facilities/empty.hpp>
+	<boost/preprocessor/punctuation/comma.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\control\if.hpp
+	<boost/preprocessor/config/config.hpp>
+	<boost/preprocessor/control/iif.hpp>
+	<boost/preprocessor/logical/bool.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\control\iif.hpp
+	<boost/preprocessor/config/config.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\logical\bool.hpp
+	<boost/preprocessor/config/config.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\facilities\empty.hpp
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\punctuation\comma.hpp
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\repeat.hpp
+	<boost/preprocessor/repetition/repeat.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\repetition\repeat.hpp
+	<boost/preprocessor/cat.hpp>
+	<boost/preprocessor/config/config.hpp>
+	<boost/preprocessor/debug/error.hpp>
+	<boost/preprocessor/detail/auto_rec.hpp>
+	<boost/preprocessor/tuple/eat.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\debug\error.hpp
+	<boost/preprocessor/cat.hpp>
+	<boost/preprocessor/config/config.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\detail\auto_rec.hpp
+	<boost/preprocessor/config/config.hpp>
+	<boost/preprocessor/detail/dmc/auto_rec.hpp>
+	<boost/preprocessor/control/iif.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\detail\dmc\auto_rec.hpp
+	<boost/preprocessor/control/iif.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\tuple\eat.hpp
+	<boost/preprocessor/config/config.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\inc.hpp
+	<boost/preprocessor/arithmetic/inc.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\arithmetic\inc.hpp
+	<boost/preprocessor/config/config.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\config\lambda.hpp
+	<boost/mpl/aux_/config/ttp.hpp>
+	<boost/mpl/aux_/config/ctps.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\config\ttp.hpp
+	<boost/mpl/aux_/config/msvc.hpp>
+	<boost/mpl/aux_/config/gcc.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\config\ctps.hpp
+	<boost/mpl/aux_/config/workaround.hpp>
+	<boost/config.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\config\overload_resolution.hpp
+	<boost/mpl/aux_/config/workaround.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\lambda_support.hpp
+	<boost/mpl/aux_/config/lambda.hpp>
+	<boost/mpl/int_fwd.hpp>
+	<boost/mpl/aux_/yes_no.hpp>
+	<boost/mpl/aux_/na_fwd.hpp>
+	<boost/mpl/aux_/preprocessor/params.hpp>
+	<boost/mpl/aux_/preprocessor/enum.hpp>
+	<boost/mpl/aux_/config/msvc.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+	<boost/preprocessor/tuple/to_list.hpp>
+	<boost/preprocessor/list/for_each_i.hpp>
+	<boost/preprocessor/inc.hpp>
+	<boost/preprocessor/cat.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\yes_no.hpp
+	<boost/mpl/aux_/nttp_decl.hpp>
+	<boost/mpl/aux_/config/arrays.hpp>
+	<boost/mpl/aux_/config/msvc.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\config\arrays.hpp
+	<boost/mpl/aux_/config/msvc.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\na_fwd.hpp
+	<boost/mpl/aux_/adl_barrier.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\aux_\preprocessor\enum.hpp
+	<boost/mpl/aux_/config/preprocessor.hpp>
+	<boost/preprocessor/cat.hpp>
+	<boost/preprocessor/comma_if.hpp>
+	<boost/preprocessor/repeat.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\tuple\to_list.hpp
+	<boost/preprocessor/cat.hpp>
+	<boost/preprocessor/config/config.hpp>
+	<boost/preprocessor/facilities/overload.hpp>
+	<boost/preprocessor/tuple/size.hpp>
+	<boost/preprocessor/variadic/size.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\facilities\overload.hpp
+	<boost/preprocessor/cat.hpp>
+	<boost/preprocessor/variadic/size.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\variadic\size.hpp
+	<boost/preprocessor/cat.hpp>
+	<boost/preprocessor/config/config.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\tuple\size.hpp
+	<boost/preprocessor/cat.hpp>
+	<boost/preprocessor/config/config.hpp>
+	<boost/preprocessor/variadic/size.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\list\for_each_i.hpp
+	<boost/preprocessor/arithmetic/inc.hpp>
+	<boost/preprocessor/config/config.hpp>
+	<boost/preprocessor/list/adt.hpp>
+	<boost/preprocessor/repetition/for.hpp>
+	<boost/preprocessor/tuple/elem.hpp>
+	<boost/preprocessor/tuple/rem.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\list\adt.hpp
+	<boost/preprocessor/config/config.hpp>
+	<boost/preprocessor/detail/is_binary.hpp>
+	<boost/preprocessor/logical/compl.hpp>
+	<boost/preprocessor/tuple/eat.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\detail\is_binary.hpp
+	<boost/preprocessor/config/config.hpp>
+	<boost/preprocessor/detail/check.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\detail\check.hpp
+	<boost/preprocessor/cat.hpp>
+	<boost/preprocessor/config/config.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\logical\compl.hpp
+	<boost/preprocessor/config/config.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\repetition\for.hpp
+	<boost/preprocessor/cat.hpp>
+	<boost/preprocessor/debug/error.hpp>
+	<boost/preprocessor/detail/auto_rec.hpp>
+	<boost/preprocessor/repetition/detail/edg/for.hpp>
+	<boost/preprocessor/repetition/detail/msvc/for.hpp>
+	<boost/preprocessor/repetition/detail/dmc/for.hpp>
+	<boost/preprocessor/repetition/detail/for.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\repetition\detail\edg\for.hpp
+	<boost/preprocessor/control/if.hpp>
+	<boost/preprocessor/tuple/eat.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\repetition\detail\msvc\for.hpp
+	<boost/preprocessor/control/if.hpp>
+	<boost/preprocessor/tuple/eat.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\repetition\detail\dmc\for.hpp
+	<boost/preprocessor/control/expr_iif.hpp>
+	<boost/preprocessor/control/iif.hpp>
+	<boost/preprocessor/logical/bool.hpp>
+	<boost/preprocessor/tuple/eat.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\control\expr_iif.hpp
+	<boost/preprocessor/config/config.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\repetition\detail\for.hpp
+	<boost/preprocessor/control/expr_iif.hpp>
+	<boost/preprocessor/control/iif.hpp>
+	<boost/preprocessor/logical/bool.hpp>
+	<boost/preprocessor/tuple/eat.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\tuple\elem.hpp
+	<boost/preprocessor/cat.hpp>
+	<boost/preprocessor/config/config.hpp>
+	<boost/preprocessor/facilities/overload.hpp>
+	<boost/preprocessor/tuple/rem.hpp>
+	<boost/preprocessor/variadic/elem.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\tuple\rem.hpp
+	<boost/preprocessor/cat.hpp>
+	<boost/preprocessor/config/config.hpp>
+	<boost/preprocessor/facilities/overload.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\variadic\elem.hpp
+	<boost/preprocessor/cat.hpp>
+	<boost/preprocessor/config/config.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\detail\type_trait_undef.hpp
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\add_volatile.hpp
+	<boost/config.hpp>
+	<boost/type_traits/detail/type_trait_def.hpp>
+	<boost/type_traits/detail/type_trait_undef.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\add_cv.hpp
+	<boost/config.hpp>
+	<boost/type_traits/detail/type_trait_def.hpp>
+	<boost/type_traits/detail/type_trait_undef.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\is_const.hpp
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+	<boost/type_traits/detail/cv_traits_impl.hpp>
+	<boost/type_traits/is_reference.hpp>
+	<boost/type_traits/remove_bounds.hpp>
+	<boost/type_traits/detail/bool_trait_def.hpp>
+	<boost/type_traits/detail/bool_trait_undef.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\detail\cv_traits_impl.hpp
+	<cstddef>
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\is_reference.hpp
+	<boost/type_traits/config.hpp>
+	<boost/type_traits/is_lvalue_reference.hpp>
+	<boost/type_traits/is_rvalue_reference.hpp>
+	<boost/type_traits/ice.hpp>
+	<boost/type_traits/detail/bool_trait_def.hpp>
+	<boost/type_traits/detail/bool_trait_undef.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\config.hpp
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\is_lvalue_reference.hpp
+	<boost/type_traits/config.hpp>
+	<boost/type_traits/detail/bool_trait_def.hpp>
+	<boost/type_traits/detail/bool_trait_undef.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\detail\bool_trait_def.hpp
+	<boost/type_traits/detail/template_arity_spec.hpp>
+	<boost/type_traits/integral_constant.hpp>
+	<boost/mpl/bool.hpp>
+	<boost/mpl/aux_/lambda_support.hpp>
+	<boost/config.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\integral_constant.hpp
+	<boost/config.hpp>
+	<boost/mpl/bool.hpp>
+	<boost/mpl/integral_c.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\bool.hpp
+	<boost/mpl/bool_fwd.hpp>
+	<boost/mpl/integral_c_tag.hpp>
+	<boost/mpl/aux_/config/static_constant.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\bool_fwd.hpp
+	<boost/mpl/aux_/adl_barrier.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\integral_c.hpp
+	<boost/mpl/integral_c_fwd.hpp>
+	<boost/mpl/aux_/config/ctps.hpp>
+	<boost/mpl/aux_/config/static_constant.hpp>
+	<boost/mpl/aux_/config/workaround.hpp>
+	<boost/mpl/aux_/integral_wrapper.hpp>
+
+1404904352 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\mpl\integral_c_fwd.hpp
+	<boost/mpl/aux_/config/workaround.hpp>
+	<boost/mpl/aux_/adl_barrier.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\detail\bool_trait_undef.hpp
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\is_rvalue_reference.hpp
+	<boost/type_traits/config.hpp>
+	<boost/type_traits/detail/bool_trait_def.hpp>
+	<boost/type_traits/detail/bool_trait_undef.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\ice.hpp
+	<boost/type_traits/detail/yes_no_type.hpp>
+	<boost/type_traits/detail/ice_or.hpp>
+	<boost/type_traits/detail/ice_and.hpp>
+	<boost/type_traits/detail/ice_not.hpp>
+	<boost/type_traits/detail/ice_eq.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\detail\yes_no_type.hpp
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\detail\ice_or.hpp
+	<boost/config.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\detail\ice_and.hpp
+	<boost/config.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\detail\ice_not.hpp
+	<boost/config.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\detail\ice_eq.hpp
+	<boost/config.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\remove_bounds.hpp
+	<boost/config.hpp>
+	<cstddef>
+	<boost/detail/workaround.hpp>
+	<boost/type_traits/detail/type_trait_def.hpp>
+	<boost/type_traits/detail/type_trait_undef.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\is_volatile.hpp
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+	<boost/type_traits/detail/cv_traits_impl.hpp>
+	<boost/type_traits/remove_bounds.hpp>
+	<boost/type_traits/detail/bool_trait_def.hpp>
+	<boost/type_traits/detail/bool_trait_undef.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\remove_const.hpp
+	<boost/type_traits/is_volatile.hpp>
+	<boost/type_traits/detail/cv_traits_impl.hpp>
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+	<cstddef>
+	<boost/type_traits/detail/type_trait_def.hpp>
+	<boost/type_traits/detail/type_trait_undef.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\remove_volatile.hpp
+	<boost/type_traits/is_const.hpp>
+	<boost/type_traits/detail/cv_traits_impl.hpp>
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+	<cstddef>
+	<boost/type_traits/detail/type_trait_def.hpp>
+	<boost/type_traits/detail/type_trait_undef.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\remove_cv.hpp
+	<boost/type_traits/detail/cv_traits_impl.hpp>
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+	<cstddef>
+	<boost/type_traits/detail/type_trait_def.hpp>
+	<boost/type_traits/detail/type_trait_undef.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\function_traits.hpp
+	<boost/config.hpp>
+	<boost/type_traits/is_function.hpp>
+	<boost/type_traits/add_pointer.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\is_function.hpp
+	<boost/type_traits/is_reference.hpp>
+	<boost/type_traits/detail/false_result.hpp>
+	<boost/config.hpp>
+	<boost/type_traits/detail/is_function_ptr_helper.hpp>
+	<boost/type_traits/detail/is_function_ptr_tester.hpp>
+	<boost/type_traits/detail/yes_no_type.hpp>
+	<boost/type_traits/detail/bool_trait_def.hpp>
+	<boost/type_traits/detail/bool_trait_undef.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\detail\false_result.hpp
+	<boost/config.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\detail\is_function_ptr_helper.hpp
+	<boost/type_traits/config.hpp>
+	<boost/preprocessor/iterate.hpp>
+	<boost/preprocessor/enum_params.hpp>
+	<boost/preprocessor/comma_if.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\iterate.hpp
+	<boost/preprocessor/iteration/iterate.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\iteration\iterate.hpp
+	<boost/preprocessor/arithmetic/dec.hpp>
+	<boost/preprocessor/arithmetic/inc.hpp>
+	<boost/preprocessor/array/elem.hpp>
+	<boost/preprocessor/array/size.hpp>
+	<boost/preprocessor/cat.hpp>
+	<boost/preprocessor/slot/slot.hpp>
+	<boost/preprocessor/tuple/elem.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\arithmetic\dec.hpp
+	<boost/preprocessor/config/config.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\array\elem.hpp
+	<boost/preprocessor/array/data.hpp>
+	<boost/preprocessor/array/size.hpp>
+	<boost/preprocessor/config/config.hpp>
+	<boost/preprocessor/tuple/elem.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\array\data.hpp
+	<boost/preprocessor/config/config.hpp>
+	<boost/preprocessor/tuple/elem.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\array\size.hpp
+	<boost/preprocessor/config/config.hpp>
+	<boost/preprocessor/tuple/elem.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\slot\slot.hpp
+	<boost/preprocessor/cat.hpp>
+	<boost/preprocessor/slot/detail/def.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\slot\detail\def.hpp
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\enum_params.hpp
+	<boost/preprocessor/repetition/enum_params.hpp>
+
+1396291386 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\preprocessor\repetition\enum_params.hpp
+	<boost/preprocessor/config/config.hpp>
+	<boost/preprocessor/punctuation/comma_if.hpp>
+	<boost/preprocessor/repetition/repeat.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\detail\is_function_ptr_tester.hpp
+	<boost/type_traits/detail/yes_no_type.hpp>
+	<boost/type_traits/config.hpp>
+	<boost/preprocessor/iterate.hpp>
+	<boost/preprocessor/enum_params.hpp>
+	<boost/preprocessor/comma_if.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\add_pointer.hpp
+	<boost/type_traits/remove_reference.hpp>
+	<boost/type_traits/detail/type_trait_def.hpp>
+	<boost/type_traits/detail/type_trait_undef.hpp>
+
+1404893062 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\type_traits\remove_reference.hpp
+	<boost/config.hpp>
+	<boost/detail/workaround.hpp>
+	<boost/type_traits/detail/type_trait_def.hpp>
+	<boost/type_traits/detail/type_trait_undef.hpp>
+
+1405379340 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\utility\swap.hpp
+	<boost/core/swap.hpp>
+
+1405379340 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\core\swap.hpp
+	<utility>
+	<algorithm>
+	<cstddef>
+	<boost/config.hpp>
+
+1478968643 c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturemodel.h
+	"TextureModel.h"
+	"TextureShaderClass.h"
+	<boost/tuple/tuple.hpp>
+
+1478969046 source:c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturemodel.cpp
+	"TriangleTextureModel.h"
+
+1478992421 c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturenormalmodel.h
+	"TextureNormalModel.h"
+	"LightShaderClass.h"
+	<boost/tuple/tuple.hpp>
+
+1478992834 source:c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturenormalmodel.cpp
+	"TriangleTextureNormalModel.h"
 
