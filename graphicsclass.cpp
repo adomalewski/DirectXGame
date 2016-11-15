@@ -249,9 +249,6 @@ bool GraphicsClass::Frame()
 	// Update the rotation variable each frame.
 	ComputeRotationInFrame();
 
-	// Update user camera
-	m_UserCamera->Update();
-
 	// Render the graphics scene.
 	result = Render();
 	if(!result)
@@ -272,7 +269,9 @@ bool GraphicsClass::Render()
 
 	// Generate the view matrix based on the camera's position.
 	m_UserCamera->GetViewMatrix(viewMatrix);
-	m_UserCamera->SetPosition(0.0f, 0.0f, -7.0f);
+
+	// Update user camera
+	m_UserCamera->Update();
 
 	m_UserCamera->Render();
 

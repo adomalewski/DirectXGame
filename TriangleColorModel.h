@@ -11,7 +11,7 @@ using boost::tuple;
 class TriangleColorModel
 {
 private:
-    typedef tuple<VertexTypeColor*, unsigned long*, int, int> ModelDataType;
+    typedef boost::tuple<VertexTypeColor*, unsigned long*, int, int> ModelDataType;
 
 public:
 	TriangleColorModel();

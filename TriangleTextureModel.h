@@ -11,7 +11,7 @@ using boost::tuple;
 class TriangleTextureModel
 {
 private:
-    typedef tuple<VertexTypeTexture*, unsigned long*, int, int> ModelDataType;
+    typedef boost::tuple<VertexTypeTexture*, unsigned long*, int, int> ModelDataType;
 
 public:
 	TriangleTextureModel();
