@@ -4,8 +4,11 @@ UserCamera::UserCamera(UserActions* userActions)
 {
 	m_UserActions = userActions;
 
-	m_diffLeftRight = 0.1f;
-	m_diffBackForward = 0.1f;
+	m_speedLeftRight = 0.1f;
+	m_speedBackForward = 0.01f;
+	m_diffLeftRight = 0.0f;
+	m_diffBackForward = 0.0f;
+
 }
 
 UserCamera::~UserCamera()
@@ -14,6 +17,16 @@ UserCamera::~UserCamera()
 
 void UserCamera::Update()
 {
+	time_t timeDiff;
+	static time_t lastTime = time(NULL);
+	timeDiff = time(NULL) - lastTime;
+
+	if (timeDiff != 0)
+	{
+		m_diffBackForward = m_speedBackForward * timeDiff;
+		m_diffLeftRight = m_speedLeftRight * timeDiff;
+	}
+
 	if(m_UserActions->IsMoveForward())
 		MoveForward();
 	if (m_UserActions->IsMoveBackward())
@@ -28,6 +41,8 @@ void UserCamera::Update()
 		LayDown();
 	if (m_UserActions->IsCrouch())
 		Crouch();
+
+	lastTime += timeDiff;
 }
 
 void UserCamera::MoveForward()
@@ -42,12 +57,12 @@ void UserCamera::MoveBackward()
 
 void UserCamera::MoveLeft()
 {
-	m_position -= m_right*m_diffLeftRight;
+	m_position += m_right*m_diffLeftRight;
 }
 
 void UserCamera::MoveRight()
 {
-	m_position += m_right*m_diffLeftRight;
+	m_position -= m_right*m_diffLeftRight;
 }
 
 void UserCamera::Jump()

@@ -23,6 +23,7 @@ public:
 protected:
 	float m_rotationX, m_rotationY, m_rotationZ;
 	D3DXVECTOR3 m_up, m_position, m_lookAt, m_right;
+	D3DXVECTOR3 m_defaultRight, m_defaultLookAt;
 	D3DXMATRIX m_viewMatrix;
 };
 
