@@ -50,23 +50,18 @@
 			<Add library="comctl32" />
 		</Linker>
 		<Unit filename="ColorModel.cpp" />
-		<Unit filename="ColorModel.cpp" />
-		<Unit filename="ColorModel.h" />
 		<Unit filename="ColorModel.h" />
 		<Unit filename="FrameInformation.h" />
 		<Unit filename="HudBox.cpp" />
 		<Unit filename="HudBox.h" />
+		<Unit filename="InputActions.h" />
 		<Unit filename="Scene2DClass.cpp" />
 		<Unit filename="Scene2DClass.h" />
 		<Unit filename="Scene3DClass.cpp" />
 		<Unit filename="Scene3DClass.h" />
 		<Unit filename="TextureModel.cpp" />
-		<Unit filename="TextureModel.cpp" />
-		<Unit filename="TextureModel.h" />
 		<Unit filename="TextureModel.h" />
 		<Unit filename="TextureNormalModel.cpp" />
-		<Unit filename="TextureNormalModel.cpp" />
-		<Unit filename="TextureNormalModel.h" />
 		<Unit filename="TextureNormalModel.h" />
 		<Unit filename="TriangleColorModel.cpp" />
 		<Unit filename="TriangleColorModel.h" />
@@ -76,6 +71,8 @@
 		<Unit filename="TriangleTextureNormalModel.h" />
 		<Unit filename="UserActions.cpp" />
 		<Unit filename="UserActions.h" />
+		<Unit filename="UserCamera.cpp" />
+		<Unit filename="UserCamera.h" />
 		<Unit filename="VertexType.h" />
 		<Unit filename="bitmapclass.cpp" />
 		<Unit filename="bitmapclass.h" />
