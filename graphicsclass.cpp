@@ -21,6 +21,7 @@ GraphicsClass::~GraphicsClass()
 bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, InputClass* input)
 {
 	bool result;
+	D3DXMATRIX viewMatrix;
 
 	m_hwnd = hwnd;
 	m_Input = input;
@@ -60,6 +61,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, Inp
 	// Set the initial position of the camera.
 	m_UserCamera->SetPosition(0.0f, 0.0f, -10.0f);
 	m_UserCamera->Render();
+	m_UserCamera->GetViewMatrix(viewMatrix);
 
 	// Initialize shaders
 	result = InitializeColorShader();
@@ -78,7 +80,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, Inp
 	}
 
 	// Initialize the Scene 2D object.
-	result = m_Scene2D->Initialize(m_D3D, m_hwnd, screenWidth, screenHeight, m_TextureShader);
+	result = m_Scene2D->Initialize(m_D3D, m_hwnd, screenWidth, screenHeight, m_TextureShader, viewMatrix);
 	if (!result)
 	{
 		MessageBox(m_hwnd, "Could not initialize Scene2D", "Error", MB_OK);
@@ -267,17 +269,17 @@ bool GraphicsClass::Render()
 	// Clear the buffers to begin the scene.
 	m_D3D->BeginScene(0.0f, 0.0f, 0.0f, 1.0f);
 
-	// Generate the view matrix based on the camera's position.
-	m_UserCamera->GetViewMatrix(viewMatrix);
-
 	// Update user camera
 	m_UserCamera->Update();
 
 	m_UserCamera->Render();
 
+	// Generate the view matrix based on the camera's position.
+	m_UserCamera->GetViewMatrix(viewMatrix);
+
 	m_Scene3D->Update(m_FrameInformation, viewMatrix);
 
-	m_Scene2D->Update(viewMatrix);
+	m_Scene2D->Update();
 
 	// Present the rendered scene to the screen.
 	m_D3D->EndScene();

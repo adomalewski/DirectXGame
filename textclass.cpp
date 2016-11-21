@@ -17,13 +17,17 @@ TextClass::~TextClass()
 {
 }
 
-bool TextClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, int screenWidth, int screenHeight)
+bool TextClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, HWND hwnd, int screenWidth, int screenHeight, D3DXMATRIX worldMatrix,
+	D3DXMATRIX orthoMatrix, D3DXMATRIX viewMatrix)
 {
 	bool result;
 
 	// Store the screen width and height.
 	m_screenWidth = screenWidth;
 	m_screenHeight = screenHeight;
+	m_staticWorldMatrix = worldMatrix;
+	m_staticOrthoMatrix = orthoMatrix;
+	m_staticViewMatrix = viewMatrix;
 
 	// Create the font object.
 	m_Font = new FontClass;
@@ -62,12 +66,12 @@ bool TextClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCont
 		return false;
 	}
 
-	// Now update the sentence vertex buffer with the new string information.
-	result = UpdateSentence(m_sentence1, "Hello", 100, 100, 1.0f, 1.0f, 1.0f, deviceContext);
+	/*// Now update the sentence vertex buffer with the new string information.
+	result = UpdateSentence(m_sentence1, "Hello", 200, 100, 1.0f, 1.0f, 1.0f, deviceContext);
 	if (!result)
 	{
 		return false;
-	}
+	}*/
 
 	// Initialize the first sentence.
 	result = InitializeSentence(&m_sentence2, 16, device);
@@ -77,7 +81,7 @@ bool TextClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCont
 	}
 
 	// Now update the sentence vertex buffer with the new string information.
-	result = UpdateSentence(m_sentence2, "Goodbye", 100, 200, 1.0f, 1.0f, 0.0f, deviceContext);
+	result = UpdateSentence(m_sentence2, "Goodbye", 200, 150, 1.0f, 1.0f, 0.0f, deviceContext);
 	if (!result)
 	{
 		return false;
@@ -113,20 +117,19 @@ void TextClass::Shutdown()
 	return;
 }
 
-bool TextClass::Render(ID3D11DeviceContext* deviceContext, D3DXMATRIX worldMatrix, D3DXMATRIX orthoMatrix,
-    D3DXMATRIX viewMatrix)
+bool TextClass::Render(ID3D11DeviceContext* deviceContext)
 {
 	bool result;
 
 	// Draw the first sentence.
-	result = RenderSentence(deviceContext, m_sentence1, worldMatrix, orthoMatrix, viewMatrix);
+	result = RenderSentence(deviceContext, m_sentence1);
 	if (!result)
 	{
 		return false;
 	}
 
 	// Draw the second sentence.
-	result = RenderSentence(deviceContext, m_sentence2, worldMatrix, orthoMatrix, viewMatrix);
+	result = RenderSentence(deviceContext, m_sentence2);
 	if (!result)
 	{
 		return false;
@@ -310,8 +313,8 @@ bool TextClass::UpdateSentence(SentenceType* sentence, char* text, int positionX
 	memset(vertices, 0, (sizeof(VertexType) * sentence->vertexCount));
 
 	// Calculate the X and Y pixel position on the screen to start drawing to.
-	drawX = (float)(((m_screenWidth / 2) * -1) + positionX);
-	drawY = (float)((m_screenHeight / 2) - positionY);
+	drawX = (float)((((float)m_screenWidth / 2) * -1) + positionX);
+	drawY = (float)(((float)m_screenHeight / 2) - positionY);
 
 	// Use the font class to build the vertex array from the sentence text and sentence draw location.
 	m_Font->BuildVertexArray((void*)vertices, text, drawX, drawY);
@@ -365,8 +368,7 @@ void TextClass::ReleaseSentence(SentenceType** sentence)
 	return;
 }
 
-bool TextClass::RenderSentence(ID3D11DeviceContext* deviceContext, SentenceType* sentence, D3DXMATRIX worldMatrix,
-	D3DXMATRIX orthoMatrix, D3DXMATRIX viewMatrix)
+bool TextClass::RenderSentence(ID3D11DeviceContext* deviceContext, SentenceType* sentence)
 {
 	unsigned int stride, offset;
 	D3DXVECTOR4 pixelColor;
@@ -389,7 +391,7 @@ bool TextClass::RenderSentence(ID3D11DeviceContext* deviceContext, SentenceType*
 	pixelColor = D3DXVECTOR4(sentence->red, sentence->green, sentence->blue, 1.0f);
 
 	// Render the text using the font shader.
-	result = m_FontShader->Render(deviceContext, sentence->indexCount, worldMatrix, viewMatrix, orthoMatrix, m_Font->GetTexture(),
+	result = m_FontShader->Render(deviceContext, sentence->indexCount, m_staticWorldMatrix, m_staticViewMatrix, m_staticOrthoMatrix, m_Font->GetTexture(),
 		pixelColor);
 	if (!result)
 	{

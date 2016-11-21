@@ -1,6 +1,8 @@
 #ifndef SCENE2DCLASS_H
 #define SCENE2DCLASS_H
 
+#include "pch.h"
+
 #include "d3dclass.h"
 #include "bitmapclass.h"
 #include "textclass.h"
@@ -12,14 +14,14 @@ public:
 	Scene2DClass();
 	~Scene2DClass();
 
-	bool Initialize(D3DClass*, HWND, int , int, TextureShaderClass*);
+	bool Initialize(D3DClass*, HWND, int , int, TextureShaderClass*, D3DXMATRIX);
 	void Shutdown();
 
-	void Update(D3DXMATRIX);
+	void Update();
 
 private:
-	bool UpdateTextures(D3DXMATRIX);
-	bool UpdateText(D3DXMATRIX);
+	bool UpdateTextures();
+	bool UpdateText();
 
 private:
 	D3DClass* m_D3D;
@@ -28,7 +30,11 @@ private:
 	TextClass* m_Text;
 	TextureShaderClass* m_TextureShader;
 
-	D3DXMATRIX m_OrthoMatrix;
+	D3DXMATRIX m_staticWorldMatrix;
+	D3DXMATRIX m_staticOrthoMatrix;
+	D3DXMATRIX m_staticViewMatrix;
+
+	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_texture;
 };
 
 #endif // SCENE2DCLASS_H

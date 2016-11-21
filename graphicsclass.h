@@ -1,15 +1,15 @@
 #ifndef GRAPHICSCLASS_H
 #define GRAPHICSCLASS_H
 
+#include "Scene2DClass.h"
 #include "d3dclass.h"
 #include "colorshaderclass.h"
 #include "textureshaderclass.h"
 #include "lightshaderclass.h"
 #include "Scene3DClass.h"
-#include "Scene2DClass.h"
 #include "FrameInformation.h"
 #include "InputClass.h"
-#include "UserCamera.h";
+#include "UserCamera.h"
 
 const bool FULL_SCREEN = false;
 const bool VSYNC_ENABLED = true;
