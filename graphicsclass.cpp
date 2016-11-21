@@ -3,6 +3,7 @@
 GraphicsClass::GraphicsClass()
 {
     m_D3D = 0;
+    m_windowInfo = 0;
     m_UserCamera = 0;
 	m_ColorShader = 0;
 	m_TextureShader = 0;
@@ -23,7 +24,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, Inp
 	bool result;
 	D3DXMATRIX viewMatrix;
 
-	m_hwnd = hwnd;
+    m_windowInfo = new WindowInfo(hwnd, screenWidth, screenHeight);
 	m_Input = input;
 
 	// Create the Direct3D object.
@@ -34,10 +35,11 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, Inp
 	}
 
 	// Initialize the Direct3D object.
-	result = m_D3D->Initialize(screenWidth, screenHeight, VSYNC_ENABLED, m_hwnd, FULL_SCREEN, SCREEN_DEPTH, SCREEN_NEAR);
+	result = m_D3D->Initialize(screenWidth, screenHeight, VSYNC_ENABLED, hwnd,
+        FULL_SCREEN, SCREEN_DEPTH, SCREEN_NEAR);
 	if(!result)
 	{
-		MessageBox(m_hwnd, "Could not initialize Direct3D", "Error", MB_OK);
+		MessageBox(hwnd, "Could not initialize Direct3D", "Error", MB_OK);
 		return false;
 	}
 
@@ -80,10 +82,14 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, Inp
 	}
 
 	// Initialize the Scene 2D object.
+<<<<<<< HEAD
 	result = m_Scene2D->Initialize(m_D3D, m_hwnd, screenWidth, screenHeight, m_TextureShader, viewMatrix);
+=======
+	result = m_Scene2D->Initialize(m_D3D, hwnd, screenWidth, screenHeight, m_TextureShader);
+>>>>>>> 2337438e60fd090e47ae74dda59068fdd20e9946
 	if (!result)
 	{
-		MessageBox(m_hwnd, "Could not initialize Scene2D", "Error", MB_OK);
+		MessageBox(hwnd, "Could not initialize Scene2D", "Error", MB_OK);
 		return false;
 	}
 
@@ -96,10 +102,10 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, Inp
 	}
 
 	// Initialize the Scene 3D object.
-	result = m_Scene3D->Initialize(m_D3D, m_hwnd, m_ColorShader, m_TextureShader, m_LightShader);
+	result = m_Scene3D->Initialize(m_D3D, hwnd, m_ColorShader, m_TextureShader, m_LightShader);
 	if (!result)
 	{
-		MessageBox(m_hwnd, "Could not initialize Scene3D", "Error", MB_OK);
+		MessageBox(hwnd, "Could not initialize Scene3D", "Error", MB_OK);
 		return false;
 	}
 
@@ -118,10 +124,10 @@ bool GraphicsClass::InitializeColorShader()
 	}
 
 	// Initialize the color shader object.
-	result = m_ColorShader->Initialize(m_D3D->GetDevice(), m_hwnd);
+	result = m_ColorShader->Initialize(m_D3D->GetDevice(), m_windowInfo->m_hwnd);
 	if(!result)
 	{
-		MessageBox(m_hwnd, "Could not initialize the color shader object.", "Error", MB_OK);
+		MessageBox(m_windowInfo->m_hwnd, "Could not initialize the color shader object.", "Error", MB_OK);
 		return false;
 	}
 
@@ -140,10 +146,10 @@ bool GraphicsClass::InitializeTextureShader()
 	}
 
 	// Initialize the texture shader object.
-	result = m_TextureShader->Initialize(m_D3D->GetDevice(), m_hwnd);
+	result = m_TextureShader->Initialize(m_D3D->GetDevice(), m_windowInfo->m_hwnd);
 	if(!result)
 	{
-		MessageBox(m_hwnd, "Could not initialize the texture shader object.", "Error", MB_OK);
+		MessageBox(m_windowInfo->m_hwnd, "Could not initialize the texture shader object.", "Error", MB_OK);
 		return false;
 	}
 
@@ -162,10 +168,10 @@ bool GraphicsClass::InitializeLightShader()
 	}
 
 	// Initialize the light shader object.
-	result = m_LightShader->Initialize(m_D3D->GetDevice(), m_hwnd);
+	result = m_LightShader->Initialize(m_D3D->GetDevice(), m_windowInfo->m_hwnd);
 	if(!result)
 	{
-		MessageBox(m_hwnd, "Could not initialize the light shader object.", "Error", MB_OK);
+		MessageBox(m_windowInfo->m_hwnd, "Could not initialize the light shader object.", "Error", MB_OK);
 		return false;
 	}
 
@@ -205,13 +211,6 @@ void GraphicsClass::Shutdown()
 		m_UserActions = 0;
 	}
 
-	// Release the user actions object.
-	if (m_UserActions)
-	{
-		delete m_UserActions;
-		m_UserActions = 0;
-	}
-
 	// Release the user camera object.
 	if(m_UserCamera)
 	{
@@ -239,6 +238,13 @@ void GraphicsClass::Shutdown()
 		m_D3D->Shutdown();
 		delete m_D3D;
 		m_D3D = 0;
+	}
+
+	// Release the WindowInfo object.
+	if(m_windowInfo)
+	{
+		delete m_windowInfo;
+		m_windowInfo = 0;
 	}
 
 	return;

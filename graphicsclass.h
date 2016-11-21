@@ -10,6 +10,7 @@
 #include "FrameInformation.h"
 #include "InputClass.h"
 #include "UserCamera.h"
+#include "WindowInfo.h"
 
 const bool FULL_SCREEN = false;
 const bool VSYNC_ENABLED = true;
@@ -37,8 +38,8 @@ private:
 	void ComputeRotationInFrame();
 
 private:
+    WindowInfo* m_windowInfo;
     D3DClass* m_D3D;
-	HWND m_hwnd;
 	ColorShaderClass* m_ColorShader;
 	TextureShaderClass* m_TextureShader;
 	LightShaderClass* m_LightShader;

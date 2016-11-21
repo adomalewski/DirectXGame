@@ -13,27 +13,36 @@
 	"inputclass.h"
 	"graphicsclass.h"
 
-1479156269 c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.h
+1479593979 c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.h
 	"d3dclass.h"
-	"cameraclass.h"
 	"colorshaderclass.h"
 	"textureshaderclass.h"
 	"lightshaderclass.h"
 	"Scene3DClass.h"
 	"Scene2DClass.h"
 	"FrameInformation.h"
+	"InputClass.h"
+	"UserCamera.h"
+	"WindowInfo.h"
 
-1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\systemclass.cpp
+1479571353 source:c:\users\andrz3j\documents\codeblocks\directxgame\systemclass.cpp
 	"systemclass.h"
 
-1479157834 source:c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.cpp
+1479591076 source:c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.cpp
 	"graphicsclass.h"
 
-1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.h
+1479591696 c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.h
 	<dxgi.h>
 	<d3dcommon.h>
 	<d3d11.h>
 	<d3dx10math.h>
+	<d3dx11.h>
+	<d3dx10.h>
+	<xnamath.h>
+	<D3D10_1.h>
+	<D2D1.h>
+	<sstream>
+	<dwrite.h>
 
 1274305018 c:\program files\microsoft directx sdk (june 2010)\include\dxgi.h
 	"rpc.h"
@@ -157,10 +166,10 @@
 
 1274305017 c:\program files\microsoft directx sdk (june 2010)\include\d3dx10math.inl
 
-1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.cpp
+1479595351 source:c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.cpp
 	"d3dclass.h"
 
-1479155839 c:\users\andrz3j\documents\codeblocks\directxgame\cameraclass.h
+1479571352 c:\users\andrz3j\documents\codeblocks\directxgame\cameraclass.h
 	<d3dx10math.h>
 
 1478945134 c:\users\andrz3j\documents\codeblocks\directxgame\modelclass.h
@@ -194,7 +203,7 @@
 1274305017 c:\program files\microsoft directx sdk (june 2010)\include\d3dx11tex.h
 	"d3dx11.h"
 
-1479156610 source:c:\users\andrz3j\documents\codeblocks\directxgame\cameraclass.cpp
+1479571352 source:c:\users\andrz3j\documents\codeblocks\directxgame\cameraclass.cpp
 	"cameraclass.h"
 
 1477686160 source:c:\users\andrz3j\documents\codeblocks\directxgame\colorshaderclass.cpp
@@ -245,7 +254,7 @@
 1274305018 c:\program files\microsoft directx sdk (june 2010)\include\dinput.h
 	<objbase.h>
 
-1479156169 c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.h
+1479571327 c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.h
 	"d3dclass.h"
 	"modelclass.h"
 	"colorshaderclass.h"
@@ -296,19 +305,20 @@
 1479157791 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene2dclass.cpp
 	"Scene2DClass.h"
 
-1479156209 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.cpp
+1479162375 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.cpp
 	"Scene3DClass.h"
 
 1479157530 source:c:\users\andrz3j\documents\codeblocks\directxgame\textclass.cpp
 	"textclass.h"
 
-1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\useractions.cpp
+1479571352 source:c:\users\andrz3j\documents\codeblocks\directxgame\useractions.cpp
 	"UserActions.h"
 
-1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\useractions.h
+1479571352 c:\users\andrz3j\documents\codeblocks\directxgame\useractions.h
 	<string>
 	<map>
 	"inputclass.h"
+	"InputActions.h"
 
 1478967659 source:c:\users\andrz3j\documents\codeblocks\directxgame\colormodel.cpp
 	"ColorModel.h"
@@ -337,7 +347,7 @@
 	"TextureModel.h"
 	"VertexType.h"
 
-1478969074 c:\users\andrz3j\documents\codeblocks\directxgame\trianglecolormodel.h
+1479571352 c:\users\andrz3j\documents\codeblocks\directxgame\trianglecolormodel.h
 	"ColorModel.h"
 	"ColorShaderClass.h"
 	<boost/tuple/tuple.hpp>
@@ -1160,7 +1170,7 @@
 	<cstddef>
 	<boost/config.hpp>
 
-1478968643 c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturemodel.h
+1479571352 c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturemodel.h
 	"TextureModel.h"
 	"TextureShaderClass.h"
 	<boost/tuple/tuple.hpp>
@@ -1168,11 +1178,69 @@
 1478969046 source:c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturemodel.cpp
 	"TriangleTextureModel.h"
 
-1478992421 c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturenormalmodel.h
+1479571352 c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturenormalmodel.h
 	"TextureNormalModel.h"
 	"LightShaderClass.h"
 	<boost/tuple/tuple.hpp>
 
 1478992834 source:c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturenormalmodel.cpp
 	"TriangleTextureNormalModel.h"
+
+1479571352 c:\users\andrz3j\documents\codeblocks\directxgame\usercamera.h
+	<time.h>
+	"CameraClass.h"
+	"UserActions.h"
+
+1479571352 c:\users\andrz3j\documents\codeblocks\directxgame\inputactions.h
+	<string>
+	<map>
+	"inputclass.h"
+
+1275474757 c:\program files\microsoft directx sdk (june 2010)\include\xnamath.h
+	<xmmintrin.h>
+	<emmintrin.h>
+	<math.h>
+	<sal.h>
+	"xnamathconvert.inl"
+	"xnamathvector.inl"
+	"xnamathmatrix.inl"
+	"xnamathmisc.inl"
+
+1275474757 c:\program files\microsoft directx sdk (june 2010)\include\xnamathconvert.inl
+
+1275474757 c:\program files\microsoft directx sdk (june 2010)\include\xnamathvector.inl
+
+1275474757 c:\program files\microsoft directx sdk (june 2010)\include\xnamathmatrix.inl
+
+1275474757 c:\program files\microsoft directx sdk (june 2010)\include\xnamathmisc.inl
+
+1274305016 c:\program files\microsoft directx sdk (june 2010)\include\d2d1.h
+	<windows.h>
+	<unknwn.h>
+	<dcommon.h>
+	<D2DErr.h>
+	<D2DBaseTypes.h>
+	<dxgiformat.h>
+	<d3d10_1.h>
+	<d2d1helper.h>
+
+1274305017 c:\program files\microsoft directx sdk (june 2010)\include\dcommon.h
+
+1274305016 c:\program files\microsoft directx sdk (june 2010)\include\d2derr.h
+
+1274305016 c:\program files\microsoft directx sdk (june 2010)\include\d2dbasetypes.h
+	<windows.h>
+
+1274305016 c:\program files\microsoft directx sdk (june 2010)\include\d2d1helper.h
+	<d2d1.h>
+
+1274305018 c:\program files\microsoft directx sdk (june 2010)\include\dwrite.h
+	<specstrings.h>
+	<unknwn.h>
+	<dcommon.h>
+
+1479571352 source:c:\users\andrz3j\documents\codeblocks\directxgame\usercamera.cpp
+	"UserCamera.h"
+
+1479590123 c:\users\andrz3j\documents\codeblocks\directxgame\windowinfo.h
 
