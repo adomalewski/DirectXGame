@@ -82,11 +82,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, Inp
 	}
 
 	// Initialize the Scene 2D object.
-<<<<<<< HEAD
-	result = m_Scene2D->Initialize(m_D3D, m_hwnd, screenWidth, screenHeight, m_TextureShader, viewMatrix);
-=======
-	result = m_Scene2D->Initialize(m_D3D, hwnd, screenWidth, screenHeight, m_TextureShader);
->>>>>>> 2337438e60fd090e47ae74dda59068fdd20e9946
+	result = m_Scene2D->Initialize(m_D3D, hwnd, screenWidth, screenHeight, m_TextureShader, viewMatrix);
 	if (!result)
 	{
 		MessageBox(hwnd, "Could not initialize Scene2D", "Error", MB_OK);
