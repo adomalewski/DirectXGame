@@ -30,7 +30,7 @@ bool TriangleTextureModel::Initialize(ID3D11Device* device)
         return false;
 	}
 
-	result = m_TextureModel->Initialize(device, "seafloor.dds", modelDataType.get<0>(), modelDataType.get<1>(),
+	result = m_TextureModel->Initialize(device, "Stonehenge.jpg", modelDataType.get<0>(), modelDataType.get<1>(),
         modelDataType.get<2>(), modelDataType.get<3>());
 
 	ReleaseModelData(modelDataType.get<0>(), modelDataType.get<1>());
@@ -75,7 +75,7 @@ TriangleTextureModel::ModelDataType TriangleTextureModel::CreateModelData()
 	indices[1] = 1;  // Top middle.
 	indices[2] = 2;  // Bottom right.
 
-	return make_tuple(boost::ref(vertices), boost::ref(indices), vertexCount, indexCount);
+	return boost::make_tuple(boost::ref(vertices), boost::ref(indices), vertexCount, indexCount);
 }
 
 void TriangleTextureModel::ReleaseModelData(VertexTypeTexture* vertices, unsigned long* indices)

@@ -5,9 +5,6 @@
 #include "TextureShaderClass.h"
 #include <boost/tuple/tuple.hpp>
 
-using boost::make_tuple;
-using boost::tuple;
-
 class TriangleTextureModel
 {
 private:

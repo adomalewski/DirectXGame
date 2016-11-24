@@ -75,7 +75,7 @@ TriangleColorModel::ModelDataType TriangleColorModel::CreateModelData()
 	indices[1] = 1;  // Top middle.
 	indices[2] = 2;  // Bottom right.
 
-	return make_tuple(boost::ref(vertices), boost::ref(indices), vertexCount, indexCount);
+	return boost::make_tuple(boost::ref(vertices), boost::ref(indices), vertexCount, indexCount);
 }
 
 void TriangleColorModel::ReleaseModelData(VertexTypeColor* vertices, unsigned long* indices)

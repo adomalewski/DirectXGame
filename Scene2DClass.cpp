@@ -2,175 +2,143 @@
 
 Scene2DClass::Scene2DClass()
 {
-	m_Bitmap = 0;
-	m_Text = 0;
+
 }
 
 Scene2DClass::~Scene2DClass()
 {
 }
 
-bool Scene2DClass::Initialize(D3DClass* d3d, HWND hwnd, int screenWidth, int screenHeight, TextureShaderClass* textureShader, D3DXMATRIX viewMatrix)
+bool Scene2DClass::Initialize(D3DClass* d3d, WindowInfo* windowInfo)
 {
-	bool result;
-
 	m_D3D = d3d;
-	m_hwnd = hwnd;
-	m_TextureShader = textureShader;
+	m_windowInfo = windowInfo;
 
-	D3DXMatrixIdentity(&m_staticWorldMatrix);
-	m_D3D->GetOrthoMatrix(m_staticOrthoMatrix);
-	m_staticViewMatrix = viewMatrix;
+	m_spriteBatch.reset(new SpriteBatch(m_D3D->GetDeviceContext()));
 
-	/*// Create the text object.
-	m_Text = new TextClass;
-	if (!m_Text)
-	{
-		return false;
-	}
+	InitializeTexture(m_textureStonehenge, "Stonehenge.jpg");
+	SetTextureAttributes(m_textureStonehenge, WindowRegion::TopLeft, 0.3f);
 
-	// Initialize the text object.
-	result = m_Text->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), m_hwnd, screenWidth, screenHeight,
-		m_staticWorldMatrix, m_staticOrthoMatrix, m_staticViewMatrix);
-	if (!result)
-	{
-		MessageBox(m_hwnd, "Could not initialize the text object.", "Error", MB_OK);
-		return false;
-	}
+	InitializeFont(m_fontCurierNew32, "myfile.spritefont");
 
-	// Create the bitmap object.
-	m_Bitmap = new BitmapClass;
-	if (!m_Bitmap)
-	{
-		return false;
-	}
-
-	// Initialize the bitmap object.
-	result = m_Bitmap->Initialize(m_D3D->GetDevice(), screenWidth, screenHeight, "Stonehenge.jpg", 709, 472);
-	if (!result)
-	{
-		MessageBox(m_hwnd, "Could not initialize the bitmap object.", "Error", MB_OK);
-		return false;
-	}*/
-
-	ComPtr<ID3D11Resource> resource;
-	CreateWICTextureFromFile(m_D3D->GetDevice(), L"Stonehenge.jpg", resource.GetAddressOf(),
-		m_texture.ReleaseAndGetAddressOf());
-
-	ComPtr<ID3D11Texture2D> cat;
-	resource.As(&cat);
-	CD3D11_TEXTURE2D_DESC catDesc;
-	cat->GetDesc(&catDesc);
+	SetTextAttributes(m_simpleText, m_fontCurierNew32, "Hello World", 0, 0);
 
 	return true;
 }
 
 void Scene2DClass::Shutdown()
 {
-	// Release the text object.
-	if (m_Text)
-	{
-		m_Text->Shutdown();
-		delete m_Text;
-		m_Text = 0;
-	}
-
-	// Release the bitmap object.
-	if (m_Bitmap)
-	{
-		m_Bitmap->Shutdown();
-		delete m_Bitmap;
-		m_Bitmap = 0;
-	}
+	m_spriteBatch.release();
+	m_textureStonehenge.texture.Reset();
+	m_fontCurierNew32.font.release();
 }
 
 void Scene2DClass::Update()
 {
-	bool result;
+	std::unique_ptr<DirectX::CommonStates> m_states;
+	m_states.reset(new CommonStates(m_D3D->GetDevice()));
 
-	/*// Turn off the Z buffer to begin all 2D rendering.
-	m_D3D->TurnZBufferOff();
+	m_spriteBatch->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
 
-	result = UpdateTextures();
-	if (!result)
-	{
-		MessageBox(m_hwnd, "Could not update textures", "Error", MB_OK);
-	}
+	m_spriteBatch->Draw(m_textureStonehenge.texture.Get(), m_textureStonehenge.screenPos, 
+		nullptr, Colors::White, 0.f, m_textureStonehenge.origin, m_textureStonehenge.scale);
 
-	result = UpdateText();
-	if (!result)
-	{
-		MessageBox(m_hwnd, "Could not update text", "Error", MB_OK);
-	}
-
-	// Turn the Z buffer back on now that all 2D rendering has completed.
-	m_D3D->TurnZBufferOn();*/
-
-	std::unique_ptr<DirectX::SpriteBatch> m_spriteBatch;
-	DirectX::SimpleMath::Vector2 m_screenPos;
-	DirectX::SimpleMath::Vector2 m_origin;
-
-	m_spriteBatch.reset(new SpriteBatch(m_D3D->GetDeviceContext()));
-
-	/*ComPtr<ID3D11Texture2D> cat;
-	CD3D11_TEXTURE2D_DESC catDesc;
-	cat->GetDesc(&catDesc);
-	m_origin.x = float(catDesc.Width / 2);
-	m_origin.y = float(catDesc.Height / 2);*/
-
-	m_origin.x = 709 / 2.f;
-	m_origin.y = 472 / 2.f;
-
-	m_screenPos.x = 200 / 2.f;
-	m_screenPos.y = 600 / 2.f;
+	m_spriteBatch->End();
 
 	m_spriteBatch->Begin();
 
-	m_spriteBatch->Draw(m_texture.Get(), m_screenPos, nullptr, Colors::White, 0.f, m_origin);
+	m_fontCurierNew32.font->DrawString(m_spriteBatch.get(), m_simpleText.text,
+		m_simpleText.screenPos + Vector2(1.f, 1.f), Colors::Black, 0.f, m_simpleText.origin);
+	m_fontCurierNew32.font->DrawString(m_spriteBatch.get(), m_simpleText.text,
+		m_simpleText.screenPos + Vector2(-1.f, 1.f), Colors::Black, 0.f, m_simpleText.origin);
+
+	m_fontCurierNew32.font->DrawString(m_spriteBatch.get(), m_simpleText.text,
+		m_simpleText.screenPos, Colors::White, 0.f, m_simpleText.origin);
 
 	m_spriteBatch->End();
 }
 
-bool Scene2DClass::UpdateTextures()
+void Scene2DClass::InitializeTexture(TextureInfo& textureInfo, LPCSTR file)
 {
-	bool result;
-	static float xy = 0;
-	xy += 0.4;
+	makeWChar(textureInfo.file, file);
 
-	// Put the bitmap vertex and index buffers on the graphics pipeline to prepare them for drawing.
-	result = m_Bitmap->Render(m_D3D->GetDeviceContext(), 100, xy);
-	if (!result)
-	{
-		return false;
-	}
+	ComPtr<ID3D11Resource> resource;
+	CreateWICTextureFromFile(m_D3D->GetDevice(), textureInfo.file, resource.GetAddressOf(),
+		textureInfo.texture.ReleaseAndGetAddressOf());
 
-	// Render the bitmap with the texture shader.
-	result = m_TextureShader->Render(m_D3D->GetDeviceContext(), m_Bitmap->GetIndexCount(), m_staticWorldMatrix, m_staticViewMatrix,
-		m_staticOrthoMatrix, m_Bitmap->GetTexture());
-	if (!result)
-	{
-		return false;
-	}
+	ComPtr<ID3D11Texture2D> cat;
+	resource.As(&cat);
 
-	return true;
+	cat->GetDesc(&textureInfo.catDesc);
 }
 
-bool Scene2DClass::UpdateText()
+void Scene2DClass::InitializeFont(FontInfo& fontInfo, LPCSTR file)
 {
-	bool result;
+	makeWChar(fontInfo.file, file);
+	fontInfo.font.reset(new SpriteFont(m_D3D->GetDevice(), fontInfo.file));
+}
 
-	// Turn on the alpha blending before rendering the text.
-	m_D3D->TurnOnAlphaBlending();
+void Scene2DClass::SetTextureAttributes(TextureInfo& textureInfo, int posScreenX, int posScreenY, float scale)
+{
+	textureInfo.screenPos.x = float(textureInfo.catDesc.Width / (2 / scale)) + posScreenX;
+	textureInfo.screenPos.y = float(textureInfo.catDesc.Height / (2 / scale)) + posScreenY;
+	textureInfo.origin.x = float(textureInfo.catDesc.Width / 2);
+	textureInfo.origin.y = float(textureInfo.catDesc.Height / 2);
+	textureInfo.scale = scale;
+}
 
-	// Render the text strings.
-	result = m_Text->Render(m_D3D->GetDeviceContext());
-	if (!result)
+void Scene2DClass::SetTextureAttributes(TextureInfo& textureInfo, WindowRegion windowRegion, float scale)
+{
+	textureInfo.origin.x = float(textureInfo.catDesc.Width / 2);
+	textureInfo.origin.y = float(textureInfo.catDesc.Height / 2);
+	textureInfo.scale = scale;
+
+	switch (windowRegion)
 	{
-		return false;
+		case TopLeft:
+			textureInfo.screenPos.x = textureInfo.origin.x * scale;
+			textureInfo.screenPos.y = textureInfo.origin.y * scale;
+			break;
+		case TopRight:
+			textureInfo.screenPos.x = m_windowInfo->m_screenWidth - textureInfo.origin.x * scale;
+			textureInfo.screenPos.y = textureInfo.origin.y * scale;
+			break;
+		case BottomLeft:
+			textureInfo.screenPos.x = textureInfo.origin.x * scale;
+			textureInfo.screenPos.y = m_windowInfo->m_screenHeight - textureInfo.origin.y * scale;
+			break;
+		case BottomRight:
+			textureInfo.screenPos.x = m_windowInfo->m_screenWidth - textureInfo.origin.x * scale;
+			textureInfo.screenPos.y = m_windowInfo->m_screenHeight - textureInfo.origin.y * scale;
+			break;
+		case Center:
+			textureInfo.screenPos.x = m_windowInfo->m_screenWidth / 2.f;
+			textureInfo.screenPos.y = m_windowInfo->m_screenHeight / 2.f;
+			break;
+		case CenterTop:
+			textureInfo.screenPos.x = m_windowInfo->m_screenWidth / 2.f;
+			textureInfo.screenPos.y = textureInfo.origin.y * scale;
+			break;
+		case CenterBottom:
+			textureInfo.screenPos.x = m_windowInfo->m_screenWidth / 2.f;
+			textureInfo.screenPos.y = m_windowInfo->m_screenHeight - textureInfo.origin.y * scale;
+			break;
+		case CenterLeft:
+			textureInfo.screenPos.x = textureInfo.origin.x * scale;
+			textureInfo.screenPos.y = m_windowInfo->m_screenHeight / 2.f;
+			break;
+		case CenterRight:
+			textureInfo.screenPos.x = m_windowInfo->m_screenWidth - textureInfo.origin.x * scale;
+			textureInfo.screenPos.y = m_windowInfo->m_screenHeight / 2.f;
+			break;
 	}
+}
 
-	// Turn off alpha blending after rendering the text.
-	m_D3D->TurnOffAlphaBlending();
-
-	return true;
+void Scene2DClass::SetTextAttributes(TextInfo& textInfo, const FontInfo& fontInfo, LPCSTR text, int posScreenX, int posScreenY)
+{
+	makeWChar(textInfo.text, text);
+	textInfo.strMeasure = fontInfo.font->MeasureString(textInfo.text);
+	textInfo.origin = textInfo.strMeasure / 2.f;
+	textInfo.screenPos.x = posScreenX;
+	textInfo.screenPos.y = posScreenY;
 }

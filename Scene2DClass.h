@@ -4,9 +4,10 @@
 #include "pch.h"
 
 #include "d3dclass.h"
-#include "bitmapclass.h"
-#include "textclass.h"
-#include "textureshaderclass.h"
+#include "WindowInfo.h"
+#include "TextureInfo.h"
+#include "FontTextInfo.h"
+#include "TextConverter.h"
 
 class Scene2DClass
 {
@@ -14,27 +15,28 @@ public:
 	Scene2DClass();
 	~Scene2DClass();
 
-	bool Initialize(D3DClass*, HWND, int , int, TextureShaderClass*, D3DXMATRIX);
+	bool Initialize(D3DClass*, WindowInfo*);
 	void Shutdown();
 
 	void Update();
 
 private:
-	bool UpdateTextures();
-	bool UpdateText();
+	void InitializeTexture(TextureInfo&, LPCSTR);
+	void InitializeFont(FontInfo&, LPCSTR);
+
+	void SetTextureAttributes(TextureInfo&, int, int, float);
+	void SetTextureAttributes(TextureInfo&, WindowRegion, float);
+
+	void SetTextAttributes(TextInfo&, const FontInfo&, LPCSTR, int, int);
 
 private:
 	D3DClass* m_D3D;
-	HWND m_hwnd;
-	BitmapClass* m_Bitmap;
-	TextClass* m_Text;
-	TextureShaderClass* m_TextureShader;
+	WindowInfo* m_windowInfo;
+	std::unique_ptr<DirectX::SpriteBatch> m_spriteBatch;
 
-	D3DXMATRIX m_staticWorldMatrix;
-	D3DXMATRIX m_staticOrthoMatrix;
-	D3DXMATRIX m_staticViewMatrix;
-
-	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> m_texture;
+	TextureInfo m_textureStonehenge;
+	FontInfo m_fontCurierNew32;
+	TextInfo m_simpleText;
 };
 
 #endif // SCENE2DCLASS_H
