@@ -33,10 +33,14 @@
 					<Add option="-std=gnu++11" />
 					<Add directory="C:/Program Files/Microsoft DirectX SDK (June 2010)/Include" />
 					<Add directory="C:/CppLibs/boost_1_56_0/boost_1_56_0" />
+					<Add directory="C:/CppLibs" />
+					<Add directory="E:/DirectXTK-master/Inc" />
+					<Add directory="E:/dxsdk-master/Include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
 					<Add library="C:\Program Files\Microsoft DirectX SDK (June 2010)\Lib\x86\*" />
+					<Add library="C:\CppLibs\DirectXTK.lib" />
 				</Linker>
 			</Target>
 		</Build>

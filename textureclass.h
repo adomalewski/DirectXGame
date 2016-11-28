@@ -1,12 +1,10 @@
 #ifndef TEXTURECLASS_H
 #define TEXTURECLASS_H
 
-#include "pch.h"
+#define DirectXTK 0
 
 #include <d3d11.h>
 #include <d3dx11tex.h>
-
-#include "TextConverter.h"
 
 class TextureClass
 {
@@ -22,8 +20,6 @@ public:
 
 private:
     ID3D11ShaderResourceView* m_texture;
-
-	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> textureTK;
 };
 
 #endif // TEXTURECLASS_H

@@ -5,7 +5,7 @@
 1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\inputclass.h
 	<dinput.h>
 
-1477600137 source:c:\users\andrz3j\documents\codeblocks\directxgame\main.cpp
+1480022825 source:c:\users\andrz3j\documents\codeblocks\directxgame\main.cpp
 	"systemclass.h"
 
 1478291182 c:\users\andrz3j\documents\codeblocks\directxgame\systemclass.h
@@ -13,36 +13,29 @@
 	"inputclass.h"
 	"graphicsclass.h"
 
-1479593979 c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.h
+1480023136 c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.h
+	"Scene2DClass.h"
 	"d3dclass.h"
 	"colorshaderclass.h"
 	"textureshaderclass.h"
 	"lightshaderclass.h"
 	"Scene3DClass.h"
-	"Scene2DClass.h"
 	"FrameInformation.h"
 	"InputClass.h"
 	"UserCamera.h"
 	"WindowInfo.h"
 
-1479571353 source:c:\users\andrz3j\documents\codeblocks\directxgame\systemclass.cpp
+1480009597 source:c:\users\andrz3j\documents\codeblocks\directxgame\systemclass.cpp
 	"systemclass.h"
 
-1479591076 source:c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.cpp
+1480023219 source:c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.cpp
 	"graphicsclass.h"
 
-1479591696 c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.h
+1480009597 c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.h
 	<dxgi.h>
 	<d3dcommon.h>
 	<d3d11.h>
 	<d3dx10math.h>
-	<d3dx11.h>
-	<d3dx10.h>
-	<xnamath.h>
-	<D3D10_1.h>
-	<D2D1.h>
-	<sstream>
-	<dwrite.h>
 
 1274305018 c:\program files\microsoft directx sdk (june 2010)\include\dxgi.h
 	"rpc.h"
@@ -166,7 +159,7 @@
 
 1274305017 c:\program files\microsoft directx sdk (june 2010)\include\d3dx10math.inl
 
-1479595351 source:c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.cpp
+1480009597 source:c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.cpp
 	"d3dclass.h"
 
 1479571352 c:\users\andrz3j\documents\codeblocks\directxgame\cameraclass.h
@@ -212,7 +205,7 @@
 1478945182 source:c:\users\andrz3j\documents\codeblocks\directxgame\modelclass.cpp
 	"modelclass.h"
 
-1478291206 c:\users\andrz3j\documents\codeblocks\directxgame\textureclass.h
+1480023804 c:\users\andrz3j\documents\codeblocks\directxgame\textureclass.h
 	<d3d11.h>
 	<d3dx11tex.h>
 
@@ -222,7 +215,7 @@
 	<d3dx11async.h>
 	<fstream>
 
-1477747975 source:c:\users\andrz3j\documents\codeblocks\directxgame\textureclass.cpp
+1480023773 source:c:\users\andrz3j\documents\codeblocks\directxgame\textureclass.cpp
 	"textureclass.h"
 
 1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\textureshaderclass.cpp
@@ -254,7 +247,7 @@
 1274305018 c:\program files\microsoft directx sdk (june 2010)\include\dinput.h
 	<objbase.h>
 
-1479571327 c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.h
+1480068511 c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.h
 	"d3dclass.h"
 	"modelclass.h"
 	"colorshaderclass.h"
@@ -265,14 +258,17 @@
 	"TriangleColorModel.h"
 	"TriangleTextureModel.h"
 	"TriangleTextureNormalModel.h"
+	"SimpleSurface.h"
 
 1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\frameinformation.h
 
-1479157876 c:\users\andrz3j\documents\codeblocks\directxgame\scene2dclass.h
+1480009597 c:\users\andrz3j\documents\codeblocks\directxgame\scene2dclass.h
+	"pch.h"
 	"d3dclass.h"
-	"bitmapclass.h"
-	"textclass.h"
-	"textureshaderclass.h"
+	"WindowInfo.h"
+	"TextureInfo.h"
+	"FontTextInfo.h"
+	"TextConverter.h"
 
 1479157563 c:\users\andrz3j\documents\codeblocks\directxgame\textclass.h
 	"fontclass.h"
@@ -299,13 +295,12 @@
 1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\hudbox.cpp
 	"HudBox.h"
 
-1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\hudbox.h
-	"textclass.h"
+1480009597 c:\users\andrz3j\documents\codeblocks\directxgame\hudbox.h
 
 1479157791 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene2dclass.cpp
 	"Scene2DClass.h"
 
-1479162375 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.cpp
+1480068693 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.cpp
 	"Scene3DClass.h"
 
 1479157530 source:c:\users\andrz3j\documents\codeblocks\directxgame\textclass.cpp
@@ -352,7 +347,7 @@
 	"ColorShaderClass.h"
 	<boost/tuple/tuple.hpp>
 
-1478969025 source:c:\users\andrz3j\documents\codeblocks\directxgame\trianglecolormodel.cpp
+1480009597 source:c:\users\andrz3j\documents\codeblocks\directxgame\trianglecolormodel.cpp
 	"TriangleColorModel.h"
 
 1399814854 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\tuple\tuple.hpp
@@ -1170,20 +1165,20 @@
 	<cstddef>
 	<boost/config.hpp>
 
-1479571352 c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturemodel.h
+1480009597 c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturemodel.h
 	"TextureModel.h"
 	"TextureShaderClass.h"
 	<boost/tuple/tuple.hpp>
 
-1478969046 source:c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturemodel.cpp
+1480009597 source:c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturemodel.cpp
 	"TriangleTextureModel.h"
 
-1479571352 c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturenormalmodel.h
+1480067453 c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturenormalmodel.h
 	"TextureNormalModel.h"
 	"LightShaderClass.h"
 	<boost/tuple/tuple.hpp>
 
-1478992834 source:c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturenormalmodel.cpp
+1480009597 source:c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturenormalmodel.cpp
 	"TriangleTextureNormalModel.h"
 
 1479571352 c:\users\andrz3j\documents\codeblocks\directxgame\usercamera.h
@@ -1243,4 +1238,241 @@
 	"UserCamera.h"
 
 1479590123 c:\users\andrz3j\documents\codeblocks\directxgame\windowinfo.h
+
+1480023678 c:\users\andrz3j\documents\codeblocks\directxgame\pch.h
+	"CommonStates.h"
+	"DDSTextureLoader.h"
+	"DirectXHelpers.h"
+	"Effects.h"
+	"GamePad.h"
+	"GeometricPrimitive.h"
+	"Model.h"
+	"PrimitiveBatch.h"
+	"ScreenGrab.h"
+	"SimpleMath.h"
+	"SpriteBatch.h"
+	"SpriteFont.h"
+	"VertexTypes.h"
+	"WICTextureLoader.h"
+
+1480018859 e:\directxtk-master\inc\commonstates.h
+	<d3d11_x.h>
+	<d3d11_1.h>
+	<memory>
+
+1479510477 e:\directxtk-master\inc\ddstextureloader.h
+	<d3d11_x.h>
+	<d3d11_1.h>
+	<stdint.h>
+
+1479510477 e:\directxtk-master\inc\directxhelpers.h
+	<d3d11_x.h>
+	<d3d11_1.h>
+	<exception>
+	<stdint.h>
+
+1479510477 e:\directxtk-master\inc\effects.h
+	<d3d11_x.h>
+	<d3d11_1.h>
+	<DirectXMath.h>
+	<memory>
+
+1479510477 e:\directxtk-master\inc\gamepad.h
+	<memory>
+	<stdint.h>
+	<string>
+
+1479510477 e:\directxtk-master\inc\geometricprimitive.h
+	"VertexTypes.h"
+	<DirectXColors.h>
+	<functional>
+	<memory>
+	<vector>
+
+1479510477 e:\directxtk-master\inc\vertextypes.h
+	<d3d11_x.h>
+	<d3d11_1.h>
+	<DirectXMath.h>
+
+1479510477 e:\directxtk-master\inc\model.h
+	<d3d11_x.h>
+	<d3d11_1.h>
+	<DirectXMath.h>
+	<DirectXCollision.h>
+	<memory>
+	<functional>
+	<set>
+	<string>
+	<vector>
+	<stdint.h>
+	<wrl\client.h>
+
+1479510477 e:\directxtk-master\inc\primitivebatch.h
+	<d3d11_x.h>
+	<d3d11_1.h>
+	<memory>
+	<utility>
+	<stdint.h>
+
+1479510477 e:\directxtk-master\inc\screengrab.h
+	<d3d11_x.h>
+	<d3d11_1.h>
+	<ocidl.h>
+	<functional>
+	<stdint.h>
+
+1479510477 e:\directxtk-master\inc\simplemath.h
+	<dxgi1_2.h>
+	<functional>
+	<assert.h>
+	<memory.h>
+	<DirectXMath.h>
+	<DirectXPackedVector.h>
+	<DirectXCollision.h>
+	"SimpleMath.inl"
+
+1479510477 e:\directxtk-master\inc\simplemath.inl
+
+1479510477 e:\directxtk-master\inc\spritebatch.h
+	<d3d11_x.h>
+	<d3d11_1.h>
+	<DirectXMath.h>
+	<DirectXColors.h>
+	<functional>
+	<memory>
+
+1479510477 e:\directxtk-master\inc\spritefont.h
+	"SpriteBatch.h"
+
+1479510477 e:\directxtk-master\inc\wictextureloader.h
+	<d3d11_x.h>
+	<d3d11_1.h>
+	<stdint.h>
+
+1480023074 c:\users\andrz3j\documents\codeblocks\directxgame\textconverter.h
+	<string>
+
+1480009597 c:\users\andrz3j\documents\codeblocks\directxgame\textureinfo.h
+	"pch.h"
+
+1480009597 c:\users\andrz3j\documents\codeblocks\directxgame\fonttextinfo.h
+	"pch.h"
+
+1474284760 e:\dxsdk-master\include\d3d11_1.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"oaidl.h"
+	"ocidl.h"
+	"dxgi1_2.h"
+	"d3dcommon.h"
+	"d3d11.h"
+
+1474284760 e:\dxsdk-master\include\dxgi1_2.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"dxgi.h"
+
+1474284760 e:\dxsdk-master\include\dxgi.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"oaidl.h"
+	"ocidl.h"
+	"dxgitype.h"
+
+1474284760 e:\dxsdk-master\include\dxgitype.h
+	"dxgiformat.h"
+
+1474284760 e:\dxsdk-master\include\dxgiformat.h
+
+1474284760 e:\dxsdk-master\include\d3dcommon.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"oaidl.h"
+	"ocidl.h"
+
+1474284760 e:\dxsdk-master\include\d3d11.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"oaidl.h"
+	"ocidl.h"
+	"dxgi.h"
+	"d3dcommon.h"
+	"d3d11sdklayers.h"
+	"d3d10_1.h"
+	"d3d10shader.h"
+	"d3d10_1shader.h"
+	"d3d10misc.h"
+	"d3d10effect.h"
+
+1474284760 e:\dxsdk-master\include\d3d11sdklayers.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"oaidl.h"
+	"ocidl.h"
+	"d3d11.h"
+
+1474284760 e:\dxsdk-master\include\d3d10_1.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"oaidl.h"
+	"ocidl.h"
+	"d3d10.h"
+	"d3d10_1shader.h"
+
+1474284760 e:\dxsdk-master\include\d3d10.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"oaidl.h"
+	"ocidl.h"
+	"dxgi.h"
+	"d3dcommon.h"
+	"d3d10sdklayers.h"
+	"d3d10misc.h"
+	"d3d10shader.h"
+	"d3d10effect.h"
+
+1474284760 e:\dxsdk-master\include\d3d10sdklayers.h
+	"rpc.h"
+	"rpcndr.h"
+	"windows.h"
+	"ole2.h"
+	"oaidl.h"
+	"ocidl.h"
+	"dxgi.h"
+
+1474284760 e:\dxsdk-master\include\d3d10misc.h
+	"d3d10.h"
+
+1474284760 e:\dxsdk-master\include\d3d10shader.h
+	"d3d10.h"
+
+1474284760 e:\dxsdk-master\include\d3d10effect.h
+	"d3d10.h"
+
+1474284760 e:\dxsdk-master\include\d3d10_1shader.h
+	"d3d10shader.h"
+
+1480067577 c:\users\andrz3j\documents\codeblocks\directxgame\simplesurface.h
+	"TextureNormalModel.h"
+	"LightShaderClass.h"
+	<boost/tuple/tuple.hpp>
+
+1480069121 source:c:\users\andrz3j\documents\codeblocks\directxgame\simplesurface.cpp
+	"SimpleSurface.h"
 

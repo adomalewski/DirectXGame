@@ -1,124 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Release" />
-	<File name="textureclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="174" topLine="1" />
-		</Cursor>
-	</File>
-	<File name="color.vs" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="294" topLine="9" />
-		</Cursor>
-	</File>
-	<File name="ColorModel.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="291" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="textureshaderclass.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="185" topLine="15" />
-		</Cursor>
-	</File>
-	<File name="colorshaderclass.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="677" topLine="68" />
-		</Cursor>
-	</File>
-	<File name="ColorModel.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="212" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="textureshaderclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="131" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="colorshaderclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="670" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="d3dclass.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="821" topLine="15" />
-		</Cursor>
-	</File>
-	<File name="d3dclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="183" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Scene2DClass.cpp" open="1" top="1" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1681" topLine="74" />
-		</Cursor>
-	</File>
-	<File name="graphicsclass.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4243" topLine="183" />
-		</Cursor>
-	</File>
-	<File name="Scene2DClass.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="227" topLine="5" />
-		</Cursor>
-	</File>
-	<File name="graphicsclass.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1007" topLine="23" />
-		</Cursor>
-	</File>
-	<File name="Scene3DClass.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2782" topLine="105" />
-		</Cursor>
-	</File>
-	<File name="Scene3DClass.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="430" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="inputclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="225" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="TextureModel.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1385" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="light.ps" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="696" topLine="17" />
-		</Cursor>
-	</File>
-	<File name="TextureModel.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="534" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="light.vs" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="739" topLine="20" />
-		</Cursor>
-	</File>
-	<File name="TextureNormalModel.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="766" topLine="0" />
-		</Cursor>
-	</File>
 	<File name="lightclass.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="143" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="TextureNormalModel.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Scene2DClass.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="420" topLine="0" />
+			<Cursor1 position="227" topLine="5" />
 		</Cursor>
 	</File>
 	<File name="lightclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -126,9 +16,9 @@
 			<Cursor1 position="203" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="TriangleColorModel.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Scene3DClass.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="725" topLine="89" />
+			<Cursor1 position="2782" topLine="105" />
 		</Cursor>
 	</File>
 	<File name="lightshaderclass.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -136,59 +26,9 @@
 			<Cursor1 position="735" topLine="31" />
 		</Cursor>
 	</File>
-	<File name="TriangleColorModel.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Scene3DClass.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="402" topLine="14" />
-		</Cursor>
-	</File>
-	<File name="lightshaderclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="208" topLine="6" />
-		</Cursor>
-	</File>
-	<File name="TriangleTextureModel.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2493" topLine="90" />
-		</Cursor>
-	</File>
-	<File name="main.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="304" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="TriangleTextureModel.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="449" topLine="14" />
-		</Cursor>
-	</File>
-	<File name="modelclass.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="481" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="TriangleTextureNormalModel.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3435" topLine="110" />
-		</Cursor>
-	</File>
-	<File name="modelclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="165" topLine="12" />
-		</Cursor>
-	</File>
-	<File name="TriangleTextureNormalModel.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="556" topLine="12" />
-		</Cursor>
-	</File>
-	<File name="systemclass.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2225" topLine="101" />
-		</Cursor>
-	</File>
-	<File name="systemclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="535" topLine="0" />
+			<Cursor1 position="430" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="VertexType.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -196,9 +36,14 @@
 			<Cursor1 position="295" topLine="3" />
 		</Cursor>
 	</File>
-	<File name="textclass.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="lightshaderclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="9078" topLine="0" />
+			<Cursor1 position="208" topLine="6" />
+		</Cursor>
+	</File>
+	<File name="TextureModel.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1385" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="bitmapclass.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -206,9 +51,14 @@
 			<Cursor1 position="4957" topLine="183" />
 		</Cursor>
 	</File>
-	<File name="textclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="520" topLine="23" />
+			<Cursor1 position="304" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="TextureModel.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="534" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="bitmapclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -216,19 +66,29 @@
 			<Cursor1 position="177" topLine="14" />
 		</Cursor>
 	</File>
-	<File name="texture.ps" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="modelclass.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="442" topLine="0" />
+			<Cursor1 position="481" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="cameraclass.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="TextureNormalModel.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="766" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="cameraclass.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1220" topLine="37" />
 		</Cursor>
 	</File>
-	<File name="texture.vs" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="modelclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="354" topLine="0" />
+			<Cursor1 position="165" topLine="12" />
+		</Cursor>
+	</File>
+	<File name="TextureNormalModel.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="420" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="cameraclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -236,14 +96,154 @@
 			<Cursor1 position="114" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="textureclass.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="TriangleColorModel.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="140" topLine="0" />
+			<Cursor1 position="725" topLine="89" />
 		</Cursor>
 	</File>
 	<File name="color.ps" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="185" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="systemclass.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2225" topLine="101" />
+		</Cursor>
+	</File>
+	<File name="TriangleColorModel.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="402" topLine="14" />
+		</Cursor>
+	</File>
+	<File name="color.vs" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="294" topLine="9" />
+		</Cursor>
+	</File>
+	<File name="systemclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="535" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="TriangleTextureModel.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2493" topLine="90" />
+		</Cursor>
+	</File>
+	<File name="colorshaderclass.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="677" topLine="68" />
+		</Cursor>
+	</File>
+	<File name="textclass.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9078" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="TriangleTextureModel.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="449" topLine="14" />
+		</Cursor>
+	</File>
+	<File name="colorshaderclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="670" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="textclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="520" topLine="23" />
+		</Cursor>
+	</File>
+	<File name="TriangleTextureNormalModel.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3435" topLine="110" />
+		</Cursor>
+	</File>
+	<File name="d3dclass.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="821" topLine="15" />
+		</Cursor>
+	</File>
+	<File name="texture.ps" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="442" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="TriangleTextureNormalModel.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="556" topLine="12" />
+		</Cursor>
+	</File>
+	<File name="d3dclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="183" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="texture.vs" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="354" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="textureclass.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="140" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="textureclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="174" topLine="1" />
+		</Cursor>
+	</File>
+	<File name="textureshaderclass.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="185" topLine="15" />
+		</Cursor>
+	</File>
+	<File name="textureshaderclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="131" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="ColorModel.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="291" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="graphicsclass.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4243" topLine="183" />
+		</Cursor>
+	</File>
+	<File name="ColorModel.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="212" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="graphicsclass.h" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1007" topLine="23" />
+		</Cursor>
+	</File>
+	<File name="inputclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="225" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="light.ps" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="696" topLine="17" />
+		</Cursor>
+	</File>
+	<File name="light.vs" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="739" topLine="20" />
+		</Cursor>
+	</File>
+	<File name="Scene2DClass.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1681" topLine="74" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

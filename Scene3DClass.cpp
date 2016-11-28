@@ -6,6 +6,7 @@ Scene3DClass::Scene3DClass()
 	m_TriangleTextureModel = 0;
 	m_TriangleTextureNormalModel = 0;
 	m_Light = 0;
+	m_SimpleSurface = 0;
 }
 
 Scene3DClass::~Scene3DClass()
@@ -41,10 +42,17 @@ bool Scene3DClass::Initialize(D3DClass* d3d, HWND hwnd, ColorShaderClass* colorS
 		return false;
 	}
 
+    m_SimpleSurface = new SimpleSurface;
+	if (!m_SimpleSurface)
+	{
+		return false;
+	}
+
 	// Initialize the model object.
 	result = result && m_TriangleColorModel->Initialize(m_D3D->GetDevice());
 	result = result && m_TriangleTextureModel->Initialize(m_D3D->GetDevice());
 	result = result && m_TriangleTextureNormalModel->Initialize(m_D3D->GetDevice());
+	result = result && m_SimpleSurface->Initialize(m_D3D->GetDevice());
 	if (!result)
 	{
 		MessageBox(m_hwnd, "Could not initialize the model object.", "Error", MB_OK);
@@ -60,14 +68,13 @@ bool Scene3DClass::Initialize(D3DClass* d3d, HWND hwnd, ColorShaderClass* colorS
 
 	// Initialize the light object.
 	m_Light->SetDiffuseColor(0.0f, 1.0f, 1.0f, 1.0f);
-	m_Light->SetDirection(0.0f, 0.0f, 1.0f);
+	m_Light->SetDirection(0.0f, -1.0f, 1.0f);
 
 	return true;
 }
 
 void Scene3DClass::Shutdown()
 {
-	// Release the model object.
 	if (m_TriangleColorModel)
 	{
 		m_TriangleColorModel->Shutdown();
@@ -89,11 +96,17 @@ void Scene3DClass::Shutdown()
 		m_TriangleTextureNormalModel = 0;
 	}
 
-	// Release the light object.
 	if (m_Light)
 	{
 		delete m_Light;
 		m_Light = 0;
+	}
+
+	if (m_SimpleSurface)
+	{
+		m_SimpleSurface->Shutdown();
+		delete m_SimpleSurface;
+		m_SimpleSurface = 0;
 	}
 }
 
@@ -123,6 +136,10 @@ void Scene3DClass::Update(FrameInformation frameInformation, D3DXMATRIX viewMatr
 	worldMatrix = matRotation * matTranslation;
 
     result = result && m_TriangleTextureNormalModel->Render(m_D3D->GetDeviceContext(), m_LightShader, worldMatrix,
+        viewMatrix, projectionMatrix, m_Light->GetDirection(), m_Light->GetDiffuseColor());
+
+    D3DXMatrixIdentity(&worldMatrix);
+    result = result && m_SimpleSurface->Render(m_D3D->GetDeviceContext(), m_LightShader, worldMatrix,
         viewMatrix, projectionMatrix, m_Light->GetDirection(), m_Light->GetDiffuseColor());
 
 	if (!result)

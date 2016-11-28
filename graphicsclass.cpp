@@ -72,6 +72,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, Inp
 		return false;
 	}
 
+    #if DirectXTK
 	// Create Scene 2D object
 	m_Scene2D = new Scene2DClass;
 	if (!m_Scene2D)
@@ -86,7 +87,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, Inp
 		MessageBox(hwnd, "Could not initialize Scene2D", "Error", MB_OK);
 		return false;
 	}
-
+    #endif
 
 	// Create Scene 3D object
 	m_Scene3D = new Scene3DClass;
@@ -212,12 +213,14 @@ void GraphicsClass::Shutdown()
 		m_UserCamera = 0;
 	}
 
+    #if DirectXTK
 	// Release the scene 2D object.
 	if (m_Scene2D)
 	{
 		delete m_Scene2D;
 		m_Scene2D = 0;
 	}
+	#endif
 
 	// Release the scene 3D object.
 	if (m_Scene3D)
@@ -279,7 +282,9 @@ bool GraphicsClass::Render()
 
 	m_Scene3D->Update(m_FrameInformation, viewMatrix);
 
+    #if DirectXTK
 	m_Scene2D->Update();
+	#endif
 
 	// Present the rendered scene to the screen.
 	m_D3D->EndScene();

@@ -18,13 +18,7 @@ bool TextureClass::Initialize(ID3D11Device* device, LPCSTR filename)
 	HRESULT result;
 
 	// Load the texture in.
-	//result = D3DX11CreateShaderResourceViewFromFile(device, filename, NULL, NULL, &m_texture, NULL);
-	LPCWSTR l_file;
-	makeWChar(l_file, filename);
-
-	result = CreateWICTextureFromFile(device, l_file, nullptr,
-		textureTK.ReleaseAndGetAddressOf());
-	m_texture = textureTK.Get();
+	result = D3DX11CreateShaderResourceViewFromFile(device, filename, NULL, NULL, &m_texture, NULL);
 
 	if(FAILED(result))
 	{

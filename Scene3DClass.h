@@ -11,6 +11,7 @@
 #include "TriangleColorModel.h"
 #include "TriangleTextureModel.h"
 #include "TriangleTextureNormalModel.h"
+#include "SimpleSurface.h"
 
 class Scene3DClass
 {
@@ -35,6 +36,7 @@ private:
 	TextureShaderClass* m_TextureShader;
 	LightShaderClass* m_LightShader;
 	LightClass* m_Light;
+	SimpleSurface* m_SimpleSurface;
 };
 
 #endif // SCENE3DCLASS_H

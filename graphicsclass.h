@@ -1,7 +1,12 @@
 #ifndef GRAPHICSCLASS_H
 #define GRAPHICSCLASS_H
 
+#define DirectXTK 0
+
+#if DirectXTK
 #include "Scene2DClass.h"
+#endif
+
 #include "d3dclass.h"
 #include "colorshaderclass.h"
 #include "textureshaderclass.h"
@@ -43,7 +48,11 @@ private:
 	ColorShaderClass* m_ColorShader;
 	TextureShaderClass* m_TextureShader;
 	LightShaderClass* m_LightShader;
+
+	#if DirectXTK
 	Scene2DClass* m_Scene2D;
+	#endif
+
 	Scene3DClass* m_Scene3D;
 	InputClass* m_Input;
 	UserCamera* m_UserCamera;

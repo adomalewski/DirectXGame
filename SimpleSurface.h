@@ -1,19 +1,19 @@
-#ifndef TRIANGLETEXTURENORMALMODEL_H
-#define TRIANGLETEXTURENORMALMODEL_H
+#ifndef SIMPLESURFACE_H
+#define SIMPLESURFACE_H
 
 #include "TextureNormalModel.h"
 #include "LightShaderClass.h"
 #include <boost/tuple/tuple.hpp>
 
-class TriangleTextureNormalModel
+class SimpleSurface
 {
 private:
     typedef boost::tuple<VertexTypeTextureNormal*, unsigned long*, int, int> ModelDataType;
 
 public:
-	TriangleTextureNormalModel();
-	TriangleTextureNormalModel(const TriangleTextureNormalModel&);
-	~TriangleTextureNormalModel();
+	SimpleSurface();
+	SimpleSurface(const SimpleSurface&);
+	~SimpleSurface();
 
 	bool Initialize(ID3D11Device*);
 	void Shutdown();
@@ -29,4 +29,4 @@ private:
     TextureNormalModel* m_TextureNormalModel;
 };
 
-#endif // TRIANGLETEXTURENORMALMODEL_H
+#endif // SIMPLESURFACE_H
