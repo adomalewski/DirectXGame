@@ -3,13 +3,11 @@
 
 #include "TextureNormalModel.h"
 #include "LightShaderClass.h"
-#include <boost/tuple/tuple.hpp>
+
+typedef TextureNormalModel::ModelDataType ModelDataType;
 
 class SimpleSurface
 {
-private:
-    typedef boost::tuple<VertexTypeTextureNormal*, unsigned long*, int, int> ModelDataType;
-
 public:
 	SimpleSurface();
 	SimpleSurface(const SimpleSurface&);

@@ -18,6 +18,9 @@ void UserActions::Initialize()
 	keyActionMapping.insert(pair<string, int>("Jump", DIK_SPACE));
 	keyActionMapping.insert(pair<string, int>("LayDown", DIK_Z));
 	keyActionMapping.insert(pair<string, int>("Crouch", DIK_C));
+
+	keyActionMapping.insert(pair<string, int>("Fire", MOUSE_LEFT));
+	keyActionMapping.insert(pair<string, int>("Zoom", MOUSE_RIGHT));
 }
 
 bool UserActions::IsMoveForward()
@@ -53,4 +56,14 @@ bool UserActions::IsLayDown()
 bool UserActions::IsCrouch()
 {
 	return m_Input->IsKeyPressed(keyActionMapping.find("Crouch")->second);
+}
+
+bool UserActions::IsFire()
+{
+	return m_Input->IsMouseButtonPressed(keyActionMapping.find("Fire")->second);
+}
+
+bool UserActions::IsZoom()
+{
+	return m_Input->IsMouseButtonPressed(keyActionMapping.find("Zoom")->second);
 }

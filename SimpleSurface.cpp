@@ -38,13 +38,15 @@ bool SimpleSurface::Initialize(ID3D11Device* device)
     return result;
 }
 
-SimpleSurface::ModelDataType SimpleSurface::CreateModelData()
+ModelDataType SimpleSurface::CreateModelData()
 {
     VertexTypeTextureNormal* vertices;
     unsigned long* indices;
 
-	int vertexCount = 6;
-	int indexCount = 6;
+	int lineAmount = 4;
+
+	int vertexCount = 6 * lineAmount * lineAmount;
+	int indexCount = vertexCount;
 
 	// Create the vertex array.
 	vertices = new VertexTypeTextureNormal[vertexCount];
@@ -60,39 +62,65 @@ SimpleSurface::ModelDataType SimpleSurface::CreateModelData()
 		return NULL;
 	}
 
-    // Load the vertex array with data.
-	vertices[0].position = D3DXVECTOR3(-1.0f, -1.0f, -1.0f);  // Bottom left.
-	vertices[0].texture = D3DXVECTOR2(0.0f, 1.0f);
-	vertices[0].normal = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	for (int i = 0, actIndex = 0; i < lineAmount; ++i) //y
+	{
+		for (int j = 0; j < lineAmount; ++j) //x
+		{
+			vertices[actIndex].position = D3DXVECTOR3(j, i, 0.0f);  // Bottom left.
+			vertices[actIndex].texture = D3DXVECTOR2(0.0f, 0.0f);
+			vertices[actIndex].normal = D3DXVECTOR3(0.0f, 0.0f, -1.0f);
+			indices[actIndex] = actIndex;
 
-	vertices[1].position = D3DXVECTOR3(-1.0f, -1.0f, 1.0f);  // Top middle.
-	vertices[1].texture = D3DXVECTOR2(0.5f, 0.0f);
-	vertices[1].normal = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+			++actIndex;;
+			vertices[actIndex].position = D3DXVECTOR3(j, i+1, 0.0f);  // Top left.
+			vertices[actIndex].texture = D3DXVECTOR2(0.5f, 0.0f);
+			vertices[actIndex].normal = D3DXVECTOR3(0.0f, 0.0f, -1.0f);
+			indices[actIndex] = actIndex;
 
-	vertices[2].position = D3DXVECTOR3(1.0f, -1.0f, -1.0f);  // Bottom right.
-	vertices[2].texture = D3DXVECTOR2(1.0f, 1.0f);
-	vertices[2].normal = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+			++actIndex;
+			vertices[actIndex].position = D3DXVECTOR3(j+1, i, 0.0f);  // Bottom right.
+			vertices[actIndex].texture = D3DXVECTOR2(1.0f, 1.0f);
+			vertices[actIndex].normal = D3DXVECTOR3(0.0f, 0.0f, -1.0f);
+			indices[actIndex] = actIndex;
 
-	vertices[3].position = D3DXVECTOR3(1.0f, -1.0f, -1.0f);  // Bottom right.
-	vertices[3].texture = D3DXVECTOR2(0.0f, 1.0f);
-	vertices[3].normal = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+			++actIndex;
+			vertices[actIndex].position = D3DXVECTOR3(j+1, i, 0.0f);  // Bottom left.
+			vertices[actIndex].texture = D3DXVECTOR2(0.0f, 1.0f);
+			vertices[actIndex].normal = D3DXVECTOR3(0.0f, 0.0f, -1.0f);
+			indices[actIndex] = actIndex;
 
-	vertices[4].position = D3DXVECTOR3(-1.0f, -1.0f, 1.0f);  // Top middle.
-	vertices[4].texture = D3DXVECTOR2(0.5f, 0.0f);
-	vertices[4].normal = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+			++actIndex;
+			vertices[actIndex].position = D3DXVECTOR3(j, i+1, 0.0f);  // Top left.
+			vertices[actIndex].texture = D3DXVECTOR2(0.5f, 0.0f);
+			vertices[actIndex].normal = D3DXVECTOR3(0.0f, 0.0f, -1.0f);
+			indices[actIndex] = actIndex;
 
-	vertices[5].position = D3DXVECTOR3(1.0f, -1.0f, 1.0f);  // Bottom left.
-	vertices[5].texture = D3DXVECTOR2(1.0f, 1.0f);
-	vertices[5].normal = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+			++actIndex;
+			vertices[actIndex].position = D3DXVECTOR3(j+1, i+1, 0.0f);  // Bottom right.
+			vertices[actIndex].texture = D3DXVECTOR2(1.0f, 1.0f);
+			vertices[actIndex].normal = D3DXVECTOR3(0.0f, 0.0f, -1.0f);
+			indices[actIndex] = actIndex;
 
-	// Load the index array with data.
-	indices[0] = 0;  // Bottom left.
-	indices[1] = 1;  // Top middle.
-	indices[2] = 2;  // Bottom right.
+			++actIndex;
+		}
+	}
 
-	indices[3] = 3;  // Bottom left.
-	indices[4] = 4;  // Top middle.
-	indices[5] = 5;  // Bottom right.
+	D3DXMATRIX finalMat, translMat, rotMat;
+
+	D3DXMatrixTranslation(&translMat, -0.5*lineAmount, -0.5*lineAmount, 0);
+	D3DXMatrixRotationX(&rotMat, D3DX_PI / 2);
+	finalMat = translMat * rotMat;
+	D3DXMatrixTranslation(&translMat, 0, -2.5f, 0);
+	finalMat *= translMat;
+
+	D3DXVec3TransformCoord(&vertices[0].normal, &vertices[0].normal, &finalMat);
+	D3DXVec3Normalize(&vertices[0].normal, &vertices[0].normal);
+	
+	for (int i = 0; i < vertexCount; ++i)
+	{
+		D3DXVec3TransformCoord(&vertices[i].position, &vertices[i].position, &finalMat);
+		vertices[i].normal = vertices[0].normal;
+	}
 
 	return boost::make_tuple(boost::ref(vertices), boost::ref(indices), vertexCount, indexCount);
 }

@@ -7,10 +7,9 @@
 
 class TriangleTextureModel
 {
-private:
-    typedef boost::tuple<VertexTypeTexture*, unsigned long*, int, int> ModelDataType;
-
 public:
+	typedef boost::tuple<VertexTypeTexture*, unsigned long*, int, int> ModelDataType;
+
 	TriangleTextureModel();
 	TriangleTextureModel(const TriangleTextureModel&);
 	~TriangleTextureModel();

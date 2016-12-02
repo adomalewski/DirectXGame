@@ -38,7 +38,7 @@ bool TriangleTextureNormalModel::Initialize(ID3D11Device* device)
     return result;
 }
 
-TriangleTextureNormalModel::ModelDataType TriangleTextureNormalModel::CreateModelData()
+ModelDataType TriangleTextureNormalModel::CreateModelData()
 {
     VertexTypeTextureNormal* vertices;
     unsigned long* indices;

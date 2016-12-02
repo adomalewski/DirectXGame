@@ -16,6 +16,8 @@ class InputActions
 {
 public:
 	virtual void Initialize() = 0;
+	bool IsMouseMoved() { return m_Input->IsMouseMoved(); }
+	void GetMouselXY(int& mouselX, int& mouselY) { m_Input->GetMouselXY(mouselX, mouselY); }
 
 protected:
 	InputClass* m_Input;

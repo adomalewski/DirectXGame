@@ -28,6 +28,8 @@ public:
 	bool IsJump();
 	bool IsLayDown();
 	bool IsCrouch();
+	bool IsFire();
+	bool IsZoom();
 };
 
 #endif // USERACTIONS_H

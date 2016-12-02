@@ -3,13 +3,11 @@
 
 #include "TextureNormalModel.h"
 #include "LightShaderClass.h"
-#include <boost/tuple/tuple.hpp>
+
+typedef TextureNormalModel::ModelDataType ModelDataType;
 
 class TriangleTextureNormalModel
 {
-private:
-    typedef boost::tuple<VertexTypeTextureNormal*, unsigned long*, int, int> ModelDataType;
-
 public:
 	TriangleTextureNormalModel();
 	TriangleTextureNormalModel(const TriangleTextureNormalModel&);

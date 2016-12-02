@@ -8,6 +8,9 @@
 
 #include <dinput.h>
 
+static const int MOUSE_LEFT = 0;
+static const int MOUSE_RIGHT = 1;
+
 class InputClass
 {
 public:
@@ -21,7 +24,10 @@ public:
 
 	bool IsEscapePressed();
 	void GetMouseLocation(int&, int&);
+	void GetMouselXY(int&, int&);
 	bool IsKeyPressed(int);
+	bool IsMouseButtonPressed(int);
+	bool IsMouseMoved();
 
 private:
 	bool ReadKeyboard();
@@ -35,6 +41,7 @@ private:
 
 	unsigned char m_keyboardState[256];
 	DIMOUSESTATE m_mouseState;
+	DIMOUSESTATE m_mouseLastState;
 
 	int m_screenWidth, m_screenHeight;
 	int m_mouseX, m_mouseY;

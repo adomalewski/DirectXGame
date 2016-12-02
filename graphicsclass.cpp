@@ -53,7 +53,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, Inp
 	m_UserActions->Initialize();
 
 	// Create the user camera object.
-	m_UserCamera = new UserCamera(m_UserActions);
+	m_UserCamera = new UserCamera(m_UserActions, FirstPerson);
 	if (!m_UserCamera)
 	{
 		return false;

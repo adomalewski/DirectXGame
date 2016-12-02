@@ -4,10 +4,13 @@
 #include "modelclass.h"
 #include "TextureModel.h"
 #include "VertexType.h"
+#include <boost/tuple/tuple.hpp>
 
 class TextureNormalModel : public TextureModel<VertexTypeTextureNormal>
 {
 public:
+	typedef boost::tuple<VertexTypeTextureNormal*, unsigned long*, int, int> ModelDataType;
+
 	TextureNormalModel();
 	TextureNormalModel(const TextureNormalModel&);
 	~TextureNormalModel();

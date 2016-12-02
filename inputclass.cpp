@@ -220,13 +220,39 @@ void InputClass::GetMouseLocation(int& mouseX, int& mouseY)
 {
 	mouseX = m_mouseX;
 	mouseY = m_mouseY;
-	return;
+}
+
+void InputClass::GetMouselXY(int& mouselX, int& mouselY)
+{
+	mouselX = m_mouseState.lX;
+	mouselY = m_mouseState.lY;
 }
 
 bool InputClass::IsKeyPressed(int keyCode)
 {
 	if (m_keyboardState[keyCode] & 0x80)
 	{
+		return true;
+	}
+
+	return false;
+}
+
+bool InputClass::IsMouseButtonPressed(int keyCode)
+{
+	if (m_mouseState.rgbButtons[keyCode] & 0x80)
+	{
+		return true;
+	}
+
+	return false;
+}
+
+bool InputClass::IsMouseMoved()
+{
+	if (m_mouseState.lX != m_mouseLastState.lX || m_mouseState.lY != m_mouseLastState.lY)
+	{
+		m_mouseLastState = m_mouseState;
 		return true;
 	}
 

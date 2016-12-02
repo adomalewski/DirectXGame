@@ -7,6 +7,7 @@ Scene3DClass::Scene3DClass()
 	m_TriangleTextureNormalModel = 0;
 	m_Light = 0;
 	m_SimpleSurface = 0;
+	m_appartmentModel = 0;
 }
 
 Scene3DClass::~Scene3DClass()
@@ -58,6 +59,16 @@ bool Scene3DClass::Initialize(D3DClass* d3d, HWND hwnd, ColorShaderClass* colorS
 		MessageBox(m_hwnd, "Could not initialize the model object.", "Error", MB_OK);
 		return false;
 	}
+
+	m_appartmentModel = new Obj3DModel;
+	if (!m_appartmentModel)
+	{
+		return false;
+	}
+
+	if (!LoadObjModel(m_D3D->GetDevice(), "spaceCompound.obj", &meshVertBuff, &meshIndexBuff, meshSubsetIndexStart, meshSubsetTexture, material, meshSubsets, true, false))
+		return false;
+https://www.braynzarsoft.net/viewtutorial/q16390-22-loading-static-3d-models-obj-format
 
 	// Create the light object.
 	m_Light = new LightClass;
