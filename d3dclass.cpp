@@ -346,7 +346,7 @@ bool D3DClass::Initialize(int screenWidth, int screenHeight, bool vsync, HWND hw
 	// Clear the second depth stencil state before setting the parameters.
 	ZeroMemory(&depthDisabledStencilDesc, sizeof(depthDisabledStencilDesc));
 
-	// Now create a second depth stencil state which turns off the Z buffer for 2D rendering.  The only difference is 
+	// Now create a second depth stencil state which turns off the Z buffer for 2D rendering.  The only difference is
 	// that DepthEnable is set to false, all other parameters are the same as the other depth stencil state.
 	depthDisabledStencilDesc.DepthEnable = false;
 	depthDisabledStencilDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
@@ -391,6 +391,28 @@ bool D3DClass::Initialize(int screenWidth, int screenHeight, bool vsync, HWND hw
 		return false;
 	}
 
+    // Clear the blend state description.
+	ZeroMemory(&blendStateDescription, sizeof(D3D11_BLEND_DESC));
+
+	// Create an alpha enabled blend state description.
+	blendStateDescription.RenderTarget[0].BlendEnable = TRUE;
+	blendStateDescription.RenderTarget[0].SrcBlend = D3D11_BLEND_INV_SRC_ALPHA;
+	blendStateDescription.RenderTarget[0].DestBlend = D3D11_BLEND_SRC_ALPHA;
+	blendStateDescription.RenderTarget[0].BlendOp = D3D11_BLEND_OP_ADD;
+	blendStateDescription.RenderTarget[0].SrcBlendAlpha = D3D11_BLEND_INV_SRC_ALPHA;
+	blendStateDescription.RenderTarget[0].DestBlendAlpha = D3D11_BLEND_SRC_ALPHA;
+	blendStateDescription.RenderTarget[0].BlendOpAlpha = D3D11_BLEND_OP_ADD;
+	blendStateDescription.RenderTarget[0].RenderTargetWriteMask = D3D10_COLOR_WRITE_ENABLE_ALL;
+
+    blendStateDescription.AlphaToCoverageEnable = false;
+
+	// Create the blend state using the description.
+	result = m_device->CreateBlendState(&blendStateDescription, &m_TransparencyBlendingState);
+	if (FAILED(result))
+	{
+		return false;
+	}
+
 	// Modify the description to create an alpha disabled blend state description.
 	blendStateDescription.RenderTarget[0].BlendEnable = FALSE;
 
@@ -428,6 +450,12 @@ void D3DClass::Shutdown()
 	{
 		m_alphaDisableBlendingState->Release();
 		m_alphaDisableBlendingState = 0;
+	}
+
+    if (m_TransparencyBlendingState)
+	{
+		m_TransparencyBlendingState->Release();
+		m_TransparencyBlendingState = 0;
 	}
 
 	if(m_rasterState)
@@ -592,6 +620,22 @@ void D3DClass::TurnOffAlphaBlending()
 
 	// Turn off the alpha blending.
 	m_deviceContext->OMSetBlendState(m_alphaDisableBlendingState, blendFactor, 0xffffffff);
+
+	return;
+}
+
+void D3DClass::TurnOnTransparencyBlending()
+{
+	float blendFactor[4];
+
+	// Setup the blend factor.
+	blendFactor[0] = 0.0f;
+	blendFactor[1] = 0.0f;
+	blendFactor[2] = 0.0f;
+	blendFactor[3] = 0.0f;
+
+	// Turn off the alpha blending.
+	m_deviceContext->OMSetBlendState(m_TransparencyBlendingState, blendFactor, 0xffffffff);
 
 	return;
 }

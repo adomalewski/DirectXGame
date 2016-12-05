@@ -38,6 +38,7 @@ public:
 
 	void TurnOnAlphaBlending();
 	void TurnOffAlphaBlending();
+	void TurnOnTransparencyBlending();
 
 private:
 	bool m_vsync_enabled;
@@ -60,6 +61,7 @@ private:
 
 	ID3D11BlendState* m_alphaEnableBlendingState;
 	ID3D11BlendState* m_alphaDisableBlendingState;
+	ID3D11BlendState* m_TransparencyBlendingState;
 };
 
 #endif // D3DCLASS_H

@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\inputclass.cpp
+1480697825 source:c:\users\andrz3j\documents\codeblocks\directxgame\inputclass.cpp
 	"inputclass.h"
 
-1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\inputclass.h
+1480697825 c:\users\andrz3j\documents\codeblocks\directxgame\inputclass.h
 	<dinput.h>
 
 1480022825 source:c:\users\andrz3j\documents\codeblocks\directxgame\main.cpp
@@ -28,10 +28,10 @@
 1480009597 source:c:\users\andrz3j\documents\codeblocks\directxgame\systemclass.cpp
 	"systemclass.h"
 
-1480023219 source:c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.cpp
+1480697825 source:c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.cpp
 	"graphicsclass.h"
 
-1480009597 c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.h
+1480705132 c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.h
 	<dxgi.h>
 	<d3dcommon.h>
 	<d3d11.h>
@@ -159,10 +159,10 @@
 
 1274305017 c:\program files\microsoft directx sdk (june 2010)\include\d3dx10math.inl
 
-1480009597 source:c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.cpp
+1480705278 source:c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.cpp
 	"d3dclass.h"
 
-1479571352 c:\users\andrz3j\documents\codeblocks\directxgame\cameraclass.h
+1480697825 c:\users\andrz3j\documents\codeblocks\directxgame\cameraclass.h
 	<d3dx10math.h>
 
 1478945134 c:\users\andrz3j\documents\codeblocks\directxgame\modelclass.h
@@ -196,7 +196,7 @@
 1274305017 c:\program files\microsoft directx sdk (june 2010)\include\d3dx11tex.h
 	"d3dx11.h"
 
-1479571352 source:c:\users\andrz3j\documents\codeblocks\directxgame\cameraclass.cpp
+1480697825 source:c:\users\andrz3j\documents\codeblocks\directxgame\cameraclass.cpp
 	"cameraclass.h"
 
 1477686160 source:c:\users\andrz3j\documents\codeblocks\directxgame\colorshaderclass.cpp
@@ -247,7 +247,7 @@
 1274305018 c:\program files\microsoft directx sdk (june 2010)\include\dinput.h
 	<objbase.h>
 
-1480068511 c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.h
+1480697825 c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.h
 	"d3dclass.h"
 	"modelclass.h"
 	"colorshaderclass.h"
@@ -259,6 +259,7 @@
 	"TriangleTextureModel.h"
 	"TriangleTextureNormalModel.h"
 	"SimpleSurface.h"
+	"Obj3DModel.h"
 
 1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\frameinformation.h
 
@@ -300,16 +301,16 @@
 1479157791 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene2dclass.cpp
 	"Scene2DClass.h"
 
-1480068693 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.cpp
+1480708953 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.cpp
 	"Scene3DClass.h"
 
 1479157530 source:c:\users\andrz3j\documents\codeblocks\directxgame\textclass.cpp
 	"textclass.h"
 
-1479571352 source:c:\users\andrz3j\documents\codeblocks\directxgame\useractions.cpp
+1480697825 source:c:\users\andrz3j\documents\codeblocks\directxgame\useractions.cpp
 	"UserActions.h"
 
-1479571352 c:\users\andrz3j\documents\codeblocks\directxgame\useractions.h
+1480697825 c:\users\andrz3j\documents\codeblocks\directxgame\useractions.h
 	<string>
 	<map>
 	"inputclass.h"
@@ -337,10 +338,11 @@
 	"modelclass.h"
 	"textureclass.h"
 
-1478990788 c:\users\andrz3j\documents\codeblocks\directxgame\texturenormalmodel.h
+1480697825 c:\users\andrz3j\documents\codeblocks\directxgame\texturenormalmodel.h
 	"modelclass.h"
 	"TextureModel.h"
 	"VertexType.h"
+	<boost/tuple/tuple.hpp>
 
 1479571352 c:\users\andrz3j\documents\codeblocks\directxgame\trianglecolormodel.h
 	"ColorModel.h"
@@ -1165,7 +1167,7 @@
 	<cstddef>
 	<boost/config.hpp>
 
-1480009597 c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturemodel.h
+1480697825 c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturemodel.h
 	"TextureModel.h"
 	"TextureShaderClass.h"
 	<boost/tuple/tuple.hpp>
@@ -1173,20 +1175,19 @@
 1480009597 source:c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturemodel.cpp
 	"TriangleTextureModel.h"
 
-1480067453 c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturenormalmodel.h
+1480697825 c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturenormalmodel.h
 	"TextureNormalModel.h"
 	"LightShaderClass.h"
-	<boost/tuple/tuple.hpp>
 
-1480009597 source:c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturenormalmodel.cpp
+1480697825 source:c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturenormalmodel.cpp
 	"TriangleTextureNormalModel.h"
 
-1479571352 c:\users\andrz3j\documents\codeblocks\directxgame\usercamera.h
+1480697825 c:\users\andrz3j\documents\codeblocks\directxgame\usercamera.h
 	<time.h>
 	"CameraClass.h"
 	"UserActions.h"
 
-1479571352 c:\users\andrz3j\documents\codeblocks\directxgame\inputactions.h
+1480697825 c:\users\andrz3j\documents\codeblocks\directxgame\inputactions.h
 	<string>
 	<map>
 	"inputclass.h"
@@ -1234,7 +1235,7 @@
 	<unknwn.h>
 	<dcommon.h>
 
-1479571352 source:c:\users\andrz3j\documents\codeblocks\directxgame\usercamera.cpp
+1480697825 source:c:\users\andrz3j\documents\codeblocks\directxgame\usercamera.cpp
 	"UserCamera.h"
 
 1479590123 c:\users\andrz3j\documents\codeblocks\directxgame\windowinfo.h
@@ -1349,7 +1350,8 @@
 	<d3d11_1.h>
 	<stdint.h>
 
-1480023074 c:\users\andrz3j\documents\codeblocks\directxgame\textconverter.h
+1480697825 c:\users\andrz3j\documents\codeblocks\directxgame\textconverter.h
+	<windows.h>
 	<string>
 
 1480009597 c:\users\andrz3j\documents\codeblocks\directxgame\textureinfo.h
@@ -1468,11 +1470,23 @@
 1474284760 e:\dxsdk-master\include\d3d10_1shader.h
 	"d3d10shader.h"
 
-1480067577 c:\users\andrz3j\documents\codeblocks\directxgame\simplesurface.h
+1480697825 c:\users\andrz3j\documents\codeblocks\directxgame\simplesurface.h
 	"TextureNormalModel.h"
 	"LightShaderClass.h"
-	<boost/tuple/tuple.hpp>
 
-1480069121 source:c:\users\andrz3j\documents\codeblocks\directxgame\simplesurface.cpp
+1480697825 source:c:\users\andrz3j\documents\codeblocks\directxgame\simplesurface.cpp
 	"SimpleSurface.h"
+
+1480708851 c:\users\andrz3j\documents\codeblocks\directxgame\obj3dmodel.h
+	<vector>
+	<fstream>
+	<sstream>
+	<d3d11.h>
+	<d3dx10math.h>
+	<d3dx11tex.h>
+	"TextureNormalModel.h"
+	"LightShaderClass.h"
+
+1480711472 source:c:\users\andrz3j\documents\codeblocks\directxgame\obj3dmodel.cpp
+	"Obj3DModel.h"
 

@@ -2,24 +2,23 @@
 
 Obj3DModel::Obj3DModel()
 {
+    meshSubsets = 0;
+    m_TextureNormalModel = 0;
 }
 
 Obj3DModel::~Obj3DModel()
 {
 }
 
-bool Obj3DModel::LoadObjModel(ID3D11Device* device,
+bool Obj3DModel::Initialize(ID3D11Device* device,
 	LPCSTR filename,
-	ID3D11Buffer** vertBuff,
-	ID3D11Buffer** indexBuff,
-	std::vector<int>& subsetIndexStart,
-	std::vector<int>& subsetMaterialArray,
-	std::vector<SurfaceMaterial>& material,
-	int& subsetCount,
 	bool isRHCoordSys,
 	bool computeNormals)
 {
 	HRESULT hr = 0;
+
+	ID3D11Buffer** indexBuff = &meshIndexBuff;
+	ID3D11Buffer** vertBuff = &meshVertBuff;
 
 	std::ifstream fileIn(filename);
 	//String to hold our obj material library filename
@@ -113,8 +112,8 @@ bool Obj3DModel::LoadObjModel(ID3D11Device* device,
 				checkChar = fileIn.get();
 				if (checkChar == ' ')
 				{
-					subsetIndexStart.push_back(vIndex);        //Start index for this subset
-					subsetCount++;
+					meshSubsetIndexStart.push_back(vIndex);        //Start index for this subset
+					meshSubsets++;
 				}
 				break;
 
@@ -204,15 +203,15 @@ bool Obj3DModel::LoadObjModel(ID3D11Device* device,
 									}
 
 									vertPart = "";    //Get ready for next vertex part
-									whichPart++;    //Move on to next vertex part                    
+									whichPart++;    //Move on to next vertex part
 								}
 							}
 
 							//Check to make sure there is at least one subset
-							if (subsetCount == 0)
+							if (meshSubsets == 0)
 							{
-								subsetIndexStart.push_back(vIndex);        //Start index for this subset
-								subsetCount++;
+								meshSubsetIndexStart.push_back(vIndex);        //Start index for this subset
+								meshSubsets++;
 							}
 
 							//Avoid duplicate vertices
@@ -359,7 +358,7 @@ bool Obj3DModel::LoadObjModel(ID3D11Device* device,
 								indices.push_back(totalVerts - 1);        //Set index for this vertex
 							}
 
-							//Set the second vertex for the next triangle to the last vertex we got        
+							//Set the second vertex for the next triangle to the last vertex we got
 							lastVIndex = indices[vIndex];    //The last vertex index of this TRIANGLE
 
 							meshTriangles++;    //New triangle defined
@@ -439,13 +438,13 @@ bool Obj3DModel::LoadObjModel(ID3D11Device* device,
 	else    //If we could not open the file
 		return false;
 
-	subsetIndexStart.push_back(vIndex); //There won't be another index start after our last subset, so set it here
+	meshSubsetIndexStart.push_back(vIndex); //There won't be another index start after our last subset, so set it here
 
 										//sometimes "g" is defined at the very top of the file, then again before the first group of faces.
 										//This makes sure the first subset does not conatain "0" indices.
-	if (subsetIndexStart[1] == 0)
+	if (meshSubsetIndexStart[1] == 0)
 	{
-		subsetIndexStart.erase(subsetIndexStart.begin() + 1);
+		meshSubsetIndexStart.erase(meshSubsetIndexStart.begin() + 1);
 		meshSubsets--;
 	}
 
@@ -509,7 +508,7 @@ bool Obj3DModel::LoadObjModel(ID3D11Device* device,
 				}
 				break;
 
-				//Check for transparency
+            //Check for transparency
 			case 'T':
 				checkChar = fileIn.get();
 				if (checkChar == 'r')
@@ -525,7 +524,7 @@ bool Obj3DModel::LoadObjModel(ID3D11Device* device,
 				}
 				break;
 
-				//Some obj files specify d for transparency
+            //Some obj files specify d for transparency
 			case 'd':
 				checkChar = fileIn.get();
 				if (checkChar == ' ')
@@ -679,18 +678,18 @@ bool Obj3DModel::LoadObjModel(ID3D11Device* device,
 		{
 			if (meshMaterials[i] == material[j].matName)
 			{
-				subsetMaterialArray.push_back(j);
+				meshSubsetTexture.push_back(j);
 				hasMat = true;
 			}
 		}
 		if (!hasMat)
-			subsetMaterialArray.push_back(0); //Use first material in array
+			meshSubsetTexture.push_back(0); //Use first material in array
 	}
 
 	std::vector<Vertex> vertices;
 	Vertex tempVert;
 
-	//Create our vertices using the information we got 
+	//Create our vertices using the information we got
 	//from the file and store them in a vector
 	for (int j = 0; j < totalVerts; ++j)
 	{
@@ -819,4 +818,24 @@ void Obj3DModel::Shutdown()
 {
 	meshVertBuff->Release();
 	meshIndexBuff->Release();
+
+    if (m_TextureNormalModel)
+	{
+		m_TextureNormalModel->Shutdown();
+		delete m_TextureNormalModel;
+		m_TextureNormalModel = 0;
+	}
+}
+
+bool Obj3DModel::Render(ID3D11DeviceContext* deviceContext, LightShaderClass* lightShader,
+    D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection,
+    D3DXVECTOR4 diffuseColor)
+{
+    /*bool result;
+
+    m_TextureNormalModel->Render(deviceContext);
+    result = lightShader->Render(deviceContext, m_TextureNormalModel->GetIndexCount(), worldMatrix,
+        viewMatrix, projectionMatrix, m_TextureNormalModel->GetTexture(), lightDirection, diffuseColor);
+
+    return result;*/
 }

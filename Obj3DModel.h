@@ -8,16 +8,16 @@
 #include <d3dx10math.h>
 #include <d3dx11tex.h>
 
+#include "TextureNormalModel.h"
+#include "LightShaderClass.h"
+
 struct cbPerObject
 {
 	D3DXMATRIX  WVP;
 	D3DXMATRIX World;
 
-	///////////////**************new**************////////////////////
-	//These will be used for the pixel shader
 	D3DXVECTOR4 difColor;
 	bool hasTexture;
-	///////////////**************new**************////////////////////
 };
 
 struct SurfaceMaterial
@@ -48,19 +48,20 @@ public:
 	Obj3DModel();
 	~Obj3DModel();
 
-	bool LoadObjModel(ID3D11Device*, LPCSTR, ID3D11Buffer**, ID3D11Buffer**,
-		std::vector<int>&, std::vector<int>&, std::vector<SurfaceMaterial>&,
-		int&, bool, bool);
+	bool Initialize(ID3D11Device* device,
+        LPCSTR filename,
+        bool isRHCoordSys = true,
+        bool computeNormals = false);
+	bool Render(ID3D11DeviceContext*, LightShaderClass*,
+        D3DXMATRIX, D3DXMATRIX, D3DXMATRIX, D3DXVECTOR3, D3DXVECTOR4);
 
 	void Shutdown();
 
 private:
-	ID3D11BlendState* Transparency;
-
 	ID3D11Buffer* meshVertBuff;
 	ID3D11Buffer* meshIndexBuff;
 	D3DXMATRIX meshWorld;
-	int meshSubsets = 0;
+	int meshSubsets;
 	std::vector<int> meshSubsetIndexStart;
 	std::vector<int> meshSubsetTexture;
 
@@ -68,5 +69,7 @@ private:
 	std::vector<std::string> textureNameArray;
 
 	std::vector<SurfaceMaterial> material;
+
+    TextureNormalModel* m_TextureNormalModel;
 };
 
