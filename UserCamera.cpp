@@ -66,18 +66,20 @@ void UserCamera::Update()
 
 void UserCamera::MoveForward()
 {
-	int y = m_position.y;
-	m_position += m_diffBackForward*(m_lookAt - m_position);
-	if (m_cameraType != FreeFly)
-		m_position.y = y;
+	D3DXVECTOR3 moveVector = m_lookAt - m_position;
+	if(m_cameraType != FreeFly)
+        MakeMoveVectorForFlatMovement(moveVector);
+
+	m_position += m_diffBackForward*moveVector;
 }
 
 void UserCamera::MoveBackward()
 {
-	int y = m_position.y;
-	m_position -= m_diffBackForward*(m_lookAt - m_position);
-	if (m_cameraType != FreeFly)
-		m_position.y = y;
+	D3DXVECTOR3 moveVector = m_lookAt - m_position;
+	if(m_cameraType != FreeFly)
+        MakeMoveVectorForFlatMovement(moveVector);
+
+	m_position -= m_diffBackForward*moveVector;
 }
 
 void UserCamera::MoveLeft()
@@ -130,4 +132,21 @@ void UserCamera::RotateCamera()
             (m_camPitch > -D3DX_PI/2 && tmpPitch <= -D3DX_PI/2)))
             m_camPitch += lY * m_speedCameraRotation;
     }
+}
+
+void UserCamera::MakeMoveVectorForFlatMovement(D3DXVECTOR3& vec)
+{
+    float x, z;
+    if(vec.x == 0)
+        z = vec.z/std::abs(vec.z);
+    if(vec.z == 0)
+        x = vec.x/std::abs(vec.x);
+    if(vec.x != 0 && vec.z != 0)
+    {
+        z = (vec.z/std::abs(vec.z))*std::sqrt(1/(1.0f + std::pow(vec.x/vec.z, 2)));
+        x = (vec.x/vec.z)*z;
+        x = (vec.x/std::abs(vec.x))*std::abs(x);
+    }
+
+    vec = D3DXVECTOR3(x, 0.0f, z);
 }

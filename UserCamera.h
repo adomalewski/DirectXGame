@@ -2,6 +2,7 @@
 #define USERCAMERA_H
 
 #include <time.h>
+#include <cmath>
 
 #include "CameraClass.h"
 #include "UserActions.h"
@@ -25,6 +26,8 @@ public:
 	void Zoom();
 
 	void RotateCamera();
+
+	void MakeMoveVectorForFlatMovement(D3DXVECTOR3&);
 
 private:
 	UserActions* m_UserActions;

@@ -1183,8 +1183,9 @@
 1481055969 source:c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturenormalmodel.cpp
 	"TriangleTextureNormalModel.h"
 
-1480697825 c:\users\andrz3j\documents\codeblocks\directxgame\usercamera.h
+1481064073 c:\users\andrz3j\documents\codeblocks\directxgame\usercamera.h
 	<time.h>
+	<cmath>
 	"CameraClass.h"
 	"UserActions.h"
 
