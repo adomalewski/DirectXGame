@@ -75,8 +75,12 @@ bool Scene3DClass::Initialize(D3DClass* d3d, HWND hwnd, ColorShaderClass* colorS
 	}
 
 	// Initialize the light object.
+	m_Light->SetAmbientColor(0.15f, 0.15f, 0.15f, 1.0f);
+	//m_Light->SetAmbientColor(0.0f, 0.0f, 0.0f, 1.0f);
 	m_Light->SetDiffuseColor(0.0f, 1.0f, 1.0f, 1.0f);
-	m_Light->SetDirection(0.0f, -1.0f, 1.0f);
+	m_Light->SetDirection(0.0f, 10.0f, 0.0f);
+	m_Light->SetSpecularColor(1.0f, 1.0f, 1.0f, 1.0f);
+	m_Light->SetSpecularPower(3.0f);
 
 	return true;
 }
@@ -151,11 +155,13 @@ void Scene3DClass::Update(FrameInformation frameInformation, D3DXMATRIX viewMatr
 	worldMatrix = matRotation * matTranslation;
 
     result = result && m_TriangleTextureNormalModel->Render(m_D3D->GetDeviceContext(), m_LightShader, worldMatrix,
-        viewMatrix, projectionMatrix, m_Light->GetDirection(), m_Light->GetDiffuseColor());
+        viewMatrix, projectionMatrix, m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor(),
+        frameInformation.userCameraPosition, m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
 
     D3DXMatrixIdentity(&worldMatrix);
     result = result && m_SimpleSurface->Render(m_D3D->GetDeviceContext(), m_LightShader, worldMatrix,
-        viewMatrix, projectionMatrix, m_Light->GetDirection(), m_Light->GetDiffuseColor());
+        viewMatrix, projectionMatrix, m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor(),
+        frameInformation.userCameraPosition, m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
 
 	if (!result)
 	{

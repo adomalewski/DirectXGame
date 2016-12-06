@@ -831,11 +831,11 @@ bool Obj3DModel::Render(ID3D11DeviceContext* deviceContext, LightShaderClass* li
     D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection,
     D3DXVECTOR4 diffuseColor)
 {
-    /*bool result;
+    bool result;
 
-    m_TextureNormalModel->Render(deviceContext);
+    /*m_TextureNormalModel->Render(deviceContext);
     result = lightShader->Render(deviceContext, m_TextureNormalModel->GetIndexCount(), worldMatrix,
-        viewMatrix, projectionMatrix, m_TextureNormalModel->GetTexture(), lightDirection, diffuseColor);
+        viewMatrix, projectionMatrix, m_TextureNormalModel->GetTexture(), lightDirection, diffuseColor);*/
 
-    return result;*/
+    return result;
 }

@@ -124,5 +124,10 @@ void UserCamera::RotateCamera()
 		m_camYaw += lX * m_speedCameraRotation;
 
 	if (m_cameraType != OnlyYaw)
-		m_camPitch += lY * m_speedCameraRotation;
+	{
+        float tmpPitch = m_camPitch + lY * m_speedCameraRotation;
+        if(!((m_camPitch < D3DX_PI/2 && tmpPitch >= D3DX_PI/2) ||
+            (m_camPitch > -D3DX_PI/2 && tmpPitch <= -D3DX_PI/2)))
+            m_camPitch += lY * m_speedCameraRotation;
+    }
 }

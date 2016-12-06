@@ -279,6 +279,7 @@ bool GraphicsClass::Render()
 
 	// Generate the view matrix based on the camera's position.
 	m_UserCamera->GetViewMatrix(viewMatrix);
+	m_FrameInformation.userCameraPosition = m_UserCamera->GetPosition();
 
 	m_Scene3D->Update(m_FrameInformation, viewMatrix);
 

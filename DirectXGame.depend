@@ -28,7 +28,7 @@
 1480009597 source:c:\users\andrz3j\documents\codeblocks\directxgame\systemclass.cpp
 	"systemclass.h"
 
-1480697825 source:c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.cpp
+1481056565 source:c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.cpp
 	"graphicsclass.h"
 
 1480705132 c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.h
@@ -221,19 +221,19 @@
 1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\textureshaderclass.cpp
 	"textureshaderclass.h"
 
-1478291104 c:\users\andrz3j\documents\codeblocks\directxgame\lightshaderclass.h
+1481055336 c:\users\andrz3j\documents\codeblocks\directxgame\lightshaderclass.h
 	<d3d11.h>
 	<d3dx10math.h>
 	<d3dx11async.h>
 	<fstream>
 
-1478291063 c:\users\andrz3j\documents\codeblocks\directxgame\lightclass.h
+1481055403 c:\users\andrz3j\documents\codeblocks\directxgame\lightclass.h
 	<d3dx10math.h>
 
-1477762730 source:c:\users\andrz3j\documents\codeblocks\directxgame\lightclass.cpp
+1481055616 source:c:\users\andrz3j\documents\codeblocks\directxgame\lightclass.cpp
 	"lightclass.h"
 
-1477761648 source:c:\users\andrz3j\documents\codeblocks\directxgame\lightshaderclass.cpp
+1481055187 source:c:\users\andrz3j\documents\codeblocks\directxgame\lightshaderclass.cpp
 	"lightshaderclass.h"
 
 1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\bitmapclass.h
@@ -261,7 +261,8 @@
 	"SimpleSurface.h"
 	"Obj3DModel.h"
 
-1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\frameinformation.h
+1481056478 c:\users\andrz3j\documents\codeblocks\directxgame\frameinformation.h
+	<d3dx10math.h>
 
 1480009597 c:\users\andrz3j\documents\codeblocks\directxgame\scene2dclass.h
 	"pch.h"
@@ -301,7 +302,7 @@
 1479157791 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene2dclass.cpp
 	"Scene2DClass.h"
 
-1480708953 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.cpp
+1481056945 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.cpp
 	"Scene3DClass.h"
 
 1479157530 source:c:\users\andrz3j\documents\codeblocks\directxgame\textclass.cpp
@@ -1175,11 +1176,11 @@
 1480009597 source:c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturemodel.cpp
 	"TriangleTextureModel.h"
 
-1480697825 c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturenormalmodel.h
+1481055931 c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturenormalmodel.h
 	"TextureNormalModel.h"
 	"LightShaderClass.h"
 
-1480697825 source:c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturenormalmodel.cpp
+1481055969 source:c:\users\andrz3j\documents\codeblocks\directxgame\triangletexturenormalmodel.cpp
 	"TriangleTextureNormalModel.h"
 
 1480697825 c:\users\andrz3j\documents\codeblocks\directxgame\usercamera.h
@@ -1470,11 +1471,11 @@
 1474284760 e:\dxsdk-master\include\d3d10_1shader.h
 	"d3d10shader.h"
 
-1480697825 c:\users\andrz3j\documents\codeblocks\directxgame\simplesurface.h
+1481055904 c:\users\andrz3j\documents\codeblocks\directxgame\simplesurface.h
 	"TextureNormalModel.h"
 	"LightShaderClass.h"
 
-1480697825 source:c:\users\andrz3j\documents\codeblocks\directxgame\simplesurface.cpp
+1481055887 source:c:\users\andrz3j\documents\codeblocks\directxgame\simplesurface.cpp
 	"SimpleSurface.h"
 
 1480708851 c:\users\andrz3j\documents\codeblocks\directxgame\obj3dmodel.h
@@ -1487,6 +1488,6 @@
 	"TextureNormalModel.h"
 	"LightShaderClass.h"
 
-1480711472 source:c:\users\andrz3j\documents\codeblocks\directxgame\obj3dmodel.cpp
+1481049728 source:c:\users\andrz3j\documents\codeblocks\directxgame\obj3dmodel.cpp
 	"Obj3DModel.h"
 

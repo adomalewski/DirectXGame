@@ -115,7 +115,7 @@ ModelDataType SimpleSurface::CreateModelData()
 
 	D3DXVec3TransformCoord(&vertices[0].normal, &vertices[0].normal, &finalMat);
 	D3DXVec3Normalize(&vertices[0].normal, &vertices[0].normal);
-	
+
 	for (int i = 0; i < vertexCount; ++i)
 	{
 		D3DXVec3TransformCoord(&vertices[i].position, &vertices[i].position, &finalMat);
@@ -147,13 +147,15 @@ void SimpleSurface::Shutdown()
 
 bool SimpleSurface::Render(ID3D11DeviceContext* deviceContext, LightShaderClass* lightShader,
     D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection,
-    D3DXVECTOR4 diffuseColor)
+    D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition,
+    D3DXVECTOR4 specularColor, float specularPower)
 {
     bool result;
 
     m_TextureNormalModel->Render(deviceContext);
     result = lightShader->Render(deviceContext, m_TextureNormalModel->GetIndexCount(), worldMatrix,
-        viewMatrix, projectionMatrix, m_TextureNormalModel->GetTexture(), lightDirection, diffuseColor);
+        viewMatrix, projectionMatrix, m_TextureNormalModel->GetTexture(), lightDirection,
+        ambientColor, diffuseColor, cameraPosition, specularColor, specularPower);
 
     return result;
 }

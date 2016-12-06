@@ -17,7 +17,8 @@ public:
 	void Shutdown();
 
 	bool Render(ID3D11DeviceContext*, LightShaderClass*, D3DXMATRIX,
-        D3DXMATRIX, D3DXMATRIX, D3DXVECTOR3, D3DXVECTOR4);
+        D3DXMATRIX, D3DXMATRIX, D3DXVECTOR3, D3DXVECTOR4, D3DXVECTOR4, D3DXVECTOR3,
+        D3DXVECTOR4, float);
 
 private:
     ModelDataType CreateModelData();
