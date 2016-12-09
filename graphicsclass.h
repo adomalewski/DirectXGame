@@ -11,6 +11,7 @@
 #include "colorshaderclass.h"
 #include "textureshaderclass.h"
 #include "lightshaderclass.h"
+#include "meshshaderclass.h"
 #include "Scene3DClass.h"
 #include "FrameInformation.h"
 #include "InputClass.h"
@@ -39,6 +40,7 @@ private:
 	bool InitializeColorShader();
 	bool InitializeTextureShader();
 	bool InitializeLightShader();
+	bool InitializeMeshShader();
 
 	void ComputeRotationInFrame();
 
@@ -48,6 +50,7 @@ private:
 	ColorShaderClass* m_ColorShader;
 	TextureShaderClass* m_TextureShader;
 	LightShaderClass* m_LightShader;
+	MeshShaderClass* m_MeshShader;
 
 	#if DirectXTK
 	Scene2DClass* m_Scene2D;

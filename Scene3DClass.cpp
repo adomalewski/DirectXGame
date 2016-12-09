@@ -7,7 +7,7 @@ Scene3DClass::Scene3DClass()
 	m_TriangleTextureNormalModel = 0;
 	m_Light = 0;
 	m_SimpleSurface = 0;
-	m_appartmentModel = 0;
+	m_AppartmentModel = 0;
 }
 
 Scene3DClass::~Scene3DClass()
@@ -15,7 +15,7 @@ Scene3DClass::~Scene3DClass()
 }
 
 bool Scene3DClass::Initialize(D3DClass* d3d, HWND hwnd, ColorShaderClass* colorShader,
-    TextureShaderClass* textureShader, LightShaderClass* lightShader)
+    TextureShaderClass* textureShader, LightShaderClass* lightShader, MeshShaderClass* meshShader)
 {
 	bool result = true;
 
@@ -24,6 +24,7 @@ bool Scene3DClass::Initialize(D3DClass* d3d, HWND hwnd, ColorShaderClass* colorS
 	m_ColorShader = colorShader;
 	m_TextureShader = textureShader;
 	m_LightShader = lightShader;
+	m_MeshShader = meshShader;
 
 	m_TriangleColorModel = new TriangleColorModel;
 	if (!m_TriangleColorModel)
@@ -60,11 +61,11 @@ bool Scene3DClass::Initialize(D3DClass* d3d, HWND hwnd, ColorShaderClass* colorS
 		return false;
 	}
 
-	m_appartmentModel = new Obj3DModel;
-	if (!m_appartmentModel)
+	m_AppartmentModel = new Obj3DModel;
+	if (!m_AppartmentModel)
 		return false;
 
-	if (!m_appartmentModel->Initialize(m_D3D->GetDevice(), "spaceCompound.obj"))
+	if (!m_AppartmentModel->Initialize(m_D3D->GetDevice(), "spaceCompound.obj"))
 		return false;
 
 	// Create the light object.
@@ -75,8 +76,7 @@ bool Scene3DClass::Initialize(D3DClass* d3d, HWND hwnd, ColorShaderClass* colorS
 	}
 
 	// Initialize the light object.
-	m_Light->SetAmbientColor(0.15f, 0.15f, 0.15f, 1.0f);
-	//m_Light->SetAmbientColor(0.0f, 0.0f, 0.0f, 1.0f);
+	m_Light->SetAmbientColor(0.6f, 0.6f, 0.6f, 1.0f);
 	m_Light->SetDiffuseColor(0.0f, 1.0f, 1.0f, 1.0f);
 	m_Light->SetDirection(0.0f, 10.0f, 0.0f);
 	m_Light->SetSpecularColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -108,11 +108,11 @@ void Scene3DClass::Shutdown()
 		m_TriangleTextureNormalModel = 0;
 	}
 
-    if (m_appartmentModel)
+    if (m_AppartmentModel)
 	{
-		m_appartmentModel->Shutdown();
-		delete m_appartmentModel;
-		m_appartmentModel = 0;
+		m_AppartmentModel->Shutdown();
+		delete m_AppartmentModel;
+		m_AppartmentModel = 0;
 	}
 
 	if (m_Light)
@@ -132,7 +132,7 @@ void Scene3DClass::Shutdown()
 void Scene3DClass::Update(FrameInformation frameInformation, D3DXMATRIX viewMatrix)
 {
 	bool result = true;
-	D3DXMATRIX worldMatrix, matTranslation, matRotation, projectionMatrix;
+	D3DXMATRIX worldMatrix, matTranslation, matRotation, matScale, projectionMatrix;
 
 	m_D3D->GetWorldMatrix(worldMatrix);
 	m_D3D->GetProjectionMatrix(projectionMatrix);
@@ -159,9 +159,19 @@ void Scene3DClass::Update(FrameInformation frameInformation, D3DXMATRIX viewMatr
         frameInformation.userCameraPosition, m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
 
     D3DXMatrixIdentity(&worldMatrix);
+
     result = result && m_SimpleSurface->Render(m_D3D->GetDeviceContext(), m_LightShader, worldMatrix,
         viewMatrix, projectionMatrix, m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor(),
         frameInformation.userCameraPosition, m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
+
+	D3DXMatrixTranslation(&matTranslation, 0.0f, 0.0f, 0.0f);
+	D3DXMatrixRotationX(&matRotation, D3DX_PI / 8);
+	D3DXMatrixScaling(&matScale, 0.1f, 0.1f, 0.1f);
+	worldMatrix = matScale * matRotation * matTranslation;
+
+	result = result && m_AppartmentModel->Render(m_D3D->GetDeviceContext(), m_D3D, m_MeshShader, worldMatrix,
+		viewMatrix, projectionMatrix, m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor(),
+		frameInformation.userCameraPosition, m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
 
 	if (!result)
 	{

@@ -827,15 +827,64 @@ void Obj3DModel::Shutdown()
 	}
 }
 
-bool Obj3DModel::Render(ID3D11DeviceContext* deviceContext, LightShaderClass* lightShader,
-    D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection,
-    D3DXVECTOR4 diffuseColor)
+bool Obj3DModel::Render(ID3D11DeviceContext* deviceContext, D3DClass* d3d, MeshShaderClass* meshShader,
+	D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection,
+	D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition,
+	D3DXVECTOR4 specularColor, float specularPower)
 {
-    bool result;
+	bool result = true;
 
-    /*m_TextureNormalModel->Render(deviceContext);
-    result = lightShader->Render(deviceContext, m_TextureNormalModel->GetIndexCount(), worldMatrix,
-        viewMatrix, projectionMatrix, m_TextureNormalModel->GetTexture(), lightDirection, diffuseColor);*/
+	unsigned int stride;
+	unsigned int offset;
 
-    return result;
+	// Set vertex buffer stride and offset.
+	stride = sizeof(Vertex);
+	offset = 0;
+
+	//Set the grounds index buffer
+	deviceContext->IASetIndexBuffer(meshIndexBuff, DXGI_FORMAT_R32_UINT, 0);
+	//Set the grounds vertex buffer
+	deviceContext->IASetVertexBuffers(0, 1, &meshVertBuff, &stride, &offset);
+
+	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+	//Draw our model's NON-transparent subsets
+	for (int i = 0; i < meshSubsets; ++i)
+	{
+		int indexStart = meshSubsetIndexStart[i];
+		int indexDrawAmount = meshSubsetIndexStart[i + 1] - meshSubsetIndexStart[i];
+		if (!material[meshSubsetTexture[i]].transparent)
+			result = meshShader->Render(deviceContext, indexDrawAmount, indexStart, worldMatrix, viewMatrix, projectionMatrix,
+				material[meshSubsetTexture[i]].hasTexture ? meshSRV[material[meshSubsetTexture[i]].texArrayIndex] : NULL,
+				lightDirection, ambientColor, diffuseColor, cameraPosition, specularColor, specularPower,
+				material[meshSubsetTexture[i]].difColor, material[meshSubsetTexture[i]].hasTexture);
+
+		if (FAILED(result))
+		{
+			return false;
+		}
+	}
+
+	//Draw our model's TRANSPARENT subsets now
+	d3d->TurnOnTransparencyBlending();
+
+	for (int i = 0; i < meshSubsets; ++i)
+	{
+		int indexStart = meshSubsetIndexStart[i];
+		int indexDrawAmount = meshSubsetIndexStart[i + 1] - meshSubsetIndexStart[i];
+		if (material[meshSubsetTexture[i]].transparent)
+			result = meshShader->Render(deviceContext, indexDrawAmount, indexStart, worldMatrix, viewMatrix, projectionMatrix,
+				material[meshSubsetTexture[i]].hasTexture ? meshSRV[material[meshSubsetTexture[i]].texArrayIndex] : NULL,
+				lightDirection, ambientColor, diffuseColor, cameraPosition, specularColor, specularPower,
+				material[meshSubsetTexture[i]].difColor, material[meshSubsetTexture[i]].hasTexture);
+
+		if (FAILED(result))
+		{
+			return false;
+		}
+	}
+
+	d3d->TurnOffAlphaBlending();
+
+    return true;
 }

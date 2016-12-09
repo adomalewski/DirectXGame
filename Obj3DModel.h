@@ -8,17 +8,9 @@
 #include <d3dx10math.h>
 #include <d3dx11tex.h>
 
+#include "d3dclass.h"
 #include "TextureNormalModel.h"
-#include "LightShaderClass.h"
-
-struct cbPerObject
-{
-	D3DXMATRIX  WVP;
-	D3DXMATRIX World;
-
-	D3DXVECTOR4 difColor;
-	bool hasTexture;
-};
+#include "MeshShaderClass.h"
 
 struct SurfaceMaterial
 {
@@ -52,8 +44,9 @@ public:
         LPCSTR filename,
         bool isRHCoordSys = true,
         bool computeNormals = false);
-	bool Render(ID3D11DeviceContext*, LightShaderClass*,
-        D3DXMATRIX, D3DXMATRIX, D3DXMATRIX, D3DXVECTOR3, D3DXVECTOR4);
+	bool Render(ID3D11DeviceContext*, D3DClass*, MeshShaderClass*, D3DXMATRIX,
+		D3DXMATRIX, D3DXMATRIX, D3DXVECTOR3, D3DXVECTOR4, D3DXVECTOR4, D3DXVECTOR3,
+		D3DXVECTOR4, float);
 
 	void Shutdown();
 

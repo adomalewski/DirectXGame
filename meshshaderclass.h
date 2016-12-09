@@ -21,6 +21,7 @@ private:
 	{
 		D3DXVECTOR4 difColor;
 		bool hasTexture;
+		D3DXVECTOR3 padding;
 	};
 
 	struct CameraBufferType
@@ -45,7 +46,7 @@ public:
 
 	bool Initialize(ID3D11Device*, HWND);
 	void Shutdown();
-	bool Render(ID3D11DeviceContext*, int, D3DXMATRIX, D3DXMATRIX, D3DXMATRIX, ID3D11ShaderResourceView*, D3DXVECTOR3,
+	bool Render(ID3D11DeviceContext*, int, int, D3DXMATRIX, D3DXMATRIX, D3DXMATRIX, ID3D11ShaderResourceView*, D3DXVECTOR3,
 		D3DXVECTOR4, D3DXVECTOR4, D3DXVECTOR3, D3DXVECTOR4, float, D3DXVECTOR4, bool);
 
 private:
@@ -55,7 +56,7 @@ private:
 
 	bool SetShaderParameters(ID3D11DeviceContext*, D3DXMATRIX, D3DXMATRIX, D3DXMATRIX, ID3D11ShaderResourceView*, D3DXVECTOR3,
 		D3DXVECTOR4, D3DXVECTOR4, D3DXVECTOR3, D3DXVECTOR4, float, D3DXVECTOR4, bool);
-	void RenderShader(ID3D11DeviceContext*, int);
+	void RenderShader(ID3D11DeviceContext*, int, int);
 
 private:
 	ID3D11VertexShader* m_vertexShader;
@@ -66,6 +67,8 @@ private:
 	ID3D11Buffer* m_meshBuffer;
 	ID3D11Buffer* m_cameraBuffer;
 	ID3D11Buffer* m_lightBuffer;
+
+	ID3D11RasterizerState* RSCullNone;
 };
 
 #endif // MESHSHADERCLASS_H

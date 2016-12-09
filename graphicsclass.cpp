@@ -8,6 +8,7 @@ GraphicsClass::GraphicsClass()
 	m_ColorShader = 0;
 	m_TextureShader = 0;
 	m_LightShader = 0;
+	m_MeshShader = 0;
 	m_FrameInformation.rotation = 0.0f;
 }
 
@@ -53,7 +54,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, Inp
 	m_UserActions->Initialize();
 
 	// Create the user camera object.
-	m_UserCamera = new UserCamera(m_UserActions, FirstPerson);
+	m_UserCamera = new UserCamera(m_UserActions, FreeFly);
 	if (!m_UserCamera)
 	{
 		return false;
@@ -67,6 +68,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, Inp
 	result = InitializeColorShader();
 	result = result && InitializeTextureShader();
 	result = result && InitializeLightShader();
+	result = result && InitializeMeshShader();
 	if (!result)
 	{
 		return false;
@@ -97,7 +99,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, Inp
 	}
 
 	// Initialize the Scene 3D object.
-	result = m_Scene3D->Initialize(m_D3D, hwnd, m_ColorShader, m_TextureShader, m_LightShader);
+	result = m_Scene3D->Initialize(m_D3D, hwnd, m_ColorShader, m_TextureShader, m_LightShader, m_MeshShader);
 	if (!result)
 	{
 		MessageBox(hwnd, "Could not initialize Scene3D", "Error", MB_OK);
@@ -173,6 +175,28 @@ bool GraphicsClass::InitializeLightShader()
 	return true;
 }
 
+bool GraphicsClass::InitializeMeshShader()
+{
+	bool result;
+
+	// Create the mesh shader object.
+	m_MeshShader = new MeshShaderClass;
+	if (!m_MeshShader)
+	{
+		return false;
+	}
+
+	// Initialize the mesh shader object.
+	result = m_MeshShader->Initialize(m_D3D->GetDevice(), m_windowInfo->m_hwnd);
+	if (!result)
+	{
+		MessageBox(m_windowInfo->m_hwnd, "Could not initialize the mesh shader object.", "Error", MB_OK);
+		return false;
+	}
+
+	return true;
+}
+
 void GraphicsClass::Shutdown()
 {
 	// Release the light shader object.
@@ -181,6 +205,14 @@ void GraphicsClass::Shutdown()
 		m_LightShader->Shutdown();
 		delete m_LightShader;
 		m_LightShader = 0;
+	}
+
+	// Release the mesh shader object.
+	if (m_MeshShader)
+	{
+		m_MeshShader->Shutdown();
+		delete m_MeshShader;
+		m_MeshShader = 0;
 	}
 
     // Release the texture shader object.

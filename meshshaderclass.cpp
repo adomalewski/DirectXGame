@@ -42,7 +42,7 @@ void MeshShaderClass::Shutdown()
 	return;
 }
 
-bool MeshShaderClass::Render(ID3D11DeviceContext* deviceContext, int indexCount, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix,
+bool MeshShaderClass::Render(ID3D11DeviceContext* deviceContext, int indexCount, int indexStart, D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix,
 	D3DXMATRIX projectionMatrix, ID3D11ShaderResourceView* texture, D3DXVECTOR3 lightDirection, D3DXVECTOR4 ambientColor,
 	D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition, D3DXVECTOR4 specularColor, float specularPower, D3DXVECTOR4 difColor, bool hasTexture)
 {
@@ -57,7 +57,7 @@ bool MeshShaderClass::Render(ID3D11DeviceContext* deviceContext, int indexCount,
 	}
 
 	// Now render the prepared buffers with the shader.
-	RenderShader(deviceContext, indexCount);
+	RenderShader(deviceContext, indexCount, indexStart);
 
 	return true;
 }
@@ -185,7 +185,7 @@ bool MeshShaderClass::InitializeShader(ID3D11Device* device, HWND hwnd, LPCSTR v
 	samplerDesc.AddressW = D3D11_TEXTURE_ADDRESS_WRAP;
 	samplerDesc.MipLODBias = 0.0f;
 	samplerDesc.MaxAnisotropy = 1;
-	samplerDesc.ComparisonFunc = D3D11_COMPARISON_ALWAYS;
+	samplerDesc.ComparisonFunc = D3D11_COMPARISON_ALWAYS;//NEVER
 	samplerDesc.BorderColor[0] = 0;
 	samplerDesc.BorderColor[1] = 0;
 	samplerDesc.BorderColor[2] = 0;
@@ -199,6 +199,21 @@ bool MeshShaderClass::InitializeShader(ID3D11Device* device, HWND hwnd, LPCSTR v
 	{
 		return false;
 	}
+
+
+	D3D11_RASTERIZER_DESC cmdesc;
+
+	ZeroMemory(&cmdesc, sizeof(D3D11_RASTERIZER_DESC));
+	cmdesc.FillMode = D3D11_FILL_SOLID;
+	cmdesc.FrontCounterClockwise = false;
+	cmdesc.CullMode = D3D11_CULL_NONE;
+	//cmdesc.FillMode = D3D11_FILL_WIREFRAME;
+	result = device->CreateRasterizerState(&cmdesc, &RSCullNone);
+	if (FAILED(result))
+	{
+		return false;
+	}
+
 
 	// Setup the description of the camera dynamic constant buffer that is in the vertex shader.
 	cameraBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
@@ -424,8 +439,8 @@ bool MeshShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D3
 	// Now set the camera constant buffer in the vertex shader with the updated values.
 	deviceContext->VSSetConstantBuffers(bufferNumber, 1, &m_cameraBuffer);
 
-	// Lock the mesh constant buffer so it can be written to.
-	result = deviceContext->Map(m_meshBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
+	// Lock the light constant buffer so it can be written to.
+	result = deviceContext->Map(m_lightBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
 	if (FAILED(result))
 	{
 		return false;
@@ -450,12 +465,20 @@ bool MeshShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D3
 	// Finally set the light constant buffer in the pixel shader with the updated values.
 	deviceContext->PSSetConstantBuffers(bufferNumber, 1, &m_lightBuffer);
 
+	// Lock the mesh constant buffer so it can be written to.
+	result = deviceContext->Map(m_meshBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
+	if (FAILED(result))
+	{
+		return false;
+	}
+
 	// Get a pointer to the data in the constant buffer.
 	dataPtr4 = (MeshBufferType*)mappedResource.pData;
 
 	// Copy the mesh variables into the constant buffer.
 	dataPtr4->difColor = difColor;
 	dataPtr4->hasTexture = hasTexture;
+	dataPtr4->padding = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
 	// Unlock the constant buffer.
 	deviceContext->Unmap(m_meshBuffer, 0);
@@ -466,11 +489,17 @@ bool MeshShaderClass::SetShaderParameters(ID3D11DeviceContext* deviceContext, D3
 	// Finally set the mesh constant buffer in the pixel shader with the updated values.
 	deviceContext->PSSetConstantBuffers(bufferNumber, 1, &m_meshBuffer);
 
+	// Set shader texture resource in the pixel shader.
+	if(hasTexture)
+		deviceContext->PSSetShaderResources(0, 1, &texture);
+
 	return true;
 }
 
-void MeshShaderClass::RenderShader(ID3D11DeviceContext* deviceContext, int indexCount)
+void MeshShaderClass::RenderShader(ID3D11DeviceContext* deviceContext, int indexCount, int indexStart)
 {
+	deviceContext->RSSetState(RSCullNone);
+
 	// Set the vertex input layout.
 	deviceContext->IASetInputLayout(m_layout);
 
@@ -482,7 +511,7 @@ void MeshShaderClass::RenderShader(ID3D11DeviceContext* deviceContext, int index
 	deviceContext->PSSetSamplers(0, 1, &m_sampleState);
 
 	// Render the triangle.
-	deviceContext->DrawIndexed(indexCount, 0, 0);
+	deviceContext->DrawIndexed(indexCount, indexStart, 0);
 
 	return;
 }
