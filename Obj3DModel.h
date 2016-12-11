@@ -9,7 +9,6 @@
 #include <d3dx11tex.h>
 
 #include "d3dclass.h"
-#include "TextureNormalModel.h"
 #include "MeshShaderClass.h"
 
 struct SurfaceMaterial
@@ -62,7 +61,5 @@ private:
 	std::vector<std::string> textureNameArray;
 
 	std::vector<SurfaceMaterial> material;
-
-    TextureNormalModel* m_TextureNormalModel;
 };
 

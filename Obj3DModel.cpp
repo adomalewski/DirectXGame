@@ -3,7 +3,6 @@
 Obj3DModel::Obj3DModel()
 {
     meshSubsets = 0;
-    m_TextureNormalModel = 0;
 }
 
 Obj3DModel::~Obj3DModel()
@@ -818,13 +817,6 @@ void Obj3DModel::Shutdown()
 {
 	meshVertBuff->Release();
 	meshIndexBuff->Release();
-
-    if (m_TextureNormalModel)
-	{
-		m_TextureNormalModel->Shutdown();
-		delete m_TextureNormalModel;
-		m_TextureNormalModel = 0;
-	}
 }
 
 bool Obj3DModel::Render(ID3D11DeviceContext* deviceContext, D3DClass* d3d, MeshShaderClass* meshShader,

@@ -4,7 +4,6 @@
 #include <d3d11.h>
 #include <d3dx10math.h>
 
-#include "textureclass.h"
 #include "VertexType.h"
 
 class ModelBase
@@ -20,13 +19,14 @@ public:
 	~ModelClass();
 
 	void Shutdown();
+
 	void Render(ID3D11DeviceContext*);
+	void Render(ID3D11DeviceContext*, D3D_PRIMITIVE_TOPOLOGY);
 
 	int GetIndexCount();
 
 private:
 	void ShutdownBuffers();
-	void RenderBuffers(ID3D11DeviceContext*);
 
 protected:
 	ID3D11Buffer *m_vertexBuffer, *m_indexBuffer;

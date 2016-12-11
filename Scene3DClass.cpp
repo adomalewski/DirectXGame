@@ -8,6 +8,7 @@ Scene3DClass::Scene3DClass()
 	m_Light = 0;
 	m_SimpleSurface = 0;
 	m_AppartmentModel = 0;
+	m_OneLine = 0;
 }
 
 Scene3DClass::~Scene3DClass()
@@ -50,11 +51,18 @@ bool Scene3DClass::Initialize(D3DClass* d3d, HWND hwnd, ColorShaderClass* colorS
 		return false;
 	}
 
+	m_OneLine = new DrawLine3DSpace;
+	if (!m_OneLine)
+	{
+		return false;
+	}
+
 	// Initialize the model object.
 	result = result && m_TriangleColorModel->Initialize(m_D3D->GetDevice());
 	result = result && m_TriangleTextureModel->Initialize(m_D3D->GetDevice());
 	result = result && m_TriangleTextureNormalModel->Initialize(m_D3D->GetDevice());
 	result = result && m_SimpleSurface->Initialize(m_D3D->GetDevice());
+	result = result && m_OneLine->Initialize(m_D3D->GetDevice());
 	if (!result)
 	{
 		MessageBox(m_hwnd, "Could not initialize the model object.", "Error", MB_OK);
@@ -106,6 +114,13 @@ void Scene3DClass::Shutdown()
 		m_TriangleTextureNormalModel->Shutdown();
 		delete m_TriangleTextureNormalModel;
 		m_TriangleTextureNormalModel = 0;
+	}
+
+	if (m_OneLine)
+	{
+		m_OneLine->Shutdown();
+		delete m_OneLine;
+		m_OneLine = 0;
 	}
 
     if (m_AppartmentModel)
@@ -164,6 +179,11 @@ void Scene3DClass::Update(FrameInformation frameInformation, D3DXMATRIX viewMatr
         viewMatrix, projectionMatrix, m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor(),
         frameInformation.userCameraPosition, m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
 
+    D3DXMatrixIdentity(&worldMatrix);
+
+    result = result && m_OneLine->Render(m_D3D->GetDeviceContext(), m_ColorShader, worldMatrix,
+        viewMatrix, projectionMatrix);
+
 	D3DXMatrixTranslation(&matTranslation, 0.0f, 0.0f, 0.0f);
 	D3DXMatrixRotationX(&matRotation, D3DX_PI / 8);
 	D3DXMatrixScaling(&matScale, 0.1f, 0.1f, 0.1f);
@@ -175,6 +195,6 @@ void Scene3DClass::Update(FrameInformation frameInformation, D3DXMATRIX viewMatr
 
 	if (!result)
 	{
-		MessageBox(m_hwnd, "Could not render shader", "Error", MB_OK);
+		MessageBox(m_hwnd, "Scene3DClass::Update problem", "Error", MB_OK);
 	}
 }

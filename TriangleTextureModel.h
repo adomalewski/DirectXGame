@@ -1,9 +1,10 @@
 #ifndef TRIANGLETEXTUREMODEL_H
 #define TRIANGLETEXTUREMODEL_H
 
+#include <boost/tuple/tuple.hpp>
+
 #include "TextureModel.h"
 #include "TextureShaderClass.h"
-#include <boost/tuple/tuple.hpp>
 
 class TriangleTextureModel
 {

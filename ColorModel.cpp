@@ -82,3 +82,23 @@ bool ColorModel::InitializeBuffers(ID3D11Device* device, VertexTypeColor* vertic
 
 	return true;
 }
+
+void ColorModel::ReleaseModelData(VertexTypeColor* vertices, unsigned long* indices)
+{
+    delete [] vertices;
+	vertices = 0;
+
+	delete [] indices;
+	indices = 0;
+}
+
+bool ColorModel::Render(ID3D11DeviceContext* deviceContext, ColorShaderClass* colorShader, D3DXMATRIX worldMatrix,
+			      D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3D_PRIMITIVE_TOPOLOGY primitiveTopology)
+{
+    bool result;
+
+    ModelClass::Render(deviceContext, primitiveTopology);
+    result = colorShader->Render(deviceContext, GetIndexCount(), worldMatrix, viewMatrix, projectionMatrix);
+
+    return result;
+}

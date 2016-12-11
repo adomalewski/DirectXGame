@@ -1,18 +1,18 @@
-#include "TriangleColorModel.h"
+#include "DrawLine3DSpace.h"
 
-TriangleColorModel::TriangleColorModel()
+DrawLine3DSpace::DrawLine3DSpace()
 {
 }
 
-TriangleColorModel::TriangleColorModel(const TriangleColorModel& other)
+DrawLine3DSpace::DrawLine3DSpace(const DrawLine3DSpace& other)
 {
 }
 
-TriangleColorModel::~TriangleColorModel()
+DrawLine3DSpace::~DrawLine3DSpace()
 {
 }
 
-bool TriangleColorModel::Initialize(ID3D11Device* device)
+bool DrawLine3DSpace::Initialize(ID3D11Device* device)
 {
     bool result = true;
     ModelDataType modelDataType;
@@ -31,13 +31,13 @@ bool TriangleColorModel::Initialize(ID3D11Device* device)
     return result;
 }
 
-ColorModel::ModelDataType TriangleColorModel::CreateModelData()
+ColorModel::ModelDataType DrawLine3DSpace::CreateModelData()
 {
     VertexTypeColor* vertices;
     unsigned long* indices;
 
-	int vertexCount = 3;
-	int indexCount = 3;
+	int vertexCount = 2;
+	int indexCount = 2;
 
 	// Create the vertex array.
 	vertices = new VertexTypeColor[vertexCount];
@@ -54,19 +54,22 @@ ColorModel::ModelDataType TriangleColorModel::CreateModelData()
 	}
 
     // Load the vertex array with data.
-	vertices[0].position = D3DXVECTOR3(-1.0f, -1.0f, 0.0f);  // Bottom left.
-	vertices[0].color = D3DXVECTOR4(0.0f, 1.0f, 0.0f, 1.0f);
+	vertices[0].position = D3DXVECTOR3(0.0f, -2.0f, 0.0f);
+	vertices[0].color = D3DXVECTOR4(0.0f, 1.0f, 1.0f, 1.0f);
 
-	vertices[1].position = D3DXVECTOR3(0.0f, 1.0f, 0.0f);  // Top middle.
-	vertices[1].color = D3DXVECTOR4(0.0f, 1.0f, 0.0f, 1.0f);
-
-	vertices[2].position = D3DXVECTOR3(1.0f, -1.0f, 0.0f);  // Bottom right.
-	vertices[2].color = D3DXVECTOR4(0.0f, 1.0f, 0.0f, 1.0f);
+	vertices[1].position = D3DXVECTOR3(1.0f, 5.0f, 3.0f);
+	vertices[1].color = D3DXVECTOR4(1.0f, 1.0f, 0.0f, 1.0f);
 
 	// Load the index array with data.
 	indices[0] = 0;  // Bottom left.
 	indices[1] = 1;  // Top middle.
-	indices[2] = 2;  // Bottom right.
 
 	return boost::make_tuple(boost::ref(vertices), boost::ref(indices), vertexCount, indexCount);
+}
+
+bool DrawLine3DSpace::Render(ID3D11DeviceContext* deviceContext, ColorShaderClass* colorShader, D3DXMATRIX worldMatrix,
+			      D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix)
+{
+    return ColorModel::Render(deviceContext, colorShader, worldMatrix, viewMatrix, projectionMatrix,
+        D3D_PRIMITIVE_TOPOLOGY_LINELIST);
 }
