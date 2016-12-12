@@ -23,8 +23,6 @@ public:
 
     void ReleaseModelData(VertexTypeColor*, unsigned long*);
 
-    virtual ModelDataType CreateModelData() = 0;
-
 private:
     bool InitializeBuffers(ID3D11Device*, VertexTypeColor*, unsigned long*, int, int);
 };

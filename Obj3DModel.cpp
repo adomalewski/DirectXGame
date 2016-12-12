@@ -819,14 +819,9 @@ void Obj3DModel::Shutdown()
 	meshIndexBuff->Release();
 }
 
-bool Obj3DModel::Render(ID3D11DeviceContext* deviceContext, D3DClass* d3d, MeshShaderClass* meshShader,
-	D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection,
-	D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition,
-	D3DXVECTOR4 specularColor, float specularPower)
+void Obj3DModel::SetRenderBuffers(ID3D11DeviceContext* deviceContext)
 {
-	bool result = true;
-
-	unsigned int stride;
+    unsigned int stride;
 	unsigned int offset;
 
 	// Set vertex buffer stride and offset.
@@ -839,8 +834,18 @@ bool Obj3DModel::Render(ID3D11DeviceContext* deviceContext, D3DClass* d3d, MeshS
 	deviceContext->IASetVertexBuffers(0, 1, &meshVertBuff, &stride, &offset);
 
 	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+}
 
-	//Draw our model's NON-transparent subsets
+bool Obj3DModel::RenderNonTransparent(ID3D11DeviceContext* deviceContext, MeshShaderClass* meshShader,
+	D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection,
+	D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition,
+	D3DXVECTOR4 specularColor, float specularPower)
+{
+    bool result = true;
+
+    SetRenderBuffers(deviceContext);
+
+    //Draw our model's NON-transparent subsets
 	for (int i = 0; i < meshSubsets; ++i)
 	{
 		int indexStart = meshSubsetIndexStart[i];
@@ -857,7 +862,19 @@ bool Obj3DModel::Render(ID3D11DeviceContext* deviceContext, D3DClass* d3d, MeshS
 		}
 	}
 
-	//Draw our model's TRANSPARENT subsets now
+	return true;
+}
+
+bool Obj3DModel::RenderTransparent(ID3D11DeviceContext* deviceContext, D3DClass* d3d, MeshShaderClass* meshShader,
+	D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection,
+	D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition,
+	D3DXVECTOR4 specularColor, float specularPower)
+{
+    bool result = true;
+
+    SetRenderBuffers(deviceContext);
+
+    //Draw our model's TRANSPARENT subsets now
 	d3d->TurnOnTransparencyBlending();
 
 	for (int i = 0; i < meshSubsets; ++i)
@@ -877,6 +894,34 @@ bool Obj3DModel::Render(ID3D11DeviceContext* deviceContext, D3DClass* d3d, MeshS
 	}
 
 	d3d->TurnOffAlphaBlending();
+
+	return true;
+}
+
+bool Obj3DModel::Render(ID3D11DeviceContext* deviceContext, D3DClass* d3d, MeshShaderClass* meshShader,
+	D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix, D3DXVECTOR3 lightDirection,
+	D3DXVECTOR4 ambientColor, D3DXVECTOR4 diffuseColor, D3DXVECTOR3 cameraPosition,
+	D3DXVECTOR4 specularColor, float specularPower)
+{
+	bool result;
+
+    //SetRenderBuffers();
+
+    result = RenderNonTransparent(deviceContext, meshShader,
+        worldMatrix, viewMatrix, projectionMatrix, lightDirection,
+        ambientColor, diffuseColor, cameraPosition, specularColor, specularPower);
+    if (FAILED(result))
+    {
+        return false;
+    }
+
+    result = RenderTransparent(deviceContext, d3d, meshShader,
+        worldMatrix, viewMatrix, projectionMatrix, lightDirection,
+        ambientColor, diffuseColor, cameraPosition, specularColor, specularPower);
+    if (FAILED(result))
+    {
+        return false;
+    }
 
     return true;
 }

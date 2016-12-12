@@ -14,7 +14,7 @@
 #include "TriangleTextureNormalModel.h"
 #include "SimpleSurface.h"
 #include "Obj3DModel.h"
-#include "DrawLine3DSpace.h"
+#include "Axes3DSpace.h"
 
 class Scene3DClass
 {
@@ -42,7 +42,7 @@ private:
 	LightClass* m_Light;
 	SimpleSurface* m_SimpleSurface;
 	Obj3DModel* m_AppartmentModel;
-	DrawLine3DSpace* m_OneLine;
+	Axes3DSpace* m_Axes3D;
 };
 
 #endif // SCENE3DCLASS_H

@@ -1,8 +1,6 @@
 #ifndef TRIANGLECOLORMODEL_H
 #define TRIANGLECOLORMODEL_H
 
-#include <boost/tuple/tuple.hpp>
-
 #include "ColorModel.h"
 
 class TriangleColorModel : public ColorModel
@@ -14,7 +12,7 @@ public:
 
 	bool Initialize(ID3D11Device*);
 
-    virtual ModelDataType CreateModelData();
+    ModelDataType CreateModelData();
 };
 
 #endif // TRIANGLECOLORMODEL_H

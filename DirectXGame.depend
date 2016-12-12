@@ -247,7 +247,7 @@
 1274305018 c:\program files\microsoft directx sdk (june 2010)\include\dinput.h
 	<objbase.h>
 
-1481488877 c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.h
+1481565039 c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.h
 	"d3dclass.h"
 	"modelclass.h"
 	"colorshaderclass.h"
@@ -261,7 +261,7 @@
 	"TriangleTextureNormalModel.h"
 	"SimpleSurface.h"
 	"Obj3DModel.h"
-	"DrawLine3DSpace.h"
+	"Axes3DSpace.h"
 
 1481056478 c:\users\andrz3j\documents\codeblocks\directxgame\frameinformation.h
 	<d3dx10math.h>
@@ -304,7 +304,7 @@
 1479157791 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene2dclass.cpp
 	"Scene2DClass.h"
 
-1481489944 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.cpp
+1481565190 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.cpp
 	"Scene3DClass.h"
 
 1479157530 source:c:\users\andrz3j\documents\codeblocks\directxgame\textclass.cpp
@@ -322,7 +322,7 @@
 1481473351 source:c:\users\andrz3j\documents\codeblocks\directxgame\colormodel.cpp
 	"ColorModel.h"
 
-1481472581 c:\users\andrz3j\documents\codeblocks\directxgame\colormodel.h
+1481568231 c:\users\andrz3j\documents\codeblocks\directxgame\colormodel.h
 	<boost/tuple/tuple.hpp>
 	"VertexType.h"
 	"ColorShaderClass.h"
@@ -349,8 +349,7 @@
 	"VertexType.h"
 	<boost/tuple/tuple.hpp>
 
-1481473562 c:\users\andrz3j\documents\codeblocks\directxgame\trianglecolormodel.h
-	<boost/tuple/tuple.hpp>
+1481568336 c:\users\andrz3j\documents\codeblocks\directxgame\trianglecolormodel.h
 	"ColorModel.h"
 
 1481473693 source:c:\users\andrz3j\documents\codeblocks\directxgame\trianglecolormodel.cpp
@@ -1482,7 +1481,7 @@
 1481055887 source:c:\users\andrz3j\documents\codeblocks\directxgame\simplesurface.cpp
 	"SimpleSurface.h"
 
-1481388368 c:\users\andrz3j\documents\codeblocks\directxgame\obj3dmodel.h
+1481568470 c:\users\andrz3j\documents\codeblocks\directxgame\obj3dmodel.h
 	<vector>
 	<fstream>
 	<sstream>
@@ -1492,7 +1491,7 @@
 	"d3dclass.h"
 	"MeshShaderClass.h"
 
-1481388394 source:c:\users\andrz3j\documents\codeblocks\directxgame\obj3dmodel.cpp
+1481568644 source:c:\users\andrz3j\documents\codeblocks\directxgame\obj3dmodel.cpp
 	"Obj3DModel.h"
 
 1481385542 c:\users\andrz3j\documents\codeblocks\directxgame\meshshaderclass.h
@@ -1504,10 +1503,15 @@
 1481385542 source:c:\users\andrz3j\documents\codeblocks\directxgame\meshshaderclass.cpp
 	"meshshaderclass.h"
 
-1481490024 source:c:\users\andrz3j\documents\codeblocks\directxgame\drawline3dspace.cpp
+1481568405 source:c:\users\andrz3j\documents\codeblocks\directxgame\drawline3dspace.cpp
 	"DrawLine3DSpace.h"
 
-1481484943 c:\users\andrz3j\documents\codeblocks\directxgame\drawline3dspace.h
-	<boost/tuple/tuple.hpp>
+1481568345 c:\users\andrz3j\documents\codeblocks\directxgame\drawline3dspace.h
 	"ColorModel.h"
+
+1481567797 c:\users\andrz3j\documents\codeblocks\directxgame\axes3dspace.h
+	"DrawLine3DSpace.h"
+
+1481567937 source:c:\users\andrz3j\documents\codeblocks\directxgame\axes3dspace.cpp
+	"Axes3DSpace.h"
 

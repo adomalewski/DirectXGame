@@ -43,11 +43,20 @@ public:
         LPCSTR filename,
         bool isRHCoordSys = true,
         bool computeNormals = false);
+
 	bool Render(ID3D11DeviceContext*, D3DClass*, MeshShaderClass*, D3DXMATRIX,
 		D3DXMATRIX, D3DXMATRIX, D3DXVECTOR3, D3DXVECTOR4, D3DXVECTOR4, D3DXVECTOR3,
 		D3DXVECTOR4, float);
+    bool RenderNonTransparent(ID3D11DeviceContext*, MeshShaderClass*, D3DXMATRIX,
+		D3DXMATRIX, D3DXMATRIX, D3DXVECTOR3, D3DXVECTOR4, D3DXVECTOR4, D3DXVECTOR3,
+		D3DXVECTOR4, float);
+    bool RenderTransparent(ID3D11DeviceContext*, D3DClass*, MeshShaderClass*, D3DXMATRIX,
+		D3DXMATRIX, D3DXMATRIX, D3DXVECTOR3, D3DXVECTOR4, D3DXVECTOR4, D3DXVECTOR3,
+		D3DXVECTOR4, float);
 
-	void Shutdown();
+    void Shutdown();
+
+    void SetRenderBuffers(ID3D11DeviceContext*);
 
 private:
 	ID3D11Buffer* meshVertBuff;
