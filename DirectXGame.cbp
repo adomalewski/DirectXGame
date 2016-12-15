@@ -34,13 +34,10 @@
 					<Add directory="C:/Program Files/Microsoft DirectX SDK (June 2010)/Include" />
 					<Add directory="C:/CppLibs/boost_1_56_0/boost_1_56_0" />
 					<Add directory="C:/CppLibs" />
-					<Add directory="E:/DirectXTK-master/Inc" />
-					<Add directory="E:/dxsdk-master/Include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
 					<Add library="C:\Program Files\Microsoft DirectX SDK (June 2010)\Lib\x86\*" />
-					<Add library="C:\CppLibs\DirectXTK.lib" />
 				</Linker>
 			</Target>
 		</Build>
@@ -53,16 +50,30 @@
 			<Add library="kernel32" />
 			<Add library="comctl32" />
 		</Linker>
+		<Unit filename="Axes3DSpace.cpp" />
+		<Unit filename="Axes3DSpace.h" />
 		<Unit filename="ColorModel.cpp" />
 		<Unit filename="ColorModel.h" />
+		<Unit filename="DrawLine3DSpace.cpp" />
+		<Unit filename="DrawLine3DSpace.h" />
+		<Unit filename="FontTextInfo.h" />
 		<Unit filename="FrameInformation.h" />
 		<Unit filename="HudBox.cpp" />
 		<Unit filename="HudBox.h" />
 		<Unit filename="InputActions.h" />
-		<Unit filename="Scene2DClass.cpp" />
+		<Unit filename="Obj3DModel.cpp" />
+		<Unit filename="Obj3DModel.h" />
+		<Unit filename="Scene2DClass.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
 		<Unit filename="Scene2DClass.h" />
 		<Unit filename="Scene3DClass.cpp" />
 		<Unit filename="Scene3DClass.h" />
+		<Unit filename="SimpleSurface.cpp" />
+		<Unit filename="SimpleSurface.h" />
+		<Unit filename="TextConverter.h" />
+		<Unit filename="TextureInfo.h" />
 		<Unit filename="TextureModel.cpp" />
 		<Unit filename="TextureModel.h" />
 		<Unit filename="TextureNormalModel.cpp" />
@@ -78,6 +89,7 @@
 		<Unit filename="UserCamera.cpp" />
 		<Unit filename="UserCamera.h" />
 		<Unit filename="VertexType.h" />
+		<Unit filename="WindowInfo.h" />
 		<Unit filename="bitmapclass.cpp" />
 		<Unit filename="bitmapclass.h" />
 		<Unit filename="cameraclass.cpp" />
@@ -88,14 +100,6 @@
 		<Unit filename="colorshaderclass.h" />
 		<Unit filename="d3dclass.cpp" />
 		<Unit filename="d3dclass.h" />
-		<Unit filename="font.dds" />
-		<Unit filename="font.ps" />
-		<Unit filename="font.vs" />
-		<Unit filename="fontclass.cpp" />
-		<Unit filename="fontclass.h" />
-		<Unit filename="fontdata.txt" />
-		<Unit filename="fontshaderclass.cpp" />
-		<Unit filename="fontshaderclass.h" />
 		<Unit filename="graphicsclass.cpp" />
 		<Unit filename="graphicsclass.h" />
 		<Unit filename="inputclass.cpp" />
@@ -107,13 +111,18 @@
 		<Unit filename="lightshaderclass.cpp" />
 		<Unit filename="lightshaderclass.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="mesh.ps" />
+		<Unit filename="mesh.vs" />
+		<Unit filename="meshshaderclass.cpp" />
+		<Unit filename="meshshaderclass.h" />
 		<Unit filename="modelclass.cpp" />
 		<Unit filename="modelclass.h" />
+		<Unit filename="myfile.spritefont" />
+		<Unit filename="pch.h" />
+		<Unit filename="resource.h" />
 		<Unit filename="seafloor.dds" />
 		<Unit filename="systemclass.cpp" />
 		<Unit filename="systemclass.h" />
-		<Unit filename="textclass.cpp" />
-		<Unit filename="textclass.h" />
 		<Unit filename="texture.ps" />
 		<Unit filename="texture.vs" />
 		<Unit filename="textureclass.cpp" />
