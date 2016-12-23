@@ -181,6 +181,46 @@ void Scene3DClass::Update(FrameInformation frameInformation, D3DXMATRIX viewMatr
 
     D3DXMatrixIdentity(&worldMatrix);
 
+	// Get the viewport
+	D3D11_VIEWPORT pViewports;
+	D3D10_VIEWPORT viewport;
+	UINT numViewports = 1;
+
+	m_D3D->GetDeviceContext()->RSGetViewports(&numViewports, &pViewports);
+	viewport.Width = (UINT)pViewports.Width;
+	viewport.Height = (UINT)pViewports.Height;
+	viewport.MinDepth = pViewports.MinDepth;
+	viewport.MaxDepth = pViewports.MaxDepth;
+	viewport.TopLeftX = pViewports.TopLeftX;
+	viewport.TopLeftY = pViewports.TopLeftY;
+
+	// Get the center point of the object	
+	D3DXVECTOR3* p_centerPoint = new D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+
+	// Get the point on the screen that is the screen projection of the object
+	D3DXVECTOR3 projectPoint;
+	D3DXVec3Project(&projectPoint, p_centerPoint, &viewport, &projectionMatrix, &viewMatrix, &worldMatrix);
+
+	// Choose the screen point where the object is to be drawn, relative to the Viewport's dimensions
+	D3DXVECTOR3 screenPoint;
+	screenPoint.x = 0.15*viewport.Width;
+	screenPoint.y = 0.85*viewport.Height;
+	screenPoint.z = 0.99f;
+	//screenPoint.z = projectPoint.z; //bêdzie dziwnie zmieniaæ rozmiar obiektu
+
+	//transform the screen position to a world position
+	D3DXVECTOR3 worldPoint;
+	D3DXVec3Unproject(&worldPoint, &screenPoint, &viewport, &projectionMatrix, &viewMatrix, &worldMatrix);
+
+	// Now define how much to translate the object in order to get it to the point we want it to be (WorldPoint)
+	float transX, transY, transZ;
+	transX = worldPoint.x;
+	transY = worldPoint.y;
+	transZ = worldPoint.z;
+
+	// apply the translation matrix
+	D3DXMatrixTranslation(&worldMatrix, transX, transY, transZ);
+
     result = result && m_Axes3D->Render(m_D3D->GetDeviceContext(), m_ColorShader, worldMatrix,
         viewMatrix, projectionMatrix);
 

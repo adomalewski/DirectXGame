@@ -41,7 +41,7 @@ ColorModel::ModelDataType Axes3DSpace::CreateModelData()
 	int vertexCount = 6;
 	int indexCount = 6;
 
-	float axis_size = 5.0f;
+	float axis_size = 1.0f;
 
 	// Create the vertex array.
 	vertices = new VertexTypeColor[vertexCount];

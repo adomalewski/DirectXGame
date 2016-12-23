@@ -905,8 +905,6 @@ bool Obj3DModel::Render(ID3D11DeviceContext* deviceContext, D3DClass* d3d, MeshS
 {
 	bool result;
 
-    //SetRenderBuffers();
-
     result = RenderNonTransparent(deviceContext, meshShader,
         worldMatrix, viewMatrix, projectionMatrix, lightDirection,
         ambientColor, diffuseColor, cameraPosition, specularColor, specularPower);
