@@ -505,8 +505,6 @@ void D3DClass::Shutdown()
 		m_swapChain->Release();
 		m_swapChain = 0;
 	}
-
-	return;
 }
 
 void D3DClass::BeginScene(float red, float green, float blue, float alpha)
@@ -524,8 +522,6 @@ void D3DClass::BeginScene(float red, float green, float blue, float alpha)
 
 	// Clear the depth buffer.
 	m_deviceContext->ClearDepthStencilView(m_depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
-
-	return;
 }
 
 void D3DClass::EndScene()
@@ -541,8 +537,6 @@ void D3DClass::EndScene()
 		// Present as fast as possible.
 		m_swapChain->Present(0, 0);
 	}
-
-	return;
 }
 
 ID3D11Device* D3DClass::GetDevice()
@@ -576,6 +570,11 @@ void D3DClass::GetVideoCardInfo(char* cardName, int& memory)
 	memory = m_videoCardMemory;
 }
 
+void D3DClass::ClearDepthStencilView()
+{
+    m_deviceContext->ClearDepthStencilView(m_depthStencilView, D3D11_CLEAR_DEPTH, 1.0f, 0);
+}
+
 void D3DClass::TurnZBufferOn()
 {
 	m_deviceContext->OMSetDepthStencilState(m_depthStencilState, 1);
@@ -598,8 +597,6 @@ void D3DClass::TurnOnAlphaBlending()
 
 	// Turn on the alpha blending.
 	m_deviceContext->OMSetBlendState(m_alphaEnableBlendingState, blendFactor, 0xffffffff);
-
-	return;
 }
 
 void D3DClass::TurnOffAlphaBlending()
@@ -614,8 +611,6 @@ void D3DClass::TurnOffAlphaBlending()
 
 	// Turn off the alpha blending.
 	m_deviceContext->OMSetBlendState(m_alphaDisableBlendingState, blendFactor, 0xffffffff);
-
-	return;
 }
 
 void D3DClass::TurnOnTransparencyBlending()
@@ -630,6 +625,4 @@ void D3DClass::TurnOnTransparencyBlending()
 
 	// Turn off the alpha blending.
 	m_deviceContext->OMSetBlendState(m_TransparencyBlendingState, blendFactor, 0xffffffff);
-
-	return;
 }

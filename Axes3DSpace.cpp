@@ -59,17 +59,17 @@ ColorModel::ModelDataType Axes3DSpace::CreateModelData()
 
     // X
 	vertices[0].position = D3DXVECTOR3(-axis_size, 0.0f, 0.0f);
-	vertices[0].color = D3DXVECTOR4(0.0f, 0.0f, 1.0f, 1.0f);
+	vertices[0].color = D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f);
 
 	vertices[1].position = D3DXVECTOR3(axis_size, 0.0f, 0.0f);
-	vertices[1].color = D3DXVECTOR4(0.0f, 0.0f, 1.0f, 1.0f);
+	vertices[1].color = D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f);
 
 	// Y
     vertices[2].position = D3DXVECTOR3(0.0f, -axis_size, 0.0f);
-	vertices[2].color = D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f);
+	vertices[2].color = D3DXVECTOR4(0.0f, 0.0f, 1.0f, 1.0f);
 
 	vertices[3].position = D3DXVECTOR3(0.0f, axis_size, 0.0f);
-	vertices[3].color = D3DXVECTOR4(1.0f, 0.0f, 0.0f, 1.0f);
+	vertices[3].color = D3DXVECTOR4(0.0f, 0.0f, 1.0f, 1.0f);
 
 	// Z
     vertices[4].position = D3DXVECTOR3(0.0f, 0.0f, -axis_size);

@@ -7,6 +7,7 @@
 #include "textureshaderclass.h"
 #include "lightshaderclass.h"
 #include "meshshaderclass.h"
+#include "meshshadercolor.h"
 #include "lightclass.h"
 #include "FrameInformation.h"
 #include "TriangleColorModel.h"
@@ -23,10 +24,12 @@ public:
 	~Scene3DClass();
 
 	bool Initialize(D3DClass* m_D3D, HWND hwnd, ColorShaderClass*,
-        TextureShaderClass*, LightShaderClass*, MeshShaderClass*);
+        TextureShaderClass*, LightShaderClass*, MeshShaderClass*, MeshShaderColor*);
 	void Shutdown();
 
 	void Update(FrameInformation, D3DXMATRIX);
+
+	void ComputeScreenWorld(D3DXMATRIX&, D3DXMATRIX&, D3DXMATRIX&, float, float);
 
 private:
 	D3DClass* m_D3D;
@@ -39,10 +42,12 @@ private:
 	TextureShaderClass* m_TextureShader;
 	LightShaderClass* m_LightShader;
 	MeshShaderClass* m_MeshShader;
+	MeshShaderColor* m_MeshShaderColor;
 	LightClass* m_Light;
 	SimpleSurface* m_SimpleSurface;
 	Obj3DModel* m_AppartmentModel;
 	Axes3DSpace* m_Axes3D;
+	Obj3DModel* m_Axes3DArrows;
 };
 
 #endif // SCENE3DCLASS_H

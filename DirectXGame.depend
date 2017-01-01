@@ -13,13 +13,14 @@
 	"inputclass.h"
 	"graphicsclass.h"
 
-1481385542 c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.h
+1482596307 c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.h
 	"Scene2DClass.h"
 	"d3dclass.h"
 	"colorshaderclass.h"
 	"textureshaderclass.h"
 	"lightshaderclass.h"
 	"meshshaderclass.h"
+	"meshshadercolor.h"
 	"Scene3DClass.h"
 	"FrameInformation.h"
 	"InputClass.h"
@@ -29,10 +30,10 @@
 1480009597 source:c:\users\andrz3j\documents\codeblocks\directxgame\systemclass.cpp
 	"systemclass.h"
 
-1481385542 source:c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.cpp
+1482596188 source:c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.cpp
 	"graphicsclass.h"
 
-1480705132 c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.h
+1482672218 c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.h
 	<dxgi.h>
 	<d3dcommon.h>
 	<d3d11.h>
@@ -160,10 +161,10 @@
 
 1274305017 c:\program files\microsoft directx sdk (june 2010)\include\d3dx10math.inl
 
-1480705278 source:c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.cpp
+1482672255 source:c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.cpp
 	"d3dclass.h"
 
-1480697825 c:\users\andrz3j\documents\codeblocks\directxgame\cameraclass.h
+1482570988 c:\users\andrz3j\documents\codeblocks\directxgame\cameraclass.h
 	<d3dx10math.h>
 
 1481472800 c:\users\andrz3j\documents\codeblocks\directxgame\modelclass.h
@@ -171,7 +172,7 @@
 	<d3dx10math.h>
 	"VertexType.h"
 
-1478290845 c:\users\andrz3j\documents\codeblocks\directxgame\colorshaderclass.h
+1482596817 c:\users\andrz3j\documents\codeblocks\directxgame\colorshaderclass.h
 	<d3d11.h>
 	<d3dx10math.h>
 	<d3dx11async.h>
@@ -196,7 +197,7 @@
 1274305017 c:\program files\microsoft directx sdk (june 2010)\include\d3dx11tex.h
 	"d3dx11.h"
 
-1480697825 source:c:\users\andrz3j\documents\codeblocks\directxgame\cameraclass.cpp
+1482570988 source:c:\users\andrz3j\documents\codeblocks\directxgame\cameraclass.cpp
 	"cameraclass.h"
 
 1477686160 source:c:\users\andrz3j\documents\codeblocks\directxgame\colorshaderclass.cpp
@@ -230,7 +231,7 @@
 1481055403 c:\users\andrz3j\documents\codeblocks\directxgame\lightclass.h
 	<d3dx10math.h>
 
-1481055616 source:c:\users\andrz3j\documents\codeblocks\directxgame\lightclass.cpp
+1482655395 source:c:\users\andrz3j\documents\codeblocks\directxgame\lightclass.cpp
 	"lightclass.h"
 
 1481055187 source:c:\users\andrz3j\documents\codeblocks\directxgame\lightshaderclass.cpp
@@ -247,13 +248,14 @@
 1274305018 c:\program files\microsoft directx sdk (june 2010)\include\dinput.h
 	<objbase.h>
 
-1481565039 c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.h
+1482595944 c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.h
 	"d3dclass.h"
 	"modelclass.h"
 	"colorshaderclass.h"
 	"textureshaderclass.h"
 	"lightshaderclass.h"
 	"meshshaderclass.h"
+	"meshshadercolor.h"
 	"lightclass.h"
 	"FrameInformation.h"
 	"TriangleColorModel.h"
@@ -304,7 +306,7 @@
 1479157791 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene2dclass.cpp
 	"Scene2DClass.h"
 
-1481565190 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.cpp
+1483095035 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.cpp
 	"Scene3DClass.h"
 
 1479157530 source:c:\users\andrz3j\documents\codeblocks\directxgame\textclass.cpp
@@ -1481,7 +1483,7 @@
 1481055887 source:c:\users\andrz3j\documents\codeblocks\directxgame\simplesurface.cpp
 	"SimpleSurface.h"
 
-1481568470 c:\users\andrz3j\documents\codeblocks\directxgame\obj3dmodel.h
+1482596416 c:\users\andrz3j\documents\codeblocks\directxgame\obj3dmodel.h
 	<vector>
 	<fstream>
 	<sstream>
@@ -1490,17 +1492,19 @@
 	<d3dx11tex.h>
 	"d3dclass.h"
 	"MeshShaderClass.h"
+	"MeshShaderColor.h"
 
-1481568644 source:c:\users\andrz3j\documents\codeblocks\directxgame\obj3dmodel.cpp
+1482608084 source:c:\users\andrz3j\documents\codeblocks\directxgame\obj3dmodel.cpp
 	"Obj3DModel.h"
+	"utilities.h"
 
-1481385542 c:\users\andrz3j\documents\codeblocks\directxgame\meshshaderclass.h
+1482595158 c:\users\andrz3j\documents\codeblocks\directxgame\meshshaderclass.h
 	<d3d11.h>
 	<d3dx10math.h>
 	<d3dx11async.h>
 	<fstream>
 
-1481385542 source:c:\users\andrz3j\documents\codeblocks\directxgame\meshshaderclass.cpp
+1482603298 source:c:\users\andrz3j\documents\codeblocks\directxgame\meshshaderclass.cpp
 	"meshshaderclass.h"
 
 1481568405 source:c:\users\andrz3j\documents\codeblocks\directxgame\drawline3dspace.cpp
@@ -1512,6 +1516,22 @@
 1481567797 c:\users\andrz3j\documents\codeblocks\directxgame\axes3dspace.h
 	"DrawLine3DSpace.h"
 
-1481567937 source:c:\users\andrz3j\documents\codeblocks\directxgame\axes3dspace.cpp
+1482671832 source:c:\users\andrz3j\documents\codeblocks\directxgame\axes3dspace.cpp
 	"Axes3DSpace.h"
+
+1482603165 c:\users\andrz3j\documents\codeblocks\directxgame\meshshadercolor.h
+	<d3d11.h>
+	<d3dx10math.h>
+	<d3dx11async.h>
+	<fstream>
+
+1482603682 source:c:\users\andrz3j\documents\codeblocks\directxgame\meshshadercolor.cpp
+	"meshshadercolor.h"
+
+1482748380 c:\cpplibs\utilities.h
+	<string>
+	<sstream>
+	<list>
+	<algorithm>
+	<math.h>
 

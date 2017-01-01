@@ -30,14 +30,11 @@ void LightClass::SetDirection(float x, float y, float z)
 void LightClass::SetSpecularColor(float red, float green, float blue, float alpha)
 {
 	m_specularColor = D3DXVECTOR4(red, green, blue, alpha);
-	return;
 }
-
 
 void LightClass::SetSpecularPower(float power)
 {
 	m_specularPower = power;
-	return;
 }
 
 D3DXVECTOR4 LightClass::GetAmbientColor()

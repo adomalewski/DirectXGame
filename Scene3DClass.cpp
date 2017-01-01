@@ -9,6 +9,7 @@ Scene3DClass::Scene3DClass()
 	m_SimpleSurface = 0;
 	m_AppartmentModel = 0;
 	m_Axes3D = 0;
+	m_Axes3DArrows = 0;
 }
 
 Scene3DClass::~Scene3DClass()
@@ -16,7 +17,8 @@ Scene3DClass::~Scene3DClass()
 }
 
 bool Scene3DClass::Initialize(D3DClass* d3d, HWND hwnd, ColorShaderClass* colorShader,
-    TextureShaderClass* textureShader, LightShaderClass* lightShader, MeshShaderClass* meshShader)
+    TextureShaderClass* textureShader, LightShaderClass* lightShader, MeshShaderClass* meshShader,
+    MeshShaderColor* meshShaderColor)
 {
 	bool result = true;
 
@@ -26,6 +28,7 @@ bool Scene3DClass::Initialize(D3DClass* d3d, HWND hwnd, ColorShaderClass* colorS
 	m_TextureShader = textureShader;
 	m_LightShader = lightShader;
 	m_MeshShader = meshShader;
+	m_MeshShaderColor = meshShaderColor;
 
 	m_TriangleColorModel = new TriangleColorModel;
 	if (!m_TriangleColorModel)
@@ -76,6 +79,13 @@ bool Scene3DClass::Initialize(D3DClass* d3d, HWND hwnd, ColorShaderClass* colorS
 	if (!m_AppartmentModel->Initialize(m_D3D->GetDevice(), "spaceCompound.obj"))
 		return false;
 
+    m_Axes3DArrows = new Obj3DModel;
+	if (!m_Axes3DArrows)
+		return false;
+
+	if (!m_Axes3DArrows->Initialize(m_D3D->GetDevice(), "coordinates3D.obj"))
+		return false;
+
 	// Create the light object.
 	m_Light = new LightClass;
 	if (!m_Light)
@@ -84,11 +94,21 @@ bool Scene3DClass::Initialize(D3DClass* d3d, HWND hwnd, ColorShaderClass* colorS
 	}
 
 	// Initialize the light object.
-	m_Light->SetAmbientColor(0.6f, 0.6f, 0.6f, 1.0f);
+	/*m_Light->SetAmbientColor(0.6f, 0.6f, 0.6f, 1.0f);
 	m_Light->SetDiffuseColor(0.0f, 1.0f, 1.0f, 1.0f);
 	m_Light->SetDirection(0.0f, 10.0f, 0.0f);
 	m_Light->SetSpecularColor(1.0f, 1.0f, 1.0f, 1.0f);
-	m_Light->SetSpecularPower(3.0f);
+	m_Light->SetSpecularPower(3.0f);*/
+
+	/*m_Light->SetAmbientColor(0.5f, 0.5f, 0.5f, 1.0f);
+	m_Light->SetDiffuseColor(0.3f, 0.3f, 0.3f, 1.0f);
+	m_Light->SetDirection(-5.0f, 5.0f, 5.0f);*/
+
+    m_Light->SetAmbientColor(0.15f, 0.15f, 0.15f, 1.0f);
+	m_Light->SetDiffuseColor(0.3f, 0.3f, 0.3f, 1.0f);
+	m_Light->SetDirection(-5.0f, 5.0f, 5.0f);
+	//m_Light->SetSpecularColor(0.5f, 0.5f, 0.5f, 1.0f);
+	//m_Light->SetSpecularPower(3.0f);
 
 	return true;
 }
@@ -130,6 +150,13 @@ void Scene3DClass::Shutdown()
 		m_AppartmentModel = 0;
 	}
 
+    if (m_Axes3DArrows)
+    {
+		m_Axes3DArrows->Shutdown();
+		delete m_Axes3DArrows;
+		m_Axes3DArrows = 0;
+	}
+
 	if (m_Light)
 	{
 		delete m_Light;
@@ -142,6 +169,54 @@ void Scene3DClass::Shutdown()
 		delete m_SimpleSurface;
 		m_SimpleSurface = 0;
 	}
+}
+
+void Scene3DClass::ComputeScreenWorld(D3DXMATRIX& worldMatrix, D3DXMATRIX& viewMatrix,
+    D3DXMATRIX& projectionMatrix, float screenPropX, float screenPropY)
+{
+    D3DXMatrixIdentity(&worldMatrix);
+
+    // Get the viewport
+	D3D11_VIEWPORT pViewports;
+	D3D10_VIEWPORT viewport;
+	UINT numViewports = 1;
+
+	m_D3D->GetDeviceContext()->RSGetViewports(&numViewports, &pViewports);
+	viewport.Width = (UINT)pViewports.Width;
+	viewport.Height = (UINT)pViewports.Height;
+	viewport.MinDepth = pViewports.MinDepth;
+	viewport.MaxDepth = pViewports.MaxDepth;
+	viewport.TopLeftX = pViewports.TopLeftX;
+	viewport.TopLeftY = pViewports.TopLeftY;
+
+	m_D3D->GetDeviceContext()->RSSetViewports(1, &pViewports);
+
+	// Get the center point of the object
+	D3DXVECTOR3* p_centerPoint = new D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+
+	// Get the point on the screen that is the screen projection of the object
+	D3DXVECTOR3 projectPoint;
+	D3DXVec3Project(&projectPoint, p_centerPoint, &viewport, &projectionMatrix, &viewMatrix, &worldMatrix);
+
+	// Choose the screen point where the object is to be drawn, relative to the Viewport's dimensions
+	D3DXVECTOR3 screenPoint;
+	screenPoint.x = screenPropX*viewport.Width;
+	screenPoint.y = screenPropY*viewport.Height;
+	screenPoint.z = 0.99f;
+	//screenPoint.z = projectPoint.z; //bêdzie dziwnie zmieniaæ rozmiar obiektu
+
+	//transform the screen position to a world position
+	D3DXVECTOR3 worldPoint;
+	D3DXVec3Unproject(&worldPoint, &screenPoint, &viewport, &projectionMatrix, &viewMatrix, &worldMatrix);
+
+	// Now define how much to translate the object in order to get it to the point we want it to be (WorldPoint)
+	float transX, transY, transZ;
+	transX = worldPoint.x;
+	transY = worldPoint.y;
+	transZ = worldPoint.z;
+
+	// apply the translation matrix
+	D3DXMatrixTranslation(&worldMatrix, transX, transY, transZ);
 }
 
 void Scene3DClass::Update(FrameInformation frameInformation, D3DXMATRIX viewMatrix)
@@ -179,51 +254,6 @@ void Scene3DClass::Update(FrameInformation frameInformation, D3DXMATRIX viewMatr
         viewMatrix, projectionMatrix, m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor(),
         frameInformation.userCameraPosition, m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
 
-    D3DXMatrixIdentity(&worldMatrix);
-
-	// Get the viewport
-	D3D11_VIEWPORT pViewports;
-	D3D10_VIEWPORT viewport;
-	UINT numViewports = 1;
-
-	m_D3D->GetDeviceContext()->RSGetViewports(&numViewports, &pViewports);
-	viewport.Width = (UINT)pViewports.Width;
-	viewport.Height = (UINT)pViewports.Height;
-	viewport.MinDepth = pViewports.MinDepth;
-	viewport.MaxDepth = pViewports.MaxDepth;
-	viewport.TopLeftX = pViewports.TopLeftX;
-	viewport.TopLeftY = pViewports.TopLeftY;
-
-	// Get the center point of the object	
-	D3DXVECTOR3* p_centerPoint = new D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-
-	// Get the point on the screen that is the screen projection of the object
-	D3DXVECTOR3 projectPoint;
-	D3DXVec3Project(&projectPoint, p_centerPoint, &viewport, &projectionMatrix, &viewMatrix, &worldMatrix);
-
-	// Choose the screen point where the object is to be drawn, relative to the Viewport's dimensions
-	D3DXVECTOR3 screenPoint;
-	screenPoint.x = 0.15*viewport.Width;
-	screenPoint.y = 0.85*viewport.Height;
-	screenPoint.z = 0.99f;
-	//screenPoint.z = projectPoint.z; //bêdzie dziwnie zmieniaæ rozmiar obiektu
-
-	//transform the screen position to a world position
-	D3DXVECTOR3 worldPoint;
-	D3DXVec3Unproject(&worldPoint, &screenPoint, &viewport, &projectionMatrix, &viewMatrix, &worldMatrix);
-
-	// Now define how much to translate the object in order to get it to the point we want it to be (WorldPoint)
-	float transX, transY, transZ;
-	transX = worldPoint.x;
-	transY = worldPoint.y;
-	transZ = worldPoint.z;
-
-	// apply the translation matrix
-	D3DXMatrixTranslation(&worldMatrix, transX, transY, transZ);
-
-    result = result && m_Axes3D->Render(m_D3D->GetDeviceContext(), m_ColorShader, worldMatrix,
-        viewMatrix, projectionMatrix);
-
 	D3DXMatrixTranslation(&matTranslation, 0.0f, 0.0f, 0.0f);
 	D3DXMatrixRotationX(&matRotation, D3DX_PI / 8);
 	D3DXMatrixScaling(&matScale, 0.1f, 0.1f, 0.1f);
@@ -233,7 +263,21 @@ void Scene3DClass::Update(FrameInformation frameInformation, D3DXMATRIX viewMatr
 		viewMatrix, projectionMatrix, m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor(),
 		frameInformation.userCameraPosition, m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
 
-	if (!result)
+    // All below will be displaying in the foreground
+    m_D3D->ClearDepthStencilView();
+
+	ComputeScreenWorld(worldMatrix, viewMatrix, projectionMatrix, 0.85f, 0.85f);
+
+    result = result && m_Axes3D->Render(m_D3D->GetDeviceContext(), m_ColorShader, worldMatrix,
+        viewMatrix, projectionMatrix);
+
+    ComputeScreenWorld(worldMatrix, viewMatrix, projectionMatrix, 0.15f, 0.85f);
+
+    result = result && m_Axes3DArrows->Render(m_D3D->GetDeviceContext(), m_D3D, m_MeshShader, worldMatrix,
+		viewMatrix, projectionMatrix, m_Light->GetDirection(), m_Light->GetAmbientColor(), m_Light->GetDiffuseColor(),
+		frameInformation.userCameraPosition, m_Light->GetSpecularColor(), m_Light->GetSpecularPower());
+
+    if (!result)
 	{
 		MessageBox(m_hwnd, "Scene3DClass::Update problem", "Error", MB_OK);
 	}

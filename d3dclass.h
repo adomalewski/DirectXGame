@@ -33,6 +33,8 @@ public:
 
 	void GetVideoCardInfo(char*, int&);
 
+	void ClearDepthStencilView();
+
 	void TurnZBufferOn();
 	void TurnZBufferOff();
 

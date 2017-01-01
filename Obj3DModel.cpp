@@ -1,4 +1,5 @@
 #include "Obj3DModel.h"
+#include "utilities.h"
 
 Obj3DModel::Obj3DModel()
 {
@@ -108,6 +109,7 @@ bool Obj3DModel::Initialize(ID3D11Device* device,
 
 				//New group (Subset)
 			case 'g':    //g - defines a group
+			case 'o':    //o - defines an object
 				checkChar = fileIn.get();
 				if (checkChar == ' ')
 				{
@@ -439,8 +441,8 @@ bool Obj3DModel::Initialize(ID3D11Device* device,
 
 	meshSubsetIndexStart.push_back(vIndex); //There won't be another index start after our last subset, so set it here
 
-										//sometimes "g" is defined at the very top of the file, then again before the first group of faces.
-										//This makes sure the first subset does not conatain "0" indices.
+	//sometimes "g" is defined at the very top of the file, then again before the first group of faces.
+	//This makes sure the first subset does not conatain "0" indices.
 	if (meshSubsetIndexStart[1] == 0)
 	{
 		meshSubsetIndexStart.erase(meshSubsetIndexStart.begin() + 1);
@@ -461,8 +463,8 @@ bool Obj3DModel::Initialize(ID3D11Device* device,
 	std::string lastStringRead;
 	int matCount = material.size();    //total materials
 
-										//kdset - If our diffuse color was not set, we can use the ambient color (which is usually the same)
-										//If the diffuse color WAS set, then we don't need to set our diffuse color to ambient
+	//kdset - If our diffuse color was not set, we can use the ambient color (which is usually the same)
+	//If the diffuse color WAS set, then we don't need to set our diffuse color to ambient
 	bool kdset = false;
 
 	if (fileIn)
@@ -842,14 +844,16 @@ bool Obj3DModel::RenderNonTransparent(ID3D11DeviceContext* deviceContext, MeshSh
 	D3DXVECTOR4 specularColor, float specularPower)
 {
     bool result = true;
+    int indexStart;
+    int indexDrawAmount;
 
     SetRenderBuffers(deviceContext);
 
     //Draw our model's NON-transparent subsets
 	for (int i = 0; i < meshSubsets; ++i)
 	{
-		int indexStart = meshSubsetIndexStart[i];
-		int indexDrawAmount = meshSubsetIndexStart[i + 1] - meshSubsetIndexStart[i];
+		indexStart = meshSubsetIndexStart[i];
+		indexDrawAmount = meshSubsetIndexStart[i + 1] - meshSubsetIndexStart[i];
 		if (!material[meshSubsetTexture[i]].transparent)
 			result = meshShader->Render(deviceContext, indexDrawAmount, indexStart, worldMatrix, viewMatrix, projectionMatrix,
 				material[meshSubsetTexture[i]].hasTexture ? meshSRV[material[meshSubsetTexture[i]].texArrayIndex] : NULL,
@@ -871,6 +875,8 @@ bool Obj3DModel::RenderTransparent(ID3D11DeviceContext* deviceContext, D3DClass*
 	D3DXVECTOR4 specularColor, float specularPower)
 {
     bool result = true;
+    int indexStart;
+    int indexDrawAmount;
 
     SetRenderBuffers(deviceContext);
 
@@ -879,8 +885,8 @@ bool Obj3DModel::RenderTransparent(ID3D11DeviceContext* deviceContext, D3DClass*
 
 	for (int i = 0; i < meshSubsets; ++i)
 	{
-		int indexStart = meshSubsetIndexStart[i];
-		int indexDrawAmount = meshSubsetIndexStart[i + 1] - meshSubsetIndexStart[i];
+		indexStart = meshSubsetIndexStart[i];
+		indexDrawAmount = meshSubsetIndexStart[i + 1] - meshSubsetIndexStart[i];
 		if (material[meshSubsetTexture[i]].transparent)
 			result = meshShader->Render(deviceContext, indexDrawAmount, indexStart, worldMatrix, viewMatrix, projectionMatrix,
 				material[meshSubsetTexture[i]].hasTexture ? meshSRV[material[meshSubsetTexture[i]].texArrayIndex] : NULL,
@@ -920,6 +926,33 @@ bool Obj3DModel::Render(ID3D11DeviceContext* deviceContext, D3DClass* d3d, MeshS
     {
         return false;
     }
+
+    return true;
+}
+
+bool Obj3DModel::Render(ID3D11DeviceContext* deviceContext, D3DClass* d3d, MeshShaderColor* meshShaderColor,
+	D3DXMATRIX worldMatrix, D3DXMATRIX viewMatrix, D3DXMATRIX projectionMatrix)
+{
+    bool result;
+    int indexStart;
+    int indexDrawAmount;
+
+    SetRenderBuffers(deviceContext);
+
+	for (int i = 0; i < meshSubsets; ++i)
+	{
+		indexStart = meshSubsetIndexStart[i];
+		indexDrawAmount = meshSubsetIndexStart[i + 1] - meshSubsetIndexStart[i];
+
+        result = meshShaderColor->Render(deviceContext, indexDrawAmount, indexStart,
+            worldMatrix, viewMatrix, projectionMatrix,
+            material[meshSubsetTexture[i]].hasTexture ? meshSRV[material[meshSubsetTexture[i]].texArrayIndex] : NULL,
+            material[meshSubsetTexture[i]].difColor, material[meshSubsetTexture[i]].hasTexture);
+		if (FAILED(result))
+		{
+			return false;
+		}
+	}
 
     return true;
 }

@@ -113,8 +113,12 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="mesh.ps" />
 		<Unit filename="mesh.vs" />
+		<Unit filename="mesh_color.ps" />
+		<Unit filename="mesh_color.vs" />
 		<Unit filename="meshshaderclass.cpp" />
 		<Unit filename="meshshaderclass.h" />
+		<Unit filename="meshshadercolor.cpp" />
+		<Unit filename="meshshadercolor.h" />
 		<Unit filename="modelclass.cpp" />
 		<Unit filename="modelclass.h" />
 		<Unit filename="myfile.spritefont" />

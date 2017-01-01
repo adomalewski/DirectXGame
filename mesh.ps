@@ -37,7 +37,7 @@ float4 MeshPixelShader(PixelInputType input) : SV_TARGET
 	textureColor = difColor;
 
     // Sample the pixel color from the texture using the sampler at this texture coordinate location.
-	//If material has a diffuse texture map, set it now
+	// If material has a diffuse texture map, set it now
     if(hasTexture == true)
 		textureColor = shaderTexture.Sample(SampleType, input.tex);
 

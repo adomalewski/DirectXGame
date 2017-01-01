@@ -10,6 +10,7 @@
 
 #include "d3dclass.h"
 #include "MeshShaderClass.h"
+#include "MeshShaderColor.h"
 
 struct SurfaceMaterial
 {
@@ -53,6 +54,9 @@ public:
     bool RenderTransparent(ID3D11DeviceContext*, D3DClass*, MeshShaderClass*, D3DXMATRIX,
 		D3DXMATRIX, D3DXMATRIX, D3DXVECTOR3, D3DXVECTOR4, D3DXVECTOR4, D3DXVECTOR3,
 		D3DXVECTOR4, float);
+
+    bool Render(ID3D11DeviceContext*, D3DClass*, MeshShaderColor*,
+        D3DXMATRIX, D3DXMATRIX, D3DXMATRIX);
 
     void Shutdown();
 

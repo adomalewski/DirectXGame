@@ -9,6 +9,7 @@ GraphicsClass::GraphicsClass()
 	m_TextureShader = 0;
 	m_LightShader = 0;
 	m_MeshShader = 0;
+	m_MeshShaderColor = 0;
 	m_FrameInformation.rotation = 0.0f;
 }
 
@@ -69,6 +70,7 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, Inp
 	result = result && InitializeTextureShader();
 	result = result && InitializeLightShader();
 	result = result && InitializeMeshShader();
+	result = result && InitializeMeshShaderColor();
 	if (!result)
 	{
 		return false;
@@ -99,7 +101,8 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, Inp
 	}
 
 	// Initialize the Scene 3D object.
-	result = m_Scene3D->Initialize(m_D3D, hwnd, m_ColorShader, m_TextureShader, m_LightShader, m_MeshShader);
+	result = m_Scene3D->Initialize(m_D3D, hwnd, m_ColorShader, m_TextureShader, m_LightShader, m_MeshShader,
+        m_MeshShaderColor);
 	if (!result)
 	{
 		MessageBox(hwnd, "Could not initialize Scene3D", "Error", MB_OK);
@@ -197,6 +200,28 @@ bool GraphicsClass::InitializeMeshShader()
 	return true;
 }
 
+bool GraphicsClass::InitializeMeshShaderColor()
+{
+	bool result;
+
+	// Create the mesh shader color object.
+	m_MeshShaderColor = new MeshShaderColor;
+	if (!m_MeshShaderColor)
+	{
+		return false;
+	}
+
+	// Initialize the mesh shader color object.
+	result = m_MeshShaderColor->Initialize(m_D3D->GetDevice(), m_windowInfo->m_hwnd);
+	if (!result)
+	{
+		MessageBox(m_windowInfo->m_hwnd, "Could not initialize the mesh shader color object.", "Error", MB_OK);
+		return false;
+	}
+
+	return true;
+}
+
 void GraphicsClass::Shutdown()
 {
 	// Release the light shader object.
@@ -213,6 +238,14 @@ void GraphicsClass::Shutdown()
 		m_MeshShader->Shutdown();
 		delete m_MeshShader;
 		m_MeshShader = 0;
+	}
+
+    // Release the mesh shader color object.
+	if (m_MeshShaderColor)
+	{
+		m_MeshShaderColor->Shutdown();
+		delete m_MeshShaderColor;
+		m_MeshShaderColor = 0;
 	}
 
     // Release the texture shader object.
