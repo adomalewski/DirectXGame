@@ -19,6 +19,8 @@
 #include "UserCamera.h"
 #include "WindowInfo.h"
 
+#include "Scene2DClassTest.h"
+
 const bool FULL_SCREEN = false;
 const bool VSYNC_ENABLED = true;
 const float SCREEN_DEPTH = 1000.0f;
@@ -58,6 +60,8 @@ private:
 	#if DirectXTK
 	Scene2DClass* m_Scene2D;
 	#endif
+
+	Scene2DClassTest* m_Scene2DTest;
 
 	Scene3DClass* m_Scene3D;
 	InputClass* m_Input;

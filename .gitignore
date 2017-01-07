@@ -9,3 +9,4 @@
 *.vcxproj.user
 *.rc
 *.pdb
+shader-error.txt

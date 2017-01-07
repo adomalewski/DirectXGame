@@ -42,8 +42,10 @@ private:
 	TextureClass* m_Texture;
 
 	int m_screenWidth, m_screenHeight;
-	int m_bitmapWidth, m_bitmapHeight;
 	int m_previousPosX, m_previousPosY;
+
+public:
+    int m_bitmapWidth, m_bitmapHeight;
 };
 
 #endif // BITMAPCLASS_H

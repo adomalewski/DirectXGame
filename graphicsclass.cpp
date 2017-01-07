@@ -93,6 +93,20 @@ bool GraphicsClass::Initialize(int screenWidth, int screenHeight, HWND hwnd, Inp
 	}
     #endif
 
+    m_Scene2DTest = new Scene2DClassTest;
+	if (!m_Scene2DTest)
+	{
+		return false;
+	}
+
+	// Initialize the Scene 2D object.
+	result = m_Scene2DTest->Initialize(m_D3D, m_windowInfo, m_TextureShader);
+	if (!result)
+	{
+		MessageBox(hwnd, "Could not initialize Scene2DTest", "Error", MB_OK);
+		return false;
+	}
+
 	// Create Scene 3D object
 	m_Scene3D = new Scene3DClass;
 	if (!m_Scene3D)
@@ -287,6 +301,12 @@ void GraphicsClass::Shutdown()
 	}
 	#endif
 
+    if (m_Scene2DTest)
+	{
+		delete m_Scene2DTest;
+		m_Scene2DTest = 0;
+	}
+
 	// Release the scene 3D object.
 	if (m_Scene3D)
 	{
@@ -351,6 +371,8 @@ bool GraphicsClass::Render()
     #if DirectXTK
 	m_Scene2D->Update();
 	#endif
+
+	m_Scene2DTest->Update(m_FrameInformation);
 
 	// Present the rendered scene to the screen.
 	m_D3D->EndScene();

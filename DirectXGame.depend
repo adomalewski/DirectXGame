@@ -13,7 +13,7 @@
 	"inputclass.h"
 	"graphicsclass.h"
 
-1482596307 c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.h
+1483699984 c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.h
 	"Scene2DClass.h"
 	"d3dclass.h"
 	"colorshaderclass.h"
@@ -26,11 +26,12 @@
 	"InputClass.h"
 	"UserCamera.h"
 	"WindowInfo.h"
+	"Scene2DClassTest.h"
 
 1480009597 source:c:\users\andrz3j\documents\codeblocks\directxgame\systemclass.cpp
 	"systemclass.h"
 
-1482596188 source:c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.cpp
+1483705175 source:c:\users\andrz3j\documents\codeblocks\directxgame\graphicsclass.cpp
 	"graphicsclass.h"
 
 1482672218 c:\users\andrz3j\documents\codeblocks\directxgame\d3dclass.h
@@ -237,7 +238,7 @@
 1481055187 source:c:\users\andrz3j\documents\codeblocks\directxgame\lightshaderclass.cpp
 	"lightshaderclass.h"
 
-1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\bitmapclass.h
+1483708257 c:\users\andrz3j\documents\codeblocks\directxgame\bitmapclass.h
 	<d3d11.h>
 	<d3dx10math.h>
 	"textureclass.h"
@@ -354,7 +355,7 @@
 1481568336 c:\users\andrz3j\documents\codeblocks\directxgame\trianglecolormodel.h
 	"ColorModel.h"
 
-1481473693 source:c:\users\andrz3j\documents\codeblocks\directxgame\trianglecolormodel.cpp
+1483264218 source:c:\users\andrz3j\documents\codeblocks\directxgame\trianglecolormodel.cpp
 	"TriangleColorModel.h"
 
 1399814854 c:\cpplibs\boost_1_56_0\boost_1_56_0\boost\tuple\tuple.hpp
@@ -1534,4 +1535,15 @@
 	<list>
 	<algorithm>
 	<math.h>
+
+1483705346 c:\users\andrz3j\documents\codeblocks\directxgame\scene2dclasstest.h
+	"d3dclass.h"
+	"WindowInfo.h"
+	"TextConverter.h"
+	"FrameInformation.h"
+	"textureshaderclass.h"
+	"bitmapclass.h"
+
+1483709285 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene2dclasstest.cpp
+	"Scene2DClassTest.h"
 
