@@ -278,6 +278,17 @@ void FontClass::BuildVertexArray(void* vertices, char* sentence, float drawX, fl
 	// Initialize the index to the vertex array.
 	index = 0;
 
+	D3DXVECTOR2 padding = D3DXVECTOR2(0.5f, 0.0f);
+
+    float topLeftScreenX = (drawX * 2.0f) - 1.0f;
+    float topLeftScreenY = ((1.0f - drawY) * 2.0f) - 1.0f;
+
+    float x = topLeftScreenX;
+    float y = topLeftScreenY;
+
+    float horrizontalPadding = (font.leftpadding + font.rightpadding) * padding.x;
+    float verticalPadding = (font.toppadding + font.bottompadding) * padding.y;
+
 	// Draw each letter onto a quad.
 	for (i = 0; i<numLetters; i++)
 	{

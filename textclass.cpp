@@ -77,11 +77,8 @@ bool TextClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCont
 
 void TextClass::Shutdown()
 {
-	// Release the first sentence.
-	ReleaseSentence(&m_sentence1);
-
-	// Release the second sentence.
-	ReleaseSentence(&m_sentence2);
+	// Release the sentence.
+	ReleaseSentence(&m_sentence);
 
 	// Release the font shader object.
 	if (m_FontShader)
@@ -98,8 +95,6 @@ void TextClass::Shutdown()
 		delete m_Font;
 		m_Font = 0;
 	}
-
-	return;
 }
 
 bool TextClass::Render(ID3D11DeviceContext* deviceContext)
@@ -230,9 +225,7 @@ bool TextClass::UpdateSentence(SentenceType* sentence, char* text, int positionX
 	VertexType* verticesPtr;
 
 	// Store the color of the sentence.
-	sentence->red = red;
-	sentence->green = green;
-	sentence->blue = blue;
+	sentence->color = D3DXVECTOR4(red, green, blue, 1.0);
 
 	// Get the number of letters in the sentence.
 	numLetters = (int)strlen(text);
@@ -254,8 +247,8 @@ bool TextClass::UpdateSentence(SentenceType* sentence, char* text, int positionX
 	memset(vertices, 0, (sizeof(VertexType) * sentence->vertexCount));
 
 	// Calculate the X and Y pixel position on the screen to start drawing to.
-	drawX = (float)(((m_screenWidth / 2) * -1) + positionX);
-	drawY = (float)((m_screenHeight / 2) - positionY);
+	drawX = positionX/(float)m_windowInfo->m_screenWidth;
+	drawY = positionY/(float)m_windowInfo->m_screenHeight;
 
 	// Use the font class to build the vertex array from the sentence text and sentence draw location.
 	m_Font->BuildVertexArray((void*)vertices, text, drawX, drawY);
@@ -305,15 +298,12 @@ void TextClass::ReleaseSentence(SentenceType** sentence)
 		delete *sentence;
 		*sentence = 0;
 	}
-
-	return;
 }
 
 bool TextClass::RenderSentence(ID3D11DeviceContext* deviceContext, SentenceType* sentence)
 {
-	unsigned int stride, offset;
-	D3DXVECTOR4 pixelColor;
 	bool result;
+	unsigned int stride, offset;
 
 	// Set vertex buffer stride and offset.
 	stride = sizeof(VertexType);
@@ -328,11 +318,8 @@ bool TextClass::RenderSentence(ID3D11DeviceContext* deviceContext, SentenceType*
 	// Set the type of primitive that should be rendered from this vertex buffer, in this case triangles.
 	deviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
-	// Create a pixel color vector with the input sentence color.
-	pixelColor = D3DXVECTOR4(sentence->red, sentence->green, sentence->blue, 1.0f);
-
 	// Render the text using the font shader.
-	result = m_FontShader->Render(deviceContext, sentence->indexCount, m_Font->GetTexture(), pixelColor);
+	result = m_FontShader->Render(deviceContext, sentence->indexCount, m_Font->GetTexture(), sentence->color);
 	if (!result)
 	{
 		false;
