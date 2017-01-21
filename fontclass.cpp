@@ -2,7 +2,6 @@
 
 FontClass::FontClass()
 {
-	m_FontData = 0;
 	m_Texture = 0;
 }
 
@@ -17,19 +16,23 @@ FontClass::~FontClass()
 bool FontClass::Initialize(ID3D11Device* device, WindowInfo* windowInfo, std::string fontFilename)
 {
 	bool result;
+
 	std::string fontPath = "font/";
+	std::string fontFullPath = fontPath + fontFilename;
 
     m_windowInfo = windowInfo;
 
 	// Load in the text file containing the font data.
-	result = LoadFontData(fontPath + fontFilename);
+	result = LoadFontData(fontFullPath.c_str());
 	if (!result)
 	{
 		return false;
 	}
 
+	std::string fontImageFullPath = fontPath + m_FontData.fontImage;
+
 	// Load the texture that has the font characters on it.
-	result = LoadTexture(device, fontPath + m_FontData.fontImage);
+	result = LoadTexture(device, fontImageFullPath.c_str());
 	if (!result)
 	{
 		return false;
@@ -43,13 +46,10 @@ void FontClass::Shutdown()
 	// Release the font texture.
 	ReleaseTexture();
 
-	// Release the font data.
-	ReleaseFontData();
-
 	return;
 }
 
-bool LoadFontData(LPCWSTR filename)
+bool FontClass::LoadFontData(LPCSTR filename)
 {
     std::ifstream fs;
     fs.open(filename);
@@ -214,15 +214,6 @@ bool LoadFontData(LPCWSTR filename)
     return true;
 }
 
-void FontClass::ReleaseFontData()
-{
-	if (m_FontData)
-	{
-		delete m_FontData;
-		m_FontData = 0;
-	}
-}
-
 bool FontClass::LoadTexture(ID3D11Device* device, LPCSTR filename)
 {
 	bool result;
@@ -262,23 +253,22 @@ ID3D11ShaderResourceView* FontClass::GetTexture()
 	return m_Texture->GetTexture();
 }
 
-void FontClass::BuildVertexArray(void* vertices, char* sentence, float drawX, float drawY)
+void FontClass::BuildVertexArray(void* vertices, char* text, float drawX, float drawY)
 {
 	VertexType* vertexPtr;
-	int numLetters, index, i, letter;
-	int posX, posY;
-    int texX, texY;
+	int numLetters, index, i;
 
 	// Coerce the input vertices into a VertexType structure.
 	vertexPtr = (VertexType*)vertices;
 
-	// Get the number of letters in the sentence.
-	numLetters = (int)strlen(sentence);
+	// Get the number of letters in the text.
+	numLetters = (int)strlen(text);
 
 	// Initialize the index to the vertex array.
 	index = 0;
 
 	D3DXVECTOR2 padding = D3DXVECTOR2(0.5f, 0.0f);
+	D3DXVECTOR2 scale = D3DXVECTOR2(1.0f, 1.0f);
 
     float topLeftScreenX = (drawX * 2.0f) - 1.0f;
     float topLeftScreenY = ((1.0f - drawY) * 2.0f) - 1.0f;
@@ -286,38 +276,73 @@ void FontClass::BuildVertexArray(void* vertices, char* sentence, float drawX, fl
     float x = topLeftScreenX;
     float y = topLeftScreenY;
 
-    float horrizontalPadding = (font.leftpadding + font.rightpadding) * padding.x;
-    float verticalPadding = (font.toppadding + font.bottompadding) * padding.y;
+    //new x and y
+    float nx, ny;
+    //new width and height
+    float nw, nh;
+
+    float horrizontalPadding = (m_FontData.leftpadding + m_FontData.rightpadding) * padding.x;
+    float verticalPadding = (m_FontData.toppadding + m_FontData.bottompadding) * padding.y;
 
 	// Draw each letter onto a quad.
-	for (i = 0; i<numLetters; i++)
+	for (i = 0; i < numLetters; ++i)
 	{
-		letter = (int)sentence[i];
+        char lastChar = -1; // no last character to start with
+
+        char c = text[i];
+
+        FontChar* fc = m_FontData.GetChar(c);
+
+        // character not in font char set
+        if (fc == nullptr)
+            continue;
+
+        // new line
+        if (c == '\n')
+        {
+            x = topLeftScreenX;
+            y -= (m_FontData.lineHeight + verticalPadding) * scale.y;
+            continue;
+        }
+
+        float kerning = 0.0f;
+        if (i > 0)
+            kerning = m_FontData.GetKerning(lastChar, c);
+
+        nx = x + ((fc->xoffset + kerning) * scale.x);
+        ny = y - (fc->yoffset * scale.y);
+        nw = fc->width * scale.x;
+        nh = fc->height * scale.y;
 
         // First triangle in quad.
-        vertexPtr[index].position = D3DXVECTOR3(posX, posY, 0.0f);  // Top left.
-        vertexPtr[index].texture = D3DXVECTOR2(texX, texY);
+        vertexPtr[index].position = D3DXVECTOR3(nx, ny, 0.0f);  // Top left.
+        vertexPtr[index].texture = D3DXVECTOR2(fc->u, fc->v);
         index++;
 
-        vertexPtr[index].position = D3DXVECTOR3(posX, posY, 0.0f);  // Bottom right.
-        vertexPtr[index].texture = D3DXVECTOR2(texX, texY);
+        vertexPtr[index].position = D3DXVECTOR3(nx + nw, ny - nh, 0.0f);  // Bottom right.
+        vertexPtr[index].texture = D3DXVECTOR2(fc->u + fc->twidth, fc->v + fc->theight);
         index++;
 
-        vertexPtr[index].position = D3DXVECTOR3(posX, posY, 0.0f);  // Bottom left.
-        vertexPtr[index].texture = D3DXVECTOR2(texX, texY);
+        vertexPtr[index].position = D3DXVECTOR3(nx, ny - nh, 0.0f);  // Bottom left.
+        vertexPtr[index].texture = D3DXVECTOR2(fc->u, fc->v + fc->theight);
         index++;
 
         // Second triangle in quad.
-        vertexPtr[index].position = D3DXVECTOR3(posX, posY, 0.0f);  // Top left.
-        vertexPtr[index].texture = D3DXVECTOR2(texX, texY);
+        vertexPtr[index].position = D3DXVECTOR3(nx, ny, 0.0f);  // Top left.
+        vertexPtr[index].texture = D3DXVECTOR2(fc->u, fc->v);
         index++;
 
-        vertexPtr[index].position = D3DXVECTOR3(posX, posY, 0.0f);  // Top right.
-        vertexPtr[index].texture = D3DXVECTOR2(texX, texY);
+        vertexPtr[index].position = D3DXVECTOR3(nx + nw, ny, 0.0f);  // Top right.
+        vertexPtr[index].texture = D3DXVECTOR2(fc->u + fc->twidth, fc->v);
         index++;
 
-        vertexPtr[index].position = D3DXVECTOR3(posX, posY, 0.0f);  // Bottom right.
-        vertexPtr[index].texture = D3DXVECTOR2(texX, texY);
+        vertexPtr[index].position = D3DXVECTOR3(nx + nw, ny - nh, 0.0f);  // Bottom right.
+        vertexPtr[index].texture = D3DXVECTOR2(fc->u + fc->twidth, fc->v + fc->theight);
         index++;
+
+        // remove horrizontal padding and advance to next char position
+        x += (fc->xadvance - horrizontalPadding) * scale.x;
+
+        lastChar = c;
 	}
 }

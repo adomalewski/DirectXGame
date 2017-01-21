@@ -1,6 +1,8 @@
 #ifndef WINDOWINFO_H
 #define WINDOWINFO_H
 
+#include <windows.h>
+
 struct WindowInfo
 {
     WindowInfo(HWND hwnd, int screenWidth, int screenHeight)

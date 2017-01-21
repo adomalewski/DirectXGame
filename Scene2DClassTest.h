@@ -9,6 +9,7 @@
 #include "FrameInformation.h"
 #include "textureshaderclass.h"
 #include "bitmapclass.h"
+#include "textclass.h"
 
 class Scene2DClassTest
 {
@@ -26,6 +27,7 @@ private:
 	WindowInfo* m_windowInfo;
 	TextureShaderClass* m_TextureShader;
 	BitmapClass* m_Bitmap;
+	TextClass* m_TextTool;
 };
 
 #endif // SCENE2DCLASSTEST_H

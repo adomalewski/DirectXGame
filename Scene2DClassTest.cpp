@@ -3,6 +3,7 @@
 Scene2DClassTest::Scene2DClassTest()
 {
     m_Bitmap = 0;
+    m_TextTool = 0;
 }
 
 Scene2DClassTest::~Scene2DClassTest()
@@ -24,12 +25,27 @@ bool Scene2DClassTest::Initialize(D3DClass* d3d, WindowInfo* windowInfo, Texture
 		return false;
 	}
 
+	 // Create the textclass object.
+	m_TextTool = new TextClass;
+	if(!m_TextTool)
+	{
+		return false;
+	}
+
 	// Initialize the bitmap object.
 	result = m_Bitmap->Initialize(m_D3D->GetDevice(), m_windowInfo->m_screenWidth, m_windowInfo->m_screenHeight,
         "seafloor.dds", 256, 256);
 	if(!result)
 	{
-		MessageBox(m_windowInfo->m_hwnd, "Could not initialize the bitmap object.", "Error", MB_OK);
+		MessageBox(NULL, "Could not initialize the bitmap object.", "Error", MB_OK);
+		return false;
+	}
+
+	// Initialize the textclass object.
+	result = m_TextTool->Initialize(m_D3D->GetDevice(), m_D3D->GetDeviceContext(), m_windowInfo);
+	if(!result)
+	{
+		MessageBox(NULL, "Could not initialize the textclass object.", "Error", MB_OK);
 		return false;
 	}
 
@@ -44,6 +60,14 @@ void Scene2DClassTest::Shutdown()
 		m_Bitmap->Shutdown();
 		delete m_Bitmap;
 		m_Bitmap = 0;
+	}
+
+	// Release the textclass object.
+	if(m_TextTool)
+	{
+		m_TextTool->Shutdown();
+		delete m_TextTool;
+		m_TextTool = 0;
 	}
 }
 
@@ -83,6 +107,16 @@ void Scene2DClassTest::Update(FrameInformation frameInformation)
 	{
 		MessageBox(NULL, "Scene2DClassTest::Update m_TextureShader->Render() problem", "Error", MB_OK);
 	}
+
+	m_D3D->TurnOnTransparencyBlending();
+
+    result = m_TextTool->Render(m_D3D->GetDeviceContext());
+    if(!result)
+	{
+		MessageBox(NULL, "Scene2DClassTest::Update m_TextTool->Render() problem", "Error", MB_OK);
+	}
+
+	m_D3D->TurnOffAlphaBlending();
 
 	// Turn the Z buffer back on now that all 2D rendering has completed.
 	m_D3D->TurnZBufferOn();

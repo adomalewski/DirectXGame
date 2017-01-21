@@ -4,6 +4,7 @@
 #include <d3d11.h>
 #include <d3dx10math.h>
 #include <fstream>
+#include <string>
 
 #include "textureclass.h"
 #include "WindowInfo.h"
@@ -105,14 +106,14 @@ public:
 	void BuildVertexArray(void*, char*, float, float);
 
 private:
-    bool LoadFontData(LPCWSTR);
+    bool LoadFontData(LPCSTR);
 	void ReleaseFontData();
 	bool LoadTexture(ID3D11Device*, LPCSTR);
 	void ReleaseTexture();
 
 private:
     WindowInfo* m_windowInfo;
-    FontData* m_FontData;
+    FontData m_FontData;
 	TextureClass* m_Texture;
 };
 

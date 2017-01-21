@@ -277,26 +277,29 @@
 	"FontTextInfo.h"
 	"TextConverter.h"
 
-1479157563 c:\users\andrz3j\documents\codeblocks\directxgame\textclass.h
+1483878644 c:\users\andrz3j\documents\codeblocks\directxgame\textclass.h
+	"WindowInfo.h"
 	"fontclass.h"
 	"fontshaderclass.h"
 
-1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\fontclass.h
+1485000446 c:\users\andrz3j\documents\codeblocks\directxgame\fontclass.h
 	<d3d11.h>
 	<d3dx10math.h>
 	<fstream>
+	<string>
 	"textureclass.h"
+	"WindowInfo.h"
 
-1478874060 c:\users\andrz3j\documents\codeblocks\directxgame\fontshaderclass.h
+1483879256 c:\users\andrz3j\documents\codeblocks\directxgame\fontshaderclass.h
 	<d3d11.h>
 	<d3dx10math.h>
 	<d3dx11async.h>
 	<fstream>
 
-1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\fontclass.cpp
+1485000908 source:c:\users\andrz3j\documents\codeblocks\directxgame\fontclass.cpp
 	"fontclass.h"
 
-1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\fontshaderclass.cpp
+1483879237 source:c:\users\andrz3j\documents\codeblocks\directxgame\fontshaderclass.cpp
 	"fontshaderclass.h"
 
 1478874060 source:c:\users\andrz3j\documents\codeblocks\directxgame\hudbox.cpp
@@ -307,10 +310,10 @@
 1479157791 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene2dclass.cpp
 	"Scene2DClass.h"
 
-1483095035 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.cpp
+1485012176 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene3dclass.cpp
 	"Scene3DClass.h"
 
-1479157530 source:c:\users\andrz3j\documents\codeblocks\directxgame\textclass.cpp
+1485021620 source:c:\users\andrz3j\documents\codeblocks\directxgame\textclass.cpp
 	"textclass.h"
 
 1480697825 source:c:\users\andrz3j\documents\codeblocks\directxgame\useractions.cpp
@@ -1245,7 +1248,8 @@
 1481064477 source:c:\users\andrz3j\documents\codeblocks\directxgame\usercamera.cpp
 	"UserCamera.h"
 
-1479590123 c:\users\andrz3j\documents\codeblocks\directxgame\windowinfo.h
+1485000965 c:\users\andrz3j\documents\codeblocks\directxgame\windowinfo.h
+	<windows.h>
 
 1480023678 c:\users\andrz3j\documents\codeblocks\directxgame\pch.h
 	"CommonStates.h"
@@ -1495,7 +1499,7 @@
 	"MeshShaderClass.h"
 	"MeshShaderColor.h"
 
-1482608084 source:c:\users\andrz3j\documents\codeblocks\directxgame\obj3dmodel.cpp
+1485012086 source:c:\users\andrz3j\documents\codeblocks\directxgame\obj3dmodel.cpp
 	"Obj3DModel.h"
 	"utilities.h"
 
@@ -1536,14 +1540,15 @@
 	<algorithm>
 	<math.h>
 
-1483705346 c:\users\andrz3j\documents\codeblocks\directxgame\scene2dclasstest.h
+1485002837 c:\users\andrz3j\documents\codeblocks\directxgame\scene2dclasstest.h
 	"d3dclass.h"
 	"WindowInfo.h"
 	"TextConverter.h"
 	"FrameInformation.h"
 	"textureshaderclass.h"
 	"bitmapclass.h"
+	"textclass.h"
 
-1483709394 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene2dclasstest.cpp
+1485022638 source:c:\users\andrz3j\documents\codeblocks\directxgame\scene2dclasstest.cpp
 	"Scene2DClassTest.h"
 

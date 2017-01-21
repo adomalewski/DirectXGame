@@ -66,7 +66,7 @@ bool TextClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCont
 	}
 
 	// Now update the sentence vertex buffer with the new string information.
-	result = UpdateSentence(m_sentence, "Hello", 100, 100, 1.0f, 1.0f, 1.0f, deviceContext);
+	result = UpdateSentence(m_sentence, "Hello", 100, 100, 0.0f, 0.0f, 1.0f, deviceContext);
 	if (!result)
 	{
 		return false;
@@ -225,7 +225,7 @@ bool TextClass::UpdateSentence(SentenceType* sentence, char* text, int positionX
 	VertexType* verticesPtr;
 
 	// Store the color of the sentence.
-	sentence->color = D3DXVECTOR4(red, green, blue, 1.0);
+	sentence->color = D3DXVECTOR4(red, green, blue, 0.2f);
 
 	// Get the number of letters in the sentence.
 	numLetters = (int)strlen(text);
