@@ -1,15 +1,14 @@
-#include "Scene2DClass.h"
+#include "DXTKScene2D.h"
 
-Scene2DClass::Scene2DClass()
-{
-
-}
-
-Scene2DClass::~Scene2DClass()
+DXTKScene2D::DXTKScene2D()
 {
 }
 
-bool Scene2DClass::Initialize(D3DClass* d3d, WindowInfo* windowInfo)
+DXTKScene2D::~DXTKScene2D()
+{
+}
+
+bool DXTKScene2D::Initialize(D3DClass* d3d, WindowInfo* windowInfo)
 {
 	m_D3D = d3d;
 	m_windowInfo = windowInfo;
@@ -26,21 +25,21 @@ bool Scene2DClass::Initialize(D3DClass* d3d, WindowInfo* windowInfo)
 	return true;
 }
 
-void Scene2DClass::Shutdown()
+void DXTKScene2D::Shutdown()
 {
 	m_spriteBatch.release();
 	m_textureStonehenge.texture.Reset();
 	m_fontCurierNew32.font.release();
 }
 
-void Scene2DClass::Update()
+void DXTKScene2D::Update()
 {
 	std::unique_ptr<DirectX::CommonStates> m_states;
 	m_states.reset(new CommonStates(m_D3D->GetDevice()));
 
 	m_spriteBatch->Begin(SpriteSortMode_Deferred, m_states->NonPremultiplied());
 
-	m_spriteBatch->Draw(m_textureStonehenge.texture.Get(), m_textureStonehenge.screenPos, 
+	m_spriteBatch->Draw(m_textureStonehenge.texture.Get(), m_textureStonehenge.screenPos,
 		nullptr, Colors::White, 0.f, m_textureStonehenge.origin, m_textureStonehenge.scale);
 
 	m_spriteBatch->End();
@@ -58,7 +57,7 @@ void Scene2DClass::Update()
 	m_spriteBatch->End();
 }
 
-void Scene2DClass::InitializeTexture(TextureInfo& textureInfo, LPCSTR file)
+void DXTKScene2D::InitializeTexture(TextureInfo& textureInfo, LPCSTR file)
 {
 	makeWChar(textureInfo.file, file);
 
@@ -72,13 +71,13 @@ void Scene2DClass::InitializeTexture(TextureInfo& textureInfo, LPCSTR file)
 	cat->GetDesc(&textureInfo.catDesc);
 }
 
-void Scene2DClass::InitializeFont(FontInfo& fontInfo, LPCSTR file)
+void DXTKScene2D::InitializeFont(FontInfo& fontInfo, LPCSTR file)
 {
 	makeWChar(fontInfo.file, file);
 	fontInfo.font.reset(new SpriteFont(m_D3D->GetDevice(), fontInfo.file));
 }
 
-void Scene2DClass::SetTextureAttributes(TextureInfo& textureInfo, int posScreenX, int posScreenY, float scale)
+void DXTKScene2D::SetTextureAttributes(TextureInfo& textureInfo, int posScreenX, int posScreenY, float scale)
 {
 	textureInfo.screenPos.x = float(textureInfo.catDesc.Width / (2 / scale)) + posScreenX;
 	textureInfo.screenPos.y = float(textureInfo.catDesc.Height / (2 / scale)) + posScreenY;
@@ -87,7 +86,7 @@ void Scene2DClass::SetTextureAttributes(TextureInfo& textureInfo, int posScreenX
 	textureInfo.scale = scale;
 }
 
-void Scene2DClass::SetTextureAttributes(TextureInfo& textureInfo, WindowRegion windowRegion, float scale)
+void DXTKScene2D::SetTextureAttributes(TextureInfo& textureInfo, WindowRegion windowRegion, float scale)
 {
 	textureInfo.origin.x = float(textureInfo.catDesc.Width / 2);
 	textureInfo.origin.y = float(textureInfo.catDesc.Height / 2);
@@ -134,7 +133,8 @@ void Scene2DClass::SetTextureAttributes(TextureInfo& textureInfo, WindowRegion w
 	}
 }
 
-void Scene2DClass::SetTextAttributes(TextInfo& textInfo, const FontInfo& fontInfo, LPCSTR text, int posScreenX, int posScreenY)
+void DXTKScene2D::SetTextAttributes(TextInfo& textInfo, const FontInfo& fontInfo, LPCSTR text,
+    int posScreenX, int posScreenY)
 {
 	makeWChar(textInfo.text, text);
 	textInfo.strMeasure = fontInfo.font->MeasureString(textInfo.text);

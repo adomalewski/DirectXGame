@@ -1,5 +1,5 @@
-#ifndef SCENE2DCLASS_H
-#define SCENE2DCLASS_H
+#ifndef DXTKSCENE2D_H
+#define DXTKSCENE2D_H
 
 #include "pch.h"
 
@@ -9,11 +9,11 @@
 #include "FontTextInfo.h"
 #include "TextConverter.h"
 
-class Scene2DClass
+class DXTKScene2D
 {
 public:
-	Scene2DClass();
-	~Scene2DClass();
+	DXTKScene2D();
+	~DXTKScene2D();
 
 	bool Initialize(D3DClass*, WindowInfo*);
 	void Shutdown();
@@ -39,4 +39,4 @@ private:
 	TextInfo m_simpleText;
 };
 
-#endif // SCENE2DCLASS_H
+#endif // DXTKSCENE2D_H

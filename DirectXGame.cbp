@@ -56,24 +56,17 @@
 		<Unit filename="ColorModel.h" />
 		<Unit filename="DrawLine3DSpace.cpp" />
 		<Unit filename="DrawLine3DSpace.h" />
-		<Unit filename="FontTextInfo.h" />
 		<Unit filename="FrameInformation.h" />
 		<Unit filename="HudBox.cpp" />
 		<Unit filename="HudBox.h" />
 		<Unit filename="InputActions.h" />
 		<Unit filename="Obj3DModel.cpp" />
 		<Unit filename="Obj3DModel.h" />
-		<Unit filename="Scene2DClass.cpp">
-			<Option compile="0" />
-			<Option link="0" />
-		</Unit>
-		<Unit filename="Scene2DClass.h" />
 		<Unit filename="Scene3DClass.cpp" />
 		<Unit filename="Scene3DClass.h" />
 		<Unit filename="SimpleSurface.cpp" />
 		<Unit filename="SimpleSurface.h" />
 		<Unit filename="TextConverter.h" />
-		<Unit filename="TextureInfo.h" />
 		<Unit filename="TextureModel.cpp" />
 		<Unit filename="TextureModel.h" />
 		<Unit filename="TextureNormalModel.cpp" />
@@ -121,8 +114,6 @@
 		<Unit filename="meshshadercolor.h" />
 		<Unit filename="modelclass.cpp" />
 		<Unit filename="modelclass.h" />
-		<Unit filename="myfile.spritefont" />
-		<Unit filename="pch.h" />
 		<Unit filename="resource.h" />
 		<Unit filename="seafloor.dds" />
 		<Unit filename="systemclass.cpp" />
